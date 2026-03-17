@@ -1,49 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Compound Interest Calculator — AdSums</title>
-  <meta name="description" content="Free UK compound interest calculator. See how your savings grow with regular contributions over time.">
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <!-- Shared styles -->
-  <link rel="stylesheet" href="../assets/css/base.css">
-  <link rel="stylesheet" href="../assets/css/calculator.css">
-
-  <!-- Chart.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AdSums — Interest Calculator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/calculator.css">
 </head>
 <body>
 
-<!-- ── FULL SCREEN AD ── -->
-<!-- Replace .ad-content inner HTML with your ad tag -->
+<!-- FULL SCREEN AD -->
 <div class="ad-canvas">
   <div class="ad-bg"></div>
   <div class="ad-content">
-    <div class="ad-kicker">Advertisement</div>
-    <div class="ad-headline">Your brand<br><em>lives here.</em></div>
-    <div class="ad-body">Full-screen, high-impact placement. Reach engaged users as they plan their financial future.</div>
-    <button class="ad-cta-btn">Book this space &rarr;</button>
+    <!-- Slide 1: Scenarios.uk takeover -->
+    <div class="ad-slide scenarios active">
+      <div class="scenarios-logo">
+        <div class="scenarios-wordmark">scenarios.uk</div>
+      </div>
+      <div class="ad-headline">Retire with confidence, not guesswork.</div>
+      <div class="ad-body">Proper retirement modelling. No adviser fees, no spreadsheets.</div>
+      <a href="https://scenarios.uk" target="_blank" class="ad-cta-btn">Start planning — it's free</a>
+      <div class="scenarios-url">scenarios.uk</div>
+    </div>
+    <!-- Slide 2: Advertise -->
+    <div class="ad-slide">
+      <div class="ad-kicker">Advertisement</div>
+      <div class="ad-headline">Your brand<br><em>lives here.</em></div>
+      <div class="ad-body">Full-screen, high-impact placement. Reach engaged users as they plan their financial future.</div>
+      <a href="advertise.html" class="ad-cta-btn">Advertise with us →</a>
+    </div>
+    <div class="ad-pips">
+      <button class="ad-pip active"></button>
+      <button class="ad-pip"></button>
+    </div>
   </div>
   <div class="ad-top"></div>
   <div class="ad-bottom"></div>
   <div class="ad-badge">Powered by ads</div>
   <a href="https://scenarios.uk" target="_blank" class="scenarios-badge">
     <span class="sb-from">Also by us</span>
-    <span class="sb-sep">&middot;</span>
+    <span class="sb-sep">·</span>
     <span class="sb-name">Scenarios.uk</span>
-    <span class="sb-desc">&mdash; UK retirement planner</span>
+    <span class="sb-desc">— UK retirement planner</span>
   </a>
 </div>
 
-<!-- ── NAV ── -->
+<!-- NAV -->
 <nav class="nav">
-  <a class="nav-logo" href="../index.html">
+  <a class="nav-logo" href="index.html">
     <svg width="148" height="28" viewBox="0 0 148 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Mark: two overlapping pills — ad unit + plus sign -->
       <rect x="0" y="4" width="22" height="14" rx="4" fill="#2563eb" opacity="0.25"/>
       <rect x="2" y="7" width="22" height="14" rx="4" fill="#2563eb"/>
       <path d="M13 11v6M10 14h6" stroke="white" stroke-width="2" stroke-linecap="round"/>
@@ -52,93 +63,130 @@
       </text>
     </svg>
   </a>
+
+  <!-- Centred nav links -->
   <div class="nav-center">
+
+    <!-- Calculators dropdown -->
     <div class="nav-dropdown" id="calc-dropdown">
       <button class="nav-dropdown-toggle" id="dd-toggle">
         Calculators
-        <svg class="dd-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+        <svg class="dd-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M2 4l4 4 4-4"/>
+        </svg>
       </button>
       <div class="dd-menu">
         <div class="dd-section">
-          <div class="dd-section-label">Income &amp; Tax</div>
+          <div class="dd-section-label">Income & Tax</div>
           <a class="dd-item" href="salary.html">
-            <div class="dd-icon green"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M11 4.5A3 3 0 006 6v2H4.5m1.5 0v2c0 .8-.2 1.5-.5 2H12"/><path d="M4.5 8H10"/></svg></div>
+            <div class="dd-icon green"><!-- £ symbol -->
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M11 4.5A3 3 0 006 6v2H4.5m1.5 0v2c0 .8-.2 1.5-.5 2H12"/><path d="M4.5 8H10"/></svg>
+            </div>
             <div class="dd-text"><span class="dd-name">Salary calculator</span><span class="dd-desc">What is my take-home pay?</span></div>
           </a>
           <a class="dd-item" href="dividend-tax.html">
-            <div class="dd-icon amber"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2a6 6 0 100 12A6 6 0 008 2z"/><path d="M8 2v6l4.2 4.2"/></svg></div>
+            <div class="dd-icon amber"><!-- pie chart -->
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2a6 6 0 100 12A6 6 0 008 2z"/><path d="M8 2v6l4.2 4.2"/></svg>
+            </div>
             <div class="dd-text"><span class="dd-name">Dividend tax</span><span class="dd-desc">What tax do I owe on dividends?</span></div>
           </a>
           <a class="dd-item" href="cgt.html">
-            <div class="dd-icon rose"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12l3.5-4 2.5 2 4-5"/><path d="M10 5h2.5v2.5"/></svg></div>
+            <div class="dd-icon rose"><!-- chart with gain arrow -->
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12l3.5-4 2.5 2 4-5"/><path d="M10 5h2.5v2.5"/></svg>
+            </div>
             <div class="dd-text"><span class="dd-name">CGT calculator</span><span class="dd-desc">What tax on asset sales?</span></div>
           </a>
           <a class="dd-item" href="vat.html">
-            <div class="dd-icon amber"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2h8v10l-1.5-1.5L9 12l-1.5-1.5L6 12l-1.5-1.5L3 12V2z"/><path d="M6 6h4M6 8.5h2"/></svg></div>
+            <div class="dd-icon amber"><!-- receipt/tag -->
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2h8v10l-1.5-1.5L9 12l-1.5-1.5L6 12l-1.5-1.5L3 12V2z"/><path d="M6 6h4M6 8.5h2"/></svg>
+            </div>
             <div class="dd-text"><span class="dd-name">VAT calculator</span><span class="dd-desc">What is VAT on this amount?</span></div>
           </a>
         </div>
         <div class="dd-section">
           <div class="dd-section-label">Property</div>
           <a class="dd-item" href="mortgage.html">
-            <div class="dd-icon purple"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7l6-5 6 5v7H10V9H6v5H2V7z"/></svg></div>
+            <div class="dd-icon purple"><!-- house with key -->
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7l6-5 6 5v7H10V9H6v5H2V7z"/></svg>
+            </div>
             <div class="dd-text"><span class="dd-name">Mortgage calculator</span><span class="dd-desc">What will repayments be?</span></div>
           </a>
           <a class="dd-item" href="mortgage-overpayment.html">
-            <div class="dd-icon purple"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="12" height="10" rx="1.5"/><path d="M5 2v2M11 2v2M2 8h12"/><path d="M8 10.5v2M6.5 11.5l1.5 1.5 1.5-1.5"/></svg></div>
+            <div class="dd-icon purple"><!-- calendar with down arrow / saving -->
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="12" height="10" rx="1.5"/><path d="M5 2v2M11 2v2M2 8h12"/><path d="M8 10.5v2M6.5 11.5l1.5 1.5 1.5-1.5"/></svg>
+            </div>
             <div class="dd-text"><span class="dd-name">Mortgage overpayment</span><span class="dd-desc">How much interest will I save?</span></div>
           </a>
           <a class="dd-item" href="btl-roi.html">
-            <div class="dd-icon green"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="2" width="10" height="12" rx="1"/><path d="M6 5h1M9 5h1M6 8h1M9 8h1M6 11h4"/></svg></div>
+            <div class="dd-icon green"><!-- building / block of flats -->
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="2" width="10" height="12" rx="1"/><path d="M6 5h1M9 5h1M6 8h1M9 8h1M6 11h4"/></svg>
+            </div>
             <div class="dd-text"><span class="dd-name">BTL ROI</span><span class="dd-desc">What is my property return?</span></div>
           </a>
           <a class="dd-item" href="stamp-duty.html">
-            <div class="dd-icon rose"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="10" height="8" rx="1"/><path d="M5 5V3.5A1.5 1.5 0 016.5 2h3A1.5 1.5 0 0111 3.5V5"/><path d="M2 13h12"/></svg></div>
+            <div class="dd-icon rose"><!-- stamp / document -->
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="10" height="8" rx="1"/><path d="M5 5V3.5A1.5 1.5 0 016.5 2h3A1.5 1.5 0 0111 3.5V5"/><path d="M2 13h12"/></svg>
+            </div>
             <div class="dd-text"><span class="dd-name">Stamp duty</span><span class="dd-desc">What tax on buying property?</span></div>
           </a>
         </div>
         <div class="dd-section">
-          <div class="dd-section-label">Savings &amp; Growth</div>
+          <div class="dd-section-label">Savings & Growth</div>
           <a class="dd-item current" href="compound-interest.html">
-            <div class="dd-icon blue"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 13c1-4 2-7 4-7s3 6 4 6 2-4 4-6"/></svg></div>
+            <div class="dd-icon blue"><!-- exponential growth curve -->
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 13c1-4 2-7 4-7s3 6 4 6 2-4 4-6"/></svg>
+            </div>
             <div class="dd-text"><span class="dd-name">Compound interest</span><span class="dd-desc">Grow a lump sum over time</span></div>
           </a>
           <a class="dd-item" href="loan.html">
-            <div class="dd-icon blue"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="4" width="13" height="9" rx="1.5"/><path d="M1.5 7.5h13"/><path d="M4 10.5h2"/></svg></div>
+            <div class="dd-icon blue"><!-- credit card -->
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="4" width="13" height="9" rx="1.5"/><path d="M1.5 7.5h13"/><path d="M4 10.5h2"/></svg>
+            </div>
             <div class="dd-text"><span class="dd-name">Loan calculator</span><span class="dd-desc">What will my loan cost?</span></div>
           </a>
           <a class="dd-item" href="percentage-change.html">
-            <div class="dd-icon amber"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11V4M3 6l2-2 2 2"/><path d="M11 5v7M9 10l2 2 2-2"/></svg></div>
+            <div class="dd-icon amber"><!-- up and down arrows side by side -->
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11V4M3 6l2-2 2 2"/><path d="M11 5v7M9 10l2 2 2-2"/></svg>
+            </div>
             <div class="dd-text"><span class="dd-name">Percentage change</span><span class="dd-desc">What is the increase/decrease?</span></div>
           </a>
         </div>
       </div>
     </div>
-    <a class="nav-link" href="../how-it-works.html">How it works</a>
-    <a class="nav-link" href="../pricing.html">Pricing</a>
-    <a class="nav-link" href="../legal.html">Legal</a>
+
+    <a class="nav-link" href="how-it-works.html">How it works</a>
+    <a class="nav-link" href="advertise.html">Advertise</a>
+    <a class="nav-link" href="legal.html">Legal</a>
   </div>
+
   <div class="nav-right">
-    <button class="nav-upgrade">&#9889; Upgrade</button>
+    <a class="nav-upgrade" href="advertise.html">Advertise with us</a>
   </div>
 </nav>
 
-<!-- ── FLOATING CALCULATOR ── -->
+<!-- FLOATING CALCULATOR -->
 <div class="float-card">
 <div class="fc-scroll">
 
-  <!-- Hero result -->
   <div class="hero-result">
     <div class="hero-lbl">Future value</div>
     <div class="hero-val"><span class="sym" id="h-sym">£</span><span id="h-val">0</span></div>
     <div class="chips">
-      <div class="chip"><span class="chip-val g" id="chip-int">—</span><span class="chip-lbl">Interest</span></div>
-      <div class="chip"><span class="chip-val"  id="chip-dep">—</span><span class="chip-lbl">Total in</span></div>
-      <div class="chip"><span class="chip-val b" id="chip-apy">—</span><span class="chip-lbl">APY</span></div>
+      <div class="chip">
+        <span class="chip-val g" id="chip-int">—</span>
+        <span class="chip-lbl">Interest</span>
+      </div>
+      <div class="chip">
+        <span class="chip-val" id="chip-dep">—</span>
+        <span class="chip-lbl">Total in</span>
+      </div>
+      <div class="chip">
+        <span class="chip-val b" id="chip-apy">—</span>
+        <span class="chip-lbl">APY</span>
+      </div>
     </div>
   </div>
 
-  <!-- Currency -->
   <div class="curr-seg" id="curr">
     <button data-sym="$">$</button>
     <button data-sym="€">€</button>
@@ -148,7 +196,6 @@
     <button data-sym="Fr">Fr</button>
   </div>
 
-  <!-- Inputs -->
   <div class="mb">
     <div class="f-label">Initial investment</div>
     <div class="input-box">
@@ -175,12 +222,12 @@
     <div class="f-label">Compounding</div>
     <div class="input-box" style="padding:0 0.9rem">
       <select id="freq" style="flex:1;padding:0">
-        <option value="365">Daily — 365&times;/yr</option>
-        <option value="52">Weekly — 52&times;/yr</option>
-        <option value="12" selected>Monthly — 12&times;/yr</option>
-        <option value="4">Quarterly — 4&times;/yr</option>
-        <option value="2">Semi-annually — 2&times;/yr</option>
-        <option value="1">Annually — 1&times;/yr</option>
+        <option value="365">Daily — 365×/yr</option>
+        <option value="52">Weekly — 52×/yr</option>
+        <option value="12" selected>Monthly — 12×/yr</option>
+        <option value="4">Quarterly — 4×/yr</option>
+        <option value="2">Semi-annually — 2×/yr</option>
+        <option value="1">Annually — 1×/yr</option>
       </select>
     </div>
   </div>
@@ -201,7 +248,6 @@
 
   <div class="divider"></div>
 
-  <!-- Contributions -->
   <div class="mb">
     <div class="f-label" style="margin-bottom:0.5rem">Contributions <span class="opt">optional</span></div>
     <div class="seg" id="ctype">
@@ -216,7 +262,7 @@
     <div class="mb">
       <div class="f-label">Deposit amount</div>
       <div class="input-box">
-        <span class="i-pre" id="pfx2">£</span>
+        <span class="i-pre" id="pfx2">$</span>
         <input type="number" id="dep-amt" min="0" step="10" placeholder="0">
         <div class="vsep"></div>
         <select id="dep-freq">
@@ -233,7 +279,7 @@
       <div class="input-box">
         <div class="tt" id="inc-type" style="margin-left:8px;border:none;height:auto">
           <button class="active" data-val="pct">%</button>
-          <button data-val="amt" id="inc-amt-btn">£</button>
+          <button data-val="amt" id="inc-amt-btn">$</button>
         </div>
         <input type="number" id="dep-inc" min="0" step="0.1" placeholder="0">
         <span class="i-suf" id="inc-sfx">%</span>
@@ -245,7 +291,7 @@
     <div class="mb">
       <div class="f-label">Withdrawal amount</div>
       <div class="input-box">
-        <span class="i-pre" id="pfx3">£</span>
+        <span class="i-pre" id="pfx3">$</span>
         <input type="number" id="wd-amt" min="0" step="10" placeholder="0">
         <div class="vsep"></div>
         <select id="wd-freq">
@@ -260,19 +306,22 @@
 
   <div class="divider"></div>
 
-  <!-- Insight -->
   <div class="insight">
-    <div class="insight-icon">&#8599;</div>
-    <div class="insight-txt" id="insight-txt">Enter your details above to see how your money grows.</div>
+    <div class="insight-icon">↗</div>
+    <div class="insight-txt" id="insight-txt">Enter your details above to see how your money grows over time.</div>
   </div>
 
-  <!-- Metrics -->
   <div class="metric-row">
-    <div class="metric"><div class="metric-lbl">Rate of return</div><div class="metric-val" id="m-ror">—</div></div>
-    <div class="metric"><div class="metric-lbl">Time to double</div><div class="metric-val" id="m-double">—</div></div>
+    <div class="metric">
+      <div class="metric-lbl">Rate of return</div>
+      <div class="metric-val" id="m-ror">—</div>
+    </div>
+    <div class="metric">
+      <div class="metric-lbl">Time to double</div>
+      <div class="metric-val" id="m-double">—</div>
+    </div>
   </div>
 
-  <!-- View controls -->
   <div class="view-bar">
     <div class="view-tabs" id="vtabs">
       <button class="active" data-view="chart">Chart</button>
@@ -280,17 +329,15 @@
       <button data-view="summary">Summary</button>
     </div>
     <div class="seg" id="bd-toggle" style="flex:0 0 auto;padding:3px;border-radius:10px">
-      <button class="active" data-val="yearly"  style="font-size:0.72rem;padding:0.38rem 0.6rem">Yr</button>
+      <button class="active" data-val="yearly" style="font-size:0.72rem;padding:0.38rem 0.6rem">Yr</button>
       <button data-val="monthly" style="font-size:0.72rem;padding:0.38rem 0.6rem">Mo</button>
     </div>
   </div>
 
-  <!-- Chart -->
   <div class="vp show" id="vp-chart">
     <div class="chart-wrap"><canvas id="chart"></canvas></div>
   </div>
 
-  <!-- Table -->
   <div class="vp" id="vp-table">
     <div class="table-wrap">
       <table>
@@ -305,45 +352,58 @@
     </div>
   </div>
 
-  <!-- Summary -->
   <div class="vp" id="vp-summary">
     <div class="sum-grid">
-      <div class="sum-card"><div class="sum-card-lbl">Future value</div><div class="sum-card-val g" id="s-fv">—</div></div>
-      <div class="sum-card"><div class="sum-card-lbl">Interest earned</div><div class="sum-card-val g" id="s-int">—</div></div>
-      <div class="sum-card"><div class="sum-card-lbl">Initial balance</div><div class="sum-card-val" id="s-init">—</div></div>
-      <div class="sum-card"><div class="sum-card-lbl">APY</div><div class="sum-card-val b" id="s-apy">—</div></div>
-      <div class="sum-card"><div class="sum-card-lbl">Annual rate</div><div class="sum-card-val" id="s-rate">—</div></div>
-      <div class="sum-card"><div class="sum-card-lbl">Doubles in</div><div class="sum-card-val" id="s-dbl">—</div></div>
+      <div class="sum-card">
+        <div class="sum-card-lbl">Future value</div>
+        <div class="sum-card-val g" id="s-fv">—</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-card-lbl">Interest earned</div>
+        <div class="sum-card-val g" id="s-int">—</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-card-lbl">Initial balance</div>
+        <div class="sum-card-val" id="s-init">—</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-card-lbl">APY</div>
+        <div class="sum-card-val b" id="s-apy">—</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-card-lbl">Annual rate</div>
+        <div class="sum-card-val" id="s-rate">—</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-card-lbl">Doubles in</div>
+        <div class="sum-card-val" id="s-dbl">—</div>
+      </div>
       <div class="sum-note">For illustrative purposes only. Does not account for inflation, taxes, or fees. Not financial advice.</div>
     </div>
   </div>
 
-</div><!-- /fc-scroll -->
-</div><!-- /float-card -->
+</div>
 
-<!-- Shared scripts -->
-<script src="../assets/js/format.js"></script>
-<script src="../assets/js/nav.js"></script>
+</div>
 
-<!-- ── CALCULATOR LOGIC (unique to this page) ── -->
+<script src="js/nav.js"></script>
+<script src="js/format.js"></script>
 <script>
-const fmt = AdSums.fmt;
-let cmode = 'none', incType = 'pct', bdMode = 'yearly', viewMode = 'chart';
-let chartInst = null, lastR = null;
+let sym='£', cmode='none', incType='pct', bdMode='yearly', viewMode='chart';
+let chartInst=null, lastR=null;
 
-// Currency switcher
+// Currency
 document.getElementById('curr').addEventListener('click', e => {
   const b = e.target.closest('button'); if (!b) return;
   document.querySelectorAll('#curr button').forEach(x => x.classList.remove('active'));
-  b.classList.add('active');
-  fmt.sym = b.dataset.sym;
-  document.getElementById('h-sym').textContent = fmt.sym;
-  ['pfx1','pfx2','pfx3'].forEach(id => document.getElementById(id).textContent = fmt.sym);
-  document.getElementById('inc-amt-btn').textContent = fmt.sym;
+  b.classList.add('active'); sym = b.dataset.sym;
+  document.getElementById('h-sym').textContent = sym;
+  ['pfx1','pfx2','pfx3'].forEach(id => document.getElementById(id).textContent = sym);
+  document.getElementById('inc-amt-btn').textContent = sym;
   update();
 });
 
-// Contribution mode
+// Contrib
 document.getElementById('ctype').addEventListener('click', e => {
   const b = e.target.closest('button'); if (!b) return;
   document.querySelectorAll('#ctype button').forEach(x => x.classList.remove('active'));
@@ -353,16 +413,16 @@ document.getElementById('ctype').addEventListener('click', e => {
   update();
 });
 
-// Increase type
+// Inc type
 document.getElementById('inc-type').addEventListener('click', e => {
   const b = e.target.closest('button'); if (!b) return;
   document.querySelectorAll('#inc-type button').forEach(x => x.classList.remove('active'));
   b.classList.add('active'); incType = b.dataset.val;
-  document.getElementById('inc-sfx').textContent = incType === 'pct' ? '%' : fmt.sym;
+  document.getElementById('inc-sfx').textContent = incType==='pct' ? '%' : sym;
   update();
 });
 
-// Breakdown toggle
+// BD toggle
 document.getElementById('bd-toggle').addEventListener('click', e => {
   const b = e.target.closest('button'); if (!b) return;
   document.querySelectorAll('#bd-toggle button').forEach(x => x.classList.remove('active'));
@@ -374,134 +434,135 @@ document.getElementById('vtabs').addEventListener('click', e => {
   const b = e.target.closest('button'); if (!b) return;
   document.querySelectorAll('#vtabs button').forEach(x => x.classList.remove('active'));
   b.classList.add('active'); viewMode = b.dataset.view;
-  ['chart','table','summary'].forEach(v => document.getElementById('vp-'+v).classList.toggle('show', viewMode===v));
-  if (viewMode === 'chart' && lastR) renderChart(lastR);
+  ['chart','table','summary'].forEach(v => {
+    document.getElementById('vp-'+v).classList.toggle('show', viewMode===v);
+  });
+  if (viewMode==='chart' && lastR) renderChart(lastR);
 });
 
 function annualRate() {
-  const r = parseFloat(document.getElementById('rate').value) || 0;
+  const r = parseFloat(document.getElementById('rate').value)||0;
   const t = document.getElementById('rate-type').value;
-  return t === 'monthly' ? r * 12 : t === 'daily' ? r * 365 : r;
+  return t==='monthly' ? r*12 : t==='daily' ? r*365 : r;
 }
 
 function compute() {
-  const P      = parseFloat(document.getElementById('principal').value) || 0;
-  const ar     = annualRate() / 100;
-  const freq   = parseInt(document.getElementById('freq').value);
-  const yrs    = parseInt(document.getElementById('years').value) || 0;
-  const mos    = parseInt(document.getElementById('months').value) || 0;
-  const totalYrs = yrs + mos / 12;
-  const depAmt = (cmode==='deposits'||cmode==='both') ? parseFloat(document.getElementById('dep-amt').value)||0 : 0;
-  const depFreq = parseInt(document.getElementById('dep-freq').value);
-  const wdAmt  = (cmode==='withdrawals'||cmode==='both') ? parseFloat(document.getElementById('wd-amt').value)||0 : 0;
-  const wdFreq = parseInt(document.getElementById('wd-freq').value);
-  const incVal = parseFloat(document.getElementById('dep-inc').value) || 0;
-  const annDep = depAmt * depFreq, annWd = wdAmt * wdFreq;
-  const rPer   = ar / freq;
-  let balance  = P, accrued = 0;
-  const yearly  = [{ year: 0, interest: 0, accrued: 0, balance: P }];
-  const monthly = [];
-  let curAnnDep = annDep;
-
-  for (let y = 1; y <= Math.ceil(totalYrs); y++) {
-    const frac    = (y === Math.ceil(totalYrs) && totalYrs % 1 !== 0) ? totalYrs % 1 : 1;
-    const periods = Math.round(freq * frac);
-    let yInt = 0;
-    const net = (curAnnDep - annWd) / freq;
-    for (let p = 0; p < periods; p++) {
-      const int = balance * rPer;
-      balance += int + net; yInt += int; accrued += int;
-      if (freq === 12) monthly.push({ month: (y-1)*12+(p+1), interest: int, accrued, balance });
+  const P=parseFloat(document.getElementById('principal').value)||0;
+  const ar=annualRate()/100;
+  const freq=parseInt(document.getElementById('freq').value);
+  const yrs=parseInt(document.getElementById('years').value)||0;
+  const mos=parseInt(document.getElementById('months').value)||0;
+  const totalYrs=yrs+mos/12;
+  const depAmt=(cmode==='deposits'||cmode==='both')?parseFloat(document.getElementById('dep-amt').value)||0:0;
+  const depFreq=parseInt(document.getElementById('dep-freq').value);
+  const wdAmt=(cmode==='withdrawals'||cmode==='both')?parseFloat(document.getElementById('wd-amt').value)||0:0;
+  const wdFreq=parseInt(document.getElementById('wd-freq').value);
+  const incVal=parseFloat(document.getElementById('dep-inc').value)||0;
+  const annDep=depAmt*depFreq, annWd=wdAmt*wdFreq;
+  const rPer=ar/freq;
+  let balance=P, accrued=0;
+  const yearly=[{year:0,interest:0,accrued:0,balance:P}];
+  const monthly=[];
+  let curAnnDep=annDep;
+  for(let y=1;y<=Math.ceil(totalYrs);y++){
+    const frac=(y===Math.ceil(totalYrs)&&totalYrs%1!==0)?totalYrs%1:1;
+    const periods=Math.round(freq*frac);
+    let yInt=0;
+    const net=(curAnnDep-annWd)/freq;
+    for(let p=0;p<periods;p++){
+      const int=balance*rPer;
+      balance+=int+net; yInt+=int; accrued+=int;
+      if(freq===12) monthly.push({month:(y-1)*12+(p+1),interest:int,accrued,balance});
     }
-    yearly.push({ year: y, interest: yInt, accrued, balance });
-    if (incType === 'pct' && incVal > 0) curAnnDep *= (1 + incVal / 100);
-    else if (incType === 'amt' && incVal > 0) curAnnDep += incVal;
+    yearly.push({year:y,interest:yInt,accrued,balance});
+    if(incType==='pct'&&incVal>0) curAnnDep*=(1+incVal/100);
+    else if(incType==='amt'&&incVal>0) curAnnDep+=incVal;
   }
-
-  const finalBal = balance, totalInt = accrued;
-  const totContrib = totalYrs * annDep, totWd = totalYrs * annWd;
-  const totInvested = P + totContrib - totWd;
-  const apy = (Math.pow(1 + ar / freq, freq) - 1) * 100;
-  const ror = totInvested > 0 ? ((finalBal - totInvested) / totInvested) * 100 : 0;
-  const dbl = ar > 0 ? Math.log(2) / Math.log(1 + ar / freq) / freq : Infinity;
-  return { P, ar: ar * 100, apy, freq, totalYrs, yrs, mos, finalBal, totalInt, totContrib, totWd, totInvested, ror, dbl, yearly, monthly };
+  const finalBal=balance,totalInt=accrued;
+  const totContrib=totalYrs*annDep,totWd=totalYrs*annWd;
+  const totInvested=P+totContrib-totWd;
+  const apy=(Math.pow(1+ar/freq,freq)-1)*100;
+  const ror=totInvested>0?((finalBal-totInvested)/totInvested)*100:0;
+  const dbl=ar>0?Math.log(2)/Math.log(1+ar/freq)/freq:Infinity;
+  return{P,ar:ar*100,apy,freq,totalYrs,yrs,mos,finalBal,totalInt,totContrib,totWd,totInvested,ror,dbl,yearly,monthly};
 }
 
-function update() {
-  const r = compute(); lastR = r;
-  document.getElementById('h-val').textContent       = fmt.hero(r.finalBal);
-  document.getElementById('chip-int').textContent    = fmt.short(r.totalInt);
-  document.getElementById('chip-dep').textContent    = fmt.short(r.P + r.totContrib);
-  document.getElementById('chip-apy').textContent    = fmt.pct(r.apy);
-  document.getElementById('m-ror').textContent       = fmt.pct(r.ror);
-  document.getElementById('m-double').textContent    = isFinite(r.dbl) ? fmt.duration(r.dbl) : 'N/A';
-  document.getElementById('s-dbl').textContent       = isFinite(r.dbl) ? fmt.duration(r.dbl) : 'N/A';
-  document.getElementById('s-fv').textContent        = fmt.full(r.finalBal);
-  document.getElementById('s-int').textContent       = fmt.full(r.totalInt);
-  document.getElementById('s-init').textContent      = fmt.full(r.P);
-  document.getElementById('s-apy').textContent       = fmt.pct(r.apy);
-  document.getElementById('s-rate').textContent      = fmt.pct(r.ar);
-
-  // Insight
-  const intPct = r.finalBal > 0 ? (r.totalInt / r.finalBal * 100) : 0;
-  let ins = `At <strong>${fmt.pct(r.ar, 1)}</strong>, your ${fmt.short(r.P)} grows to <strong>${fmt.short(r.finalBal)}</strong> in ${r.yrs} years.`;
-  if (intPct > 55) ins = `<strong>${intPct.toFixed(0)}%</strong> of your final balance is pure interest — compounding is doing the work.`;
-  else if (r.totContrib > r.P) ins = `Your contributions (${fmt.short(r.totContrib)}) have overtaken your initial deposit — consistency pays.`;
-  document.getElementById('insight-txt').innerHTML = ins;
-
-  // Table
-  const data = bdMode === 'yearly' ? r.yearly : r.monthly;
-  const isYr = bdMode === 'yearly';
-  document.getElementById('col0').textContent = isYr ? 'Yr' : 'Mo';
-  const tb = document.getElementById('tbody'); tb.innerHTML = '';
-  data.forEach(row => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `<td>${isYr ? row.year : row.month}</td><td>${row.interest > 0 ? fmt.full(row.interest) : '—'}</td><td>${row.accrued > 0 ? fmt.full(row.accrued) : '—'}</td><td class="td-b">${fmt.full(row.balance)}</td>`;
+function update(){
+  const r=compute(); lastR=r;
+  document.getElementById('h-val').textContent=fmtH(r.finalBal);
+  document.getElementById('chip-int').textContent=fmtS(r.totalInt);
+  document.getElementById('chip-dep').textContent=fmtS(r.P+r.totContrib);
+  document.getElementById('chip-apy').textContent=r.apy.toFixed(2)+'%';
+  document.getElementById('m-ror').textContent=r.ror.toFixed(2)+'%';
+  if(isFinite(r.dbl)){
+    const dy=Math.floor(r.dbl),dm=Math.round((r.dbl-dy)*12);
+    const ds=dy+'y'+(dm>0?' '+dm+'m':'');
+    document.getElementById('m-double').textContent=ds;
+    document.getElementById('s-dbl').textContent=ds;
+  } else {
+    document.getElementById('m-double').textContent='N/A';
+    document.getElementById('s-dbl').textContent='N/A';
+  }
+  const intPct=r.finalBal>0?(r.totalInt/r.finalBal*100):0;
+  let ins=`At <strong>${r.ar.toFixed(1)}%</strong>, your ${fmtS(r.P)} grows to <strong>${fmtS(r.finalBal)}</strong> in ${r.yrs} years.`;
+  if(intPct>55) ins=`<strong>${intPct.toFixed(0)}%</strong> of your final balance is pure interest — compounding is doing the work.`;
+  else if(r.totContrib>r.P) ins=`Your contributions (${fmtS(r.totContrib)}) have overtaken your initial deposit — consistency pays.`;
+  document.getElementById('insight-txt').innerHTML=ins;
+  document.getElementById('s-fv').textContent=fmtFull(r.finalBal);
+  document.getElementById('s-int').textContent=fmtFull(r.totalInt);
+  document.getElementById('s-init').textContent=fmtFull(r.P);
+  document.getElementById('s-apy').textContent=r.apy.toFixed(2)+'%';
+  document.getElementById('s-rate').textContent=r.ar.toFixed(2)+'%';
+  const data=bdMode==='yearly'?r.yearly:r.monthly;
+  const isYr=bdMode==='yearly';
+  document.getElementById('col0').textContent=isYr?'Yr':'Mo';
+  const tb=document.getElementById('tbody'); tb.innerHTML='';
+  data.forEach(row=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${isYr?row.year:row.month}</td><td>${row.interest>0?fmtFull(row.interest):'—'}</td><td>${row.accrued>0?fmtFull(row.accrued):'—'}</td><td class="td-b">${fmtFull(row.balance)}</td>`;
     tb.appendChild(tr);
   });
-
-  if (viewMode === 'chart') renderChart(r);
+  if(viewMode==='chart') renderChart(r);
 }
 
-function renderChart(r) {
-  const data   = r.yearly;
-  const labels = data.map(d => d.year === 0 ? 'Now' : 'Yr ' + d.year);
-  const pData  = data.map(() => r.P);
-  const cData  = data.map(d => Math.max(0, d.balance - r.P - d.accrued));
-  const iData  = data.map(d => Math.max(0, d.accrued));
-  const bLine  = data.map(d => d.balance);
-  if (chartInst) { chartInst.destroy(); chartInst = null; }
-  chartInst = new Chart(document.getElementById('chart'), {
-    type: 'bar',
-    data: { labels, datasets: [
-      { label: 'Initial',  data: pData, backgroundColor: '#e2e8f0', stack: 's', order: 2 },
-      { label: 'Contrib',  data: cData, backgroundColor: '#93c5fd', stack: 's', order: 2 },
-      { label: 'Interest', data: iData, backgroundColor: '#2563eb', stack: 's', order: 2 },
-      { label: 'Balance',  type: 'line', data: bLine, borderColor: '#0f0f0f', borderWidth: 1.5,
-        pointBackgroundColor: '#fff', pointBorderColor: '#0f0f0f',
-        pointRadius: data.length <= 30 ? 2 : 0, fill: false, tension: 0.35, order: 1 }
+function renderChart(r){
+  const data=r.yearly;
+  const labels=data.map(d=>d.year===0?'Now':'Yr '+d.year);
+  const pData=data.map(()=>r.P);
+  const cData=data.map(d=>Math.max(0,d.balance-r.P-d.accrued));
+  const iData=data.map(d=>Math.max(0,d.accrued));
+  const bLine=data.map(d=>d.balance);
+  if(chartInst){chartInst.destroy();chartInst=null;}
+  chartInst=new Chart(document.getElementById('chart'),{
+    type:'bar',
+    data:{labels,datasets:[
+      {label:'Initial',data:pData,backgroundColor:'#e2e8f0',stack:'s',order:2},
+      {label:'Contrib',data:cData,backgroundColor:'#93c5fd',stack:'s',order:2},
+      {label:'Interest',data:iData,backgroundColor:'#2563eb',stack:'s',order:2},
+      {label:'Balance',type:'line',data:bLine,borderColor:'#0f0f0f',borderWidth:1.5,
+       pointBackgroundColor:'#fff',pointBorderColor:'#0f0f0f',
+       pointRadius:data.length<=30?2:0,fill:false,tension:0.35,order:1}
     ]},
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: {
-        legend: { display: true, position: 'bottom', labels: { color: '#8a8a8a', font: { size: 10, family: "'Instrument Sans', sans-serif" }, boxWidth: 8, padding: 12, usePointStyle: true } },
-        tooltip: { callbacks: { label: c => c.dataset.label + ': ' + fmt.full(c.raw) } }
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{
+        legend:{display:true,position:'bottom',labels:{color:'#8a8a8a',font:{size:10,family:"'Instrument Sans',sans-serif"},boxWidth:8,padding:12,usePointStyle:true}},
+        tooltip:{callbacks:{label:c=>c.dataset.label+': '+fmtFull(c.raw)}}
       },
-      scales: {
-        x: { stacked: true, ticks: { color: '#aaa', font: { size: 10 }, maxTicksLimit: 12 }, grid: { display: false } },
-        y: { stacked: true, ticks: { callback: v => fmt.short(v), color: '#aaa', font: { size: 10 } }, grid: { color: '#f0f0f0' } }
+      scales:{
+        x:{stacked:true,ticks:{color:'#aaa',font:{size:10},maxTicksLimit:12},grid:{display:false}},
+        y:{stacked:true,ticks:{callback:v=>fmtS(v),color:'#aaa',font:{size:10}},grid:{color:'#f0f0f0'}}
       }
     }
   });
 }
 
-document.querySelectorAll('input[type=number], select').forEach(el => {
-  el.addEventListener('input', update);
-  el.addEventListener('change', update);
+document.querySelectorAll('input[type=number], select').forEach(el=>{
+  el.addEventListener('input',update);
+  el.addEventListener('change',update);
 });
-
 update();
 </script>
-
+<script src="js/ads.js"></script>
 </body>
 </html>

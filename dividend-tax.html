@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AdSums — Dividend Tax Calculator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/calculator.css">
+</head>
+<body>
+
+<!-- FULL SCREEN AD -->
+<div class="ad-canvas">
+  <div class="ad-bg"></div>
+  <div class="ad-content">
+    <!-- Slide 1: Scenarios.uk takeover -->
+    <div class="ad-slide scenarios active">
+      <div class="scenarios-logo">
+        <div class="scenarios-wordmark">scenarios.uk</div>
+      </div>
+      <div class="ad-headline">Retire with confidence, not guesswork.</div>
+      <div class="ad-body">Proper retirement modelling. No adviser fees, no spreadsheets.</div>
+      <a href="https://scenarios.uk" target="_blank" class="ad-cta-btn">Start planning — it's free</a>
+      <div class="scenarios-url">scenarios.uk</div>
+    </div>
+    <!-- Slide 2: Advertise -->
+    <div class="ad-slide">
+      <div class="ad-kicker">Advertisement</div>
+      <div class="ad-headline">Your brand<br><em>lives here.</em></div>
+      <div class="ad-body">Full-screen, high-impact placement. Reach engaged users as they plan their financial future.</div>
+      <a href="advertise.html" class="ad-cta-btn">Advertise with us →</a>
+    </div>
+    <div class="ad-pips">
+      <button class="ad-pip active"></button>
+      <button class="ad-pip"></button>
+    </div>
+  </div>
+  <div class="ad-top"></div>
+  <div class="ad-bottom"></div>
+  <div class="ad-badge">Powered by ads</div>
+  <a href="https://scenarios.uk" target="_blank" class="scenarios-badge">
+    <span class="sb-from">Also by us</span>
+    <span class="sb-sep">·</span>
+    <span class="sb-name">Scenarios.uk</span>
+    <span class="sb-desc">— UK retirement planner</span>
+  </a>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav-logo" href="index.html">
+    <svg width="148" height="28" viewBox="0 0 148 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Mark: two overlapping pills — ad unit + plus sign -->
+      <rect x="0" y="4" width="22" height="14" rx="4" fill="#2563eb" opacity="0.25"/>
+      <rect x="2" y="7" width="22" height="14" rx="4" fill="#2563eb"/>
+      <path d="M13 11v6M10 14h6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+      <text x="32" y="20" font-family="'Instrument Serif', Georgia, serif" font-size="17" letter-spacing="-0.2">
+        <tspan fill="rgba(255,255,255,0.42)" font-style="italic">Ad</tspan><tspan fill="rgba(255,255,255,0.92)">Sums</tspan>
+      </text>
+    </svg>
+  </a>
+
+  <!-- Centred nav links -->
+  <div class="nav-center">
+
+    <!-- Calculators dropdown -->
+    <div class="nav-dropdown" id="calc-dropdown">
+      <button class="nav-dropdown-toggle" id="dd-toggle">
+        Calculators
+        <svg class="dd-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M2 4l4 4 4-4"/>
+        </svg>
+      </button>
+      <div class="dd-menu">
+        <div class="dd-section">
+          <div class="dd-section-label">Income & Tax</div>
+          <a class="dd-item" href="salary.html">
+            <div class="dd-icon green">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M11 4.5A3 3 0 006 6v2H4.5m1.5 0v2c0 .8-.2 1.5-.5 2H12"/><path d="M4.5 8H10"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Salary calculator</span><span class="dd-desc">What is my take-home pay?</span></div>
+          </a>
+          <a class="dd-item current" href="dividend-tax.html">
+            <div class="dd-icon amber">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2a6 6 0 100 12A6 6 0 008 2z"/><path d="M8 2v6l4.2 4.2"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Dividend tax</span><span class="dd-desc">What tax do I owe on dividends?</span></div>
+          </a>
+          <a class="dd-item" href="cgt.html">
+            <div class="dd-icon rose">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12l3.5-4 2.5 2 4-5"/><path d="M10 5h2.5v2.5"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">CGT calculator</span><span class="dd-desc">What tax on asset sales?</span></div>
+          </a>
+          <a class="dd-item" href="vat.html">
+            <div class="dd-icon amber">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2h8v10l-1.5-1.5L9 12l-1.5-1.5L6 12l-1.5-1.5L3 12V2z"/><path d="M6 6h4M6 8.5h2"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">VAT calculator</span><span class="dd-desc">What is VAT on this amount?</span></div>
+          </a>
+        </div>
+        <div class="dd-section">
+          <div class="dd-section-label">Property</div>
+          <a class="dd-item" href="mortgage.html">
+            <div class="dd-icon purple">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7l6-5 6 5v7H10V9H6v5H2V7z"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Mortgage calculator</span><span class="dd-desc">What will repayments be?</span></div>
+          </a>
+          <a class="dd-item" href="mortgage-overpayment.html">
+            <div class="dd-icon purple">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="12" height="10" rx="1.5"/><path d="M5 2v2M11 2v2M2 8h12"/><path d="M8 10.5v2M6.5 11.5l1.5 1.5 1.5-1.5"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Mortgage overpayment</span><span class="dd-desc">How much interest will I save?</span></div>
+          </a>
+          <a class="dd-item" href="btl-roi.html">
+            <div class="dd-icon green">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="2" width="10" height="12" rx="1"/><path d="M6 5h1M9 5h1M6 8h1M9 8h1M6 11h4"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">BTL ROI</span><span class="dd-desc">What is my property return?</span></div>
+          </a>
+          <a class="dd-item" href="stamp-duty.html">
+            <div class="dd-icon rose">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="10" height="8" rx="1"/><path d="M5 5V3.5A1.5 1.5 0 016.5 2h3A1.5 1.5 0 0111 3.5V5"/><path d="M2 13h12"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Stamp duty</span><span class="dd-desc">What tax on buying property?</span></div>
+          </a>
+        </div>
+        <div class="dd-section">
+          <div class="dd-section-label">Savings & Growth</div>
+          <a class="dd-item" href="compound-interest.html">
+            <div class="dd-icon blue">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 13c1-4 2-7 4-7s3 6 4 6 2-4 4-6"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Compound interest</span><span class="dd-desc">Grow a lump sum over time</span></div>
+          </a>
+          <a class="dd-item" href="loan.html">
+            <div class="dd-icon blue">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="4" width="13" height="9" rx="1.5"/><path d="M1.5 7.5h13"/><path d="M4 10.5h2"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Loan calculator</span><span class="dd-desc">What will my loan cost?</span></div>
+          </a>
+          <a class="dd-item" href="percentage-change.html">
+            <div class="dd-icon amber">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11V4M3 6l2-2 2 2"/><path d="M11 5v7M9 10l2 2 2-2"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Percentage change</span><span class="dd-desc">What is the increase/decrease?</span></div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <a class="nav-link" href="how-it-works.html">How it works</a>
+    <a class="nav-link" href="advertise.html">Advertise</a>
+    <a class="nav-link" href="legal.html">Legal</a>
+  </div>
+
+  <div class="nav-right">
+    <a class="nav-upgrade" href="advertise.html">Advertise with us</a>
+  </div>
+</nav>
+
+<!-- FLOATING CALCULATOR -->
+<div class="float-card">
+<div class="fc-scroll">
+
+  <div class="hero-result">
+    <div class="hero-lbl">Dividend tax owed</div>
+    <div class="hero-val"><span class="sym">£</span><span id="h-val">0</span></div>
+    <div class="chips">
+      <div class="chip">
+        <span class="chip-val g" id="chip-net">—</span>
+        <span class="chip-lbl">Net dividends</span>
+      </div>
+      <div class="chip">
+        <span class="chip-val" id="chip-rate">—</span>
+        <span class="chip-lbl">Effective rate</span>
+      </div>
+      <div class="chip">
+        <span class="chip-val b" id="chip-free">—</span>
+        <span class="chip-lbl">Tax-free amount</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb">
+    <div class="f-label">Total dividend income</div>
+    <div class="input-box">
+      <span class="i-pre">£</span>
+      <input type="number" id="dividends" value="10000" min="0" step="500">
+    </div>
+  </div>
+
+  <div class="mb">
+    <div class="f-label">Other taxable income <span class="opt">(salary, pension, etc.)</span></div>
+    <div class="input-box">
+      <span class="i-pre">£</span>
+      <input type="number" id="other-income" value="30000" min="0" step="500">
+    </div>
+  </div>
+
+  <div class="mb">
+    <div class="f-label">Tax year</div>
+    <div class="input-box" style="padding:0 0.9rem">
+      <select id="tax-year" style="flex:1;padding:0">
+        <option value="2025" selected>2025/26</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="insight">
+    <div class="insight-icon">↗</div>
+    <div class="insight-txt" id="insight-txt">Enter your dividend income to see the tax breakdown.</div>
+  </div>
+
+  <div class="metric-row">
+    <div class="metric">
+      <div class="metric-lbl">Effective dividend tax rate</div>
+      <div class="metric-val" id="m-effective">—</div>
+    </div>
+    <div class="metric">
+      <div class="metric-lbl">Highest band hit</div>
+      <div class="metric-val" id="m-band">—</div>
+    </div>
+  </div>
+
+  <div class="view-bar">
+    <div class="view-tabs" id="vtabs">
+      <button class="active" data-view="breakdown">Breakdown</button>
+      <button data-view="summary">Summary</button>
+    </div>
+  </div>
+
+  <div class="vp show" id="vp-breakdown">
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>Tax band</th>
+          <th class="th-b">Dividends in band</th>
+          <th class="th-b">Tax</th>
+        </tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="vp" id="vp-summary">
+    <div class="sum-grid">
+      <div class="sum-card">
+        <div class="sum-card-lbl">Total dividends</div>
+        <div class="sum-card-val" id="s-total">—</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-card-lbl">Dividend tax owed</div>
+        <div class="sum-card-val" style="color:#e11d48" id="s-tax">—</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-card-lbl">Net dividends</div>
+        <div class="sum-card-val g" id="s-net">—</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-card-lbl">Tax-free dividends</div>
+        <div class="sum-card-val b" id="s-free">—</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-card-lbl">Effective rate</div>
+        <div class="sum-card-val" id="s-effective">—</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-card-lbl">Marginal rate</div>
+        <div class="sum-card-val" id="s-marginal">—</div>
+      </div>
+      <div class="sum-note">Based on 2025/26 UK dividend tax rates. Tax bands are determined by total income (other income + dividends).</div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<script src="js/nav.js"></script>
+<script>
+/* ── Formatting helpers ── */
+function fmtH(v){
+  if(v>=1e6) return (v/1e6).toFixed(2)+'m';
+  if(v>=1e4) return (v/1e3).toFixed(1)+'k';
+  return v.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,',');
+}
+function fmtS(v){
+  var a=Math.abs(v);
+  if(a>=1e6) return '£'+(v/1e6).toFixed(1)+'m';
+  if(a>=1e4) return '£'+(v/1e3).toFixed(1)+'k';
+  return '£'+v.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,',');
+}
+function fmtFull(v){
+  return '£'+v.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');
+}
+
+/* ── State ── */
+var viewMode = 'breakdown';
+
+/* ── View tabs ── */
+document.getElementById('vtabs').addEventListener('click', function(e){
+  var b = e.target.closest('button'); if(!b) return;
+  document.querySelectorAll('#vtabs button').forEach(function(x){x.classList.remove('active');});
+  b.classList.add('active');
+  viewMode = b.dataset.view;
+  document.getElementById('vp-breakdown').classList.toggle('show', viewMode==='breakdown');
+  document.getElementById('vp-summary').classList.toggle('show', viewMode==='summary');
+});
+
+/* ── Calculation ── */
+function compute(){
+  var dividends = parseFloat(document.getElementById('dividends').value) || 0;
+  var otherIncome = parseFloat(document.getElementById('other-income').value) || 0;
+
+  // Tax band thresholds
+  var personalAllowance = 12570;
+  var basicTop = 50270;
+  var higherTop = 125140;
+
+  // Dividend allowance
+  var dividendAllowance = 500;
+
+  // Dividend rates
+  var basicRate = 0.0875;
+  var higherRate = 0.3375;
+  var additionalRate = 0.3935;
+
+  // Determine where other income places us in the bands
+  // Other income uses personal allowance first
+  var taxableOther = Math.max(0, otherIncome - personalAllowance);
+
+  // How much of each band is already consumed by other income
+  var basicBandWidth = basicTop - personalAllowance; // 37,700
+  var higherBandWidth = higherTop - basicTop; // 74,870
+
+  var otherInBasic = Math.min(taxableOther, basicBandWidth);
+  var otherInHigher = Math.min(Math.max(0, taxableOther - basicBandWidth), higherBandWidth);
+  var otherInAdditional = Math.max(0, taxableOther - basicBandWidth - higherBandWidth);
+
+  // Remaining band space for dividends
+  var basicRemaining = basicBandWidth - otherInBasic;
+  var higherRemaining = higherBandWidth - otherInHigher;
+
+  // But first, if other income is below personal allowance, dividends can use remaining PA
+  var unusedPA = Math.max(0, personalAllowance - otherIncome);
+  var taxableDividends = Math.max(0, dividends - unusedPA);
+
+  // Apply dividend allowance
+  var afterAllowance = Math.max(0, taxableDividends - dividendAllowance);
+  var usedAllowance = Math.min(taxableDividends, dividendAllowance);
+  var taxFreeAmount = dividends - afterAllowance;
+
+  // Allocate dividends across remaining bands
+  var divInBasic = Math.min(afterAllowance, basicRemaining);
+  var divInHigher = Math.min(Math.max(0, afterAllowance - basicRemaining), higherRemaining);
+  var divInAdditional = Math.max(0, afterAllowance - basicRemaining - higherRemaining);
+
+  var taxBasic = divInBasic * basicRate;
+  var taxHigher = divInHigher * higherRate;
+  var taxAdditional = divInAdditional * additionalRate;
+  var totalTax = taxBasic + taxHigher + taxAdditional;
+
+  var effectiveRate = dividends > 0 ? (totalTax / dividends * 100) : 0;
+  var netDividends = dividends - totalTax;
+
+  // Highest band
+  var highestBand = 'None';
+  if(divInAdditional > 0) highestBand = 'Additional (39.35%)';
+  else if(divInHigher > 0) highestBand = 'Higher (33.75%)';
+  else if(divInBasic > 0) highestBand = 'Basic (8.75%)';
+
+  // Marginal rate
+  var marginalRate = 0;
+  if(divInAdditional > 0) marginalRate = 39.35;
+  else if(divInHigher > 0) marginalRate = 33.75;
+  else if(divInBasic > 0) marginalRate = 8.75;
+
+  return {
+    dividends: dividends,
+    otherIncome: otherIncome,
+    totalTax: totalTax,
+    netDividends: netDividends,
+    effectiveRate: effectiveRate,
+    taxFreeAmount: taxFreeAmount,
+    highestBand: highestBand,
+    marginalRate: marginalRate,
+    // Band breakdown
+    divAllowance: usedAllowance,
+    unusedPA: Math.min(unusedPA, dividends),
+    divInBasic: divInBasic,
+    taxBasic: taxBasic,
+    divInHigher: divInHigher,
+    taxHigher: taxHigher,
+    divInAdditional: divInAdditional,
+    taxAdditional: taxAdditional
+  };
+}
+
+function update(){
+  var r = compute();
+  document.getElementById('h-val').textContent = fmtH(r.totalTax);
+  document.getElementById('chip-net').textContent = fmtS(r.netDividends);
+  document.getElementById('chip-rate').textContent = r.effectiveRate.toFixed(1) + '%';
+  document.getElementById('chip-free').textContent = fmtS(r.taxFreeAmount);
+
+  // Metrics
+  document.getElementById('m-effective').textContent = r.effectiveRate.toFixed(1) + '%';
+  document.getElementById('m-band').textContent = r.highestBand;
+
+  // Insight
+  var ins;
+  if(r.totalTax === 0){
+    ins = 'Your dividends fall entirely within your tax-free allowances — <strong>no dividend tax to pay</strong>.';
+  } else if(r.divInAdditional > 0){
+    ins = '<strong>' + fmtS(r.divInAdditional) + '</strong> of your dividends are taxed at the additional rate of 39.35%.';
+  } else if(r.divInHigher > 0){
+    ins = 'Your combined income pushes <strong>' + fmtS(r.divInHigher) + '</strong> of dividends into the higher rate band at 33.75%.';
+  } else {
+    ins = 'Your dividends are taxed at the basic rate of 8.75%, with an effective rate of just <strong>' + r.effectiveRate.toFixed(1) + '%</strong>.';
+  }
+  document.getElementById('insight-txt').innerHTML = ins;
+
+  // Breakdown table
+  var tb = document.getElementById('tbody');
+  tb.innerHTML = '';
+  var rows = [];
+  if(r.unusedPA > 0){
+    rows.push(['Personal allowance (0%)', r.unusedPA, 0]);
+  }
+  if(r.divAllowance > 0){
+    rows.push(['Dividend allowance (0%)', r.divAllowance, 0]);
+  }
+  if(r.divInBasic > 0){
+    rows.push(['Basic rate (8.75%)', r.divInBasic, r.taxBasic]);
+  }
+  if(r.divInHigher > 0){
+    rows.push(['Higher rate (33.75%)', r.divInHigher, r.taxHigher]);
+  }
+  if(r.divInAdditional > 0){
+    rows.push(['Additional rate (39.35%)', r.divInAdditional, r.taxAdditional]);
+  }
+  // Total row
+  rows.push(['Total', r.dividends, r.totalTax]);
+
+  rows.forEach(function(row, i){
+    var tr = document.createElement('tr');
+    if(i === rows.length - 1) tr.style.fontWeight = '600';
+    var taxCell = row[2] > 0 ? '<td class="td-b" style="color:#e11d48">' + fmtFull(row[2]) + '</td>' : '<td class="td-b" style="color:#16a34a">£0.00</td>';
+    if(i === rows.length - 1 && row[2] > 0){
+      taxCell = '<td class="td-b" style="color:#e11d48">' + fmtFull(row[2]) + '</td>';
+    }
+    tr.innerHTML = '<td>' + row[0] + '</td><td class="td-b">' + fmtFull(row[1]) + '</td>' + taxCell;
+    tb.appendChild(tr);
+  });
+
+  // Summary
+  document.getElementById('s-total').textContent = fmtFull(r.dividends);
+  document.getElementById('s-tax').textContent = fmtFull(r.totalTax);
+  document.getElementById('s-net').textContent = fmtFull(r.netDividends);
+  document.getElementById('s-free').textContent = fmtFull(r.taxFreeAmount);
+  document.getElementById('s-effective').textContent = r.effectiveRate.toFixed(1) + '%';
+  document.getElementById('s-marginal').textContent = r.marginalRate.toFixed(2) + '%';
+}
+
+document.querySelectorAll('input[type=number], select').forEach(function(el){
+  el.addEventListener('input', update);
+  el.addEventListener('change', update);
+});
+update();
+</script>
+<script src="js/ads.js"></script>
+</body>
+</html>

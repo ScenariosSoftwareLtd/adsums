@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AdSums — BTL ROI Calculator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/calculator.css">
+</head>
+<body>
+
+<!-- FULL SCREEN AD -->
+<div class="ad-canvas">
+  <div class="ad-bg"></div>
+  <div class="ad-content">
+    <!-- Slide 1: Scenarios.uk takeover -->
+    <div class="ad-slide scenarios active">
+      <div class="scenarios-logo">
+        <div class="scenarios-wordmark">scenarios.uk</div>
+      </div>
+      <div class="ad-headline">Retire with confidence, not guesswork.</div>
+      <div class="ad-body">Proper retirement modelling. No adviser fees, no spreadsheets.</div>
+      <a href="https://scenarios.uk" target="_blank" class="ad-cta-btn">Start planning — it's free</a>
+      <div class="scenarios-url">scenarios.uk</div>
+    </div>
+    <!-- Slide 2: Advertise -->
+    <div class="ad-slide">
+      <div class="ad-kicker">Advertisement</div>
+      <div class="ad-headline">Your brand<br><em>lives here.</em></div>
+      <div class="ad-body">Full-screen, high-impact placement. Reach engaged users as they plan their financial future.</div>
+      <a href="advertise.html" class="ad-cta-btn">Advertise with us →</a>
+    </div>
+    <div class="ad-pips">
+      <button class="ad-pip active"></button>
+      <button class="ad-pip"></button>
+    </div>
+  </div>
+  <div class="ad-top"></div>
+  <div class="ad-bottom"></div>
+  <div class="ad-badge">Powered by ads</div>
+  <a href="https://scenarios.uk" target="_blank" class="scenarios-badge">
+    <span class="sb-from">Also by us</span>
+    <span class="sb-sep">·</span>
+    <span class="sb-name">Scenarios.uk</span>
+    <span class="sb-desc">— UK retirement planner</span>
+  </a>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav-logo" href="index.html">
+    <svg width="148" height="28" viewBox="0 0 148 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="4" width="22" height="14" rx="4" fill="#2563eb" opacity="0.25"/>
+      <rect x="2" y="7" width="22" height="14" rx="4" fill="#2563eb"/>
+      <path d="M13 11v6M10 14h6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+      <text x="32" y="20" font-family="'Instrument Serif', Georgia, serif" font-size="17" letter-spacing="-0.2">
+        <tspan fill="rgba(255,255,255,0.42)" font-style="italic">Ad</tspan><tspan fill="rgba(255,255,255,0.92)">Sums</tspan>
+      </text>
+    </svg>
+  </a>
+
+  <div class="nav-center">
+    <div class="nav-dropdown" id="calc-dropdown">
+      <button class="nav-dropdown-toggle" id="dd-toggle">
+        Calculators
+        <svg class="dd-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M2 4l4 4 4-4"/>
+        </svg>
+      </button>
+      <div class="dd-menu">
+        <div class="dd-section">
+          <div class="dd-section-label">Income & Tax</div>
+          <a class="dd-item" href="salary.html">
+            <div class="dd-icon green">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M11 4.5A3 3 0 006 6v2H4.5m1.5 0v2c0 .8-.2 1.5-.5 2H12"/><path d="M4.5 8H10"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Salary calculator</span><span class="dd-desc">What is my take-home pay?</span></div>
+          </a>
+          <a class="dd-item" href="dividend-tax.html">
+            <div class="dd-icon amber">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2a6 6 0 100 12A6 6 0 008 2z"/><path d="M8 2v6l4.2 4.2"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Dividend tax</span><span class="dd-desc">What tax do I owe on dividends?</span></div>
+          </a>
+          <a class="dd-item" href="cgt.html">
+            <div class="dd-icon rose">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12l3.5-4 2.5 2 4-5"/><path d="M10 5h2.5v2.5"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">CGT calculator</span><span class="dd-desc">What tax on asset sales?</span></div>
+          </a>
+          <a class="dd-item" href="vat.html">
+            <div class="dd-icon amber">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2h8v10l-1.5-1.5L9 12l-1.5-1.5L6 12l-1.5-1.5L3 12V2z"/><path d="M6 6h4M6 8.5h2"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">VAT calculator</span><span class="dd-desc">What is VAT on this amount?</span></div>
+          </a>
+        </div>
+        <div class="dd-section">
+          <div class="dd-section-label">Property</div>
+          <a class="dd-item" href="mortgage.html">
+            <div class="dd-icon purple">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7l6-5 6 5v7H10V9H6v5H2V7z"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Mortgage calculator</span><span class="dd-desc">What will repayments be?</span></div>
+          </a>
+          <a class="dd-item" href="mortgage-overpayment.html">
+            <div class="dd-icon purple">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="12" height="10" rx="1.5"/><path d="M5 2v2M11 2v2M2 8h12"/><path d="M8 10.5v2M6.5 11.5l1.5 1.5 1.5-1.5"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Mortgage overpayment</span><span class="dd-desc">How much interest will I save?</span></div>
+          </a>
+          <a class="dd-item current" href="btl-roi.html">
+            <div class="dd-icon green">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="2" width="10" height="12" rx="1"/><path d="M6 5h1M9 5h1M6 8h1M9 8h1M6 11h4"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">BTL ROI</span><span class="dd-desc">What is my property return?</span></div>
+          </a>
+          <a class="dd-item" href="stamp-duty.html">
+            <div class="dd-icon rose">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="10" height="8" rx="1"/><path d="M5 5V3.5A1.5 1.5 0 016.5 2h3A1.5 1.5 0 0111 3.5V5"/><path d="M2 13h12"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Stamp duty</span><span class="dd-desc">What tax on buying property?</span></div>
+          </a>
+        </div>
+        <div class="dd-section">
+          <div class="dd-section-label">Savings & Growth</div>
+          <a class="dd-item" href="compound-interest.html">
+            <div class="dd-icon blue">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 13c1-4 2-7 4-7s3 6 4 6 2-4 4-6"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Compound interest</span><span class="dd-desc">Grow a lump sum over time</span></div>
+          </a>
+          <a class="dd-item" href="loan.html">
+            <div class="dd-icon blue">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="4" width="13" height="9" rx="1.5"/><path d="M1.5 7.5h13"/><path d="M4 10.5h2"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Loan calculator</span><span class="dd-desc">What will my loan cost?</span></div>
+          </a>
+          <a class="dd-item" href="percentage-change.html">
+            <div class="dd-icon amber">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11V4M3 6l2-2 2 2"/><path d="M11 5v7M9 10l2 2 2-2"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Percentage change</span><span class="dd-desc">What is the increase/decrease?</span></div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <a class="nav-link" href="how-it-works.html">How it works</a>
+    <a class="nav-link" href="advertise.html">Advertise</a>
+    <a class="nav-link" href="legal.html">Legal</a>
+  </div>
+
+  <div class="nav-right">
+    <a class="nav-upgrade" href="advertise.html">Advertise with us</a>
+  </div>
+</nav>
+
+<!-- FLOATING CALCULATOR -->
+<div class="float-card">
+<div class="fc-scroll">
+
+  <div class="hero-result">
+    <div class="hero-lbl">Annual ROI</div>
+    <div class="hero-val"><span id="h-val">0</span><span class="sym">%</span></div>
+    <div class="chips">
+      <div class="chip">
+        <span class="chip-val g" id="chip-profit">—</span>
+        <span class="chip-lbl">Monthly profit</span>
+      </div>
+      <div class="chip">
+        <span class="chip-val" id="chip-income">—</span>
+        <span class="chip-lbl">Annual income</span>
+      </div>
+      <div class="chip">
+        <span class="chip-val b" id="chip-costs">—</span>
+        <span class="chip-lbl">Annual costs</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="curr-seg" id="curr">
+    <button data-sym="$">$</button>
+    <button data-sym="€">€</button>
+    <button class="active" data-sym="£">£</button>
+    <button data-sym="₹">₹</button>
+    <button data-sym="¥">¥</button>
+    <button data-sym="Fr">Fr</button>
+  </div>
+
+  <div class="mb">
+    <div class="f-label">Property value</div>
+    <div class="input-box">
+      <span class="i-pre" id="pfx1">£</span>
+      <input type="number" id="prop-value" value="250000" min="0" step="5000">
+    </div>
+  </div>
+
+  <div class="mb">
+    <div class="f-label">Purchase costs <span class="opt">stamp duty, legal, etc</span></div>
+    <div class="input-box">
+      <span class="i-pre" id="pfx2">£</span>
+      <input type="number" id="purchase-costs" value="10000" min="0" step="500">
+    </div>
+  </div>
+
+  <div class="mb">
+    <div class="f-label">Deposit</div>
+    <div class="input-box">
+      <div class="tt" id="dep-type" style="margin-left:8px;border:none;height:auto">
+        <button class="active" data-val="pct">%</button>
+        <button data-val="amt" id="dep-amt-btn">£</button>
+      </div>
+      <input type="number" id="deposit" value="25" min="0" step="1">
+      <span class="i-suf" id="dep-sfx">%</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="mb">
+    <div class="f-label">Mortgage rate</div>
+    <div class="input-box">
+      <input type="number" id="mort-rate" value="5.5" min="0" max="30" step="0.1" style="padding-left:0.9rem">
+      <span class="i-suf">%</span>
+    </div>
+  </div>
+
+  <div class="mb">
+    <div class="f-label">Mortgage term</div>
+    <div class="input-box">
+      <input type="number" id="mort-term" value="25" min="1" max="40" step="1" style="padding-left:0.9rem">
+      <span class="i-suf">yrs</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="mb">
+    <div class="f-label">Monthly rent</div>
+    <div class="input-box">
+      <span class="i-pre" id="pfx3">£</span>
+      <input type="number" id="monthly-rent" value="1200" min="0" step="50">
+    </div>
+  </div>
+
+  <div class="mb">
+    <div class="f-label">Void period</div>
+    <div class="input-box">
+      <input type="number" id="void-weeks" value="2" min="0" max="52" step="1" style="padding-left:0.9rem">
+      <span class="i-suf">wks/yr</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="mb">
+    <div class="f-label">Annual maintenance</div>
+    <div class="input-box">
+      <div class="tt" id="maint-type" style="margin-left:8px;border:none;height:auto">
+        <button data-val="amt" id="maint-amt-btn" class="active">£</button>
+        <button data-val="pct">%</button>
+      </div>
+      <input type="number" id="maintenance" value="2500" min="0" step="100">
+      <span class="i-suf" id="maint-sfx">/ yr</span>
+    </div>
+  </div>
+
+  <div class="mb">
+    <div class="f-label">Management fee <span class="opt">% of rent</span></div>
+    <div class="input-box">
+      <input type="number" id="mgmt-fee" value="10" min="0" max="100" step="1" style="padding-left:0.9rem">
+      <span class="i-suf">%</span>
+    </div>
+  </div>
+
+  <div class="mb">
+    <div class="f-label">Annual insurance</div>
+    <div class="input-box">
+      <span class="i-pre" id="pfx4">£</span>
+      <input type="number" id="insurance" value="500" min="0" step="50">
+    </div>
+  </div>
+
+  <div class="mb">
+    <div class="f-label">Ground rent / service charge</div>
+    <div class="input-box">
+      <span class="i-pre" id="pfx5">£</span>
+      <input type="number" id="ground-rent" value="0" min="0" step="50">
+      <span class="i-suf">/ yr</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="insight">
+    <div class="insight-icon">↗</div>
+    <div class="insight-txt" id="insight-txt">Enter your property details to see your buy-to-let return on investment.</div>
+  </div>
+
+  <div class="metric-row">
+    <div class="metric">
+      <div class="metric-lbl">Gross yield</div>
+      <div class="metric-val" id="m-gross">—</div>
+    </div>
+    <div class="metric">
+      <div class="metric-lbl">Net yield</div>
+      <div class="metric-val" id="m-net">—</div>
+    </div>
+  </div>
+
+  <div class="metric-row">
+    <div class="metric">
+      <div class="metric-lbl">Cash-on-cash return</div>
+      <div class="metric-val" id="m-coc">—</div>
+    </div>
+  </div>
+
+  <div class="view-bar">
+    <div class="view-tabs" id="vtabs">
+      <button class="active" data-view="table">Breakdown</button>
+      <button data-view="summary">Summary</button>
+    </div>
+  </div>
+
+  <div class="vp show" id="vp-table">
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>Item</th>
+          <th class="th-b">Annual</th>
+        </tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="vp" id="vp-summary">
+    <div class="sum-grid">
+      <div class="sum-card">
+        <div class="sum-card-lbl">Annual ROI</div>
+        <div class="sum-card-val g" id="s-roi">—</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-card-lbl">Monthly cash flow</div>
+        <div class="sum-card-val" id="s-cash">—</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-card-lbl">Gross yield</div>
+        <div class="sum-card-val" id="s-gross">—</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-card-lbl">Net yield</div>
+        <div class="sum-card-val" id="s-net">—</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-card-lbl">Cash-on-cash return</div>
+        <div class="sum-card-val b" id="s-coc">—</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-card-lbl">Total cash invested</div>
+        <div class="sum-card-val" id="s-invested">—</div>
+      </div>
+      <div class="sum-note">For illustrative purposes only. Does not account for capital growth, tax, or mortgage product fees. Not financial advice.</div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<script src="js/nav.js"></script>
+<script src="js/format.js"></script>
+<script>
+let sym='£', depType='pct', maintType='amt', viewMode='table';
+
+// Currency
+document.getElementById('curr').addEventListener('click', e => {
+  const b=e.target.closest('button'); if(!b) return;
+  document.querySelectorAll('#curr button').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active'); sym=b.dataset.sym;
+  ['pfx1','pfx2','pfx3','pfx4','pfx5'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=sym;});
+  document.getElementById('dep-amt-btn').textContent=sym;
+  document.getElementById('maint-amt-btn').textContent=sym;
+  update();
+});
+
+// Deposit type toggle
+document.getElementById('dep-type').addEventListener('click', e => {
+  const b=e.target.closest('button'); if(!b) return;
+  document.querySelectorAll('#dep-type button').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active'); depType=b.dataset.val;
+  document.getElementById('dep-sfx').textContent=depType==='pct'?'%':sym;
+  update();
+});
+
+// Maintenance type toggle
+document.getElementById('maint-type').addEventListener('click', e => {
+  const b=e.target.closest('button'); if(!b) return;
+  document.querySelectorAll('#maint-type button').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active'); maintType=b.dataset.val;
+  document.getElementById('maint-sfx').textContent=maintType==='pct'?'% of value':'/ yr';
+  update();
+});
+
+// View tabs
+document.getElementById('vtabs').addEventListener('click', e => {
+  const b=e.target.closest('button'); if(!b) return;
+  document.querySelectorAll('#vtabs button').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active'); viewMode=b.dataset.view;
+  ['table','summary'].forEach(v=>{
+    document.getElementById('vp-'+v).classList.toggle('show', viewMode===v);
+  });
+});
+
+function calcMortgagePayment(loan, annRate, years) {
+  if(loan<=0) return 0;
+  if(annRate<=0) return loan/(years*12);
+  const mr=annRate/12;
+  const n=years*12;
+  return loan*mr*Math.pow(1+mr,n)/(Math.pow(1+mr,n)-1);
+}
+
+function compute() {
+  const propVal=parseFloat(document.getElementById('prop-value').value)||0;
+  const purchaseCosts=parseFloat(document.getElementById('purchase-costs').value)||0;
+  const depInput=parseFloat(document.getElementById('deposit').value)||0;
+  const deposit=depType==='pct'?(propVal*depInput/100):depInput;
+  const mortRate=(parseFloat(document.getElementById('mort-rate').value)||0)/100;
+  const mortTerm=parseInt(document.getElementById('mort-term').value)||25;
+  const monthlyRent=parseFloat(document.getElementById('monthly-rent').value)||0;
+  const voidWeeks=parseFloat(document.getElementById('void-weeks').value)||0;
+  const maintInput=parseFloat(document.getElementById('maintenance').value)||0;
+  const maintenance=maintType==='pct'?(propVal*maintInput/100):maintInput;
+  const mgmtPct=(parseFloat(document.getElementById('mgmt-fee').value)||0)/100;
+  const insurance=parseFloat(document.getElementById('insurance').value)||0;
+  const groundRent=parseFloat(document.getElementById('ground-rent').value)||0;
+
+  const loanAmt=Math.max(0, propVal-deposit);
+  const monthlyMortgage=calcMortgagePayment(loanAmt, mortRate, mortTerm);
+  const annualMortgage=monthlyMortgage*12;
+
+  // Rental income adjusted for voids
+  const occupiedWeeks=52-voidWeeks;
+  const annualRent=monthlyRent*12*(occupiedWeeks/52);
+
+  // Costs
+  const mgmtFee=annualRent*mgmtPct;
+  const totalAnnualCosts=annualMortgage+maintenance+mgmtFee+insurance+groundRent;
+
+  // Profit
+  const annualProfit=annualRent-totalAnnualCosts;
+  const monthlyProfit=annualProfit/12;
+
+  // Total cash invested
+  const totalCashIn=deposit+purchaseCosts;
+
+  // Yields
+  const grossYield=propVal>0?(monthlyRent*12/propVal*100):0;
+  const netYield=propVal>0?((annualRent-maintenance-mgmtFee-insurance-groundRent)/propVal*100):0;
+  const cashOnCash=totalCashIn>0?(annualProfit/totalCashIn*100):0;
+  const roi=totalCashIn>0?(annualProfit/totalCashIn*100):0;
+
+  return {
+    propVal, deposit, purchaseCosts, loanAmt, monthlyMortgage, annualMortgage,
+    monthlyRent, annualRent, voidWeeks,
+    maintenance, mgmtFee, mgmtPct, insurance, groundRent,
+    totalAnnualCosts, annualProfit, monthlyProfit,
+    totalCashIn, grossYield, netYield, cashOnCash, roi
+  };
+}
+
+function update() {
+  const r=compute();
+
+  // Hero
+  document.getElementById('h-val').textContent=r.roi.toFixed(1);
+  document.getElementById('chip-profit').textContent=(r.monthlyProfit>=0?'+':'-')+fmtS(Math.abs(r.monthlyProfit));
+  document.getElementById('chip-income').textContent=fmtS(r.annualRent);
+  document.getElementById('chip-costs').textContent=fmtS(r.totalAnnualCosts);
+
+  // Metrics
+  document.getElementById('m-gross').textContent=r.grossYield.toFixed(2)+'%';
+  document.getElementById('m-net').textContent=r.netYield.toFixed(2)+'%';
+  document.getElementById('m-coc').textContent=r.cashOnCash.toFixed(2)+'%';
+
+  // Insight
+  let ins;
+  if(r.monthlyProfit>0) {
+    ins=`This property generates <strong>${fmtS(r.monthlyProfit)}/mo</strong> positive cash flow with a <strong>${r.cashOnCash.toFixed(1)}%</strong> cash-on-cash return.`;
+  } else if(r.monthlyProfit<0) {
+    ins=`This property costs <strong>${fmtS(Math.abs(r.monthlyProfit))}/mo</strong> to hold. Consider raising rent or reducing costs to improve returns.`;
+  } else {
+    ins='This property breaks even on a monthly basis. Gains would come from capital appreciation.';
+  }
+  document.getElementById('insight-txt').innerHTML=ins;
+
+  // Breakdown table
+  const tb=document.getElementById('tbody'); tb.innerHTML='';
+  const rows=[
+    {label:'Rental income', val:r.annualRent, cls:'g', section:'income'},
+    {label:'Void adjustment ('+r.voidWeeks+' wks)', val:-(r.monthlyRent*12-r.annualRent), cls:'', section:'income'},
+    {label:'', val:null, cls:'', section:'sep'},
+    {label:'Mortgage payments', val:-r.annualMortgage, cls:''},
+    {label:'Maintenance', val:-r.maintenance, cls:''},
+    {label:'Management fee ('+Math.round(r.mgmtPct*100)+'%)', val:-r.mgmtFee, cls:''},
+    {label:'Insurance', val:-r.insurance, cls:''},
+    {label:'Ground rent / service', val:-r.groundRent, cls:''},
+    {label:'', val:null, cls:'', section:'sep'},
+    {label:'Net annual profit', val:r.annualProfit, cls:r.annualProfit>=0?'g':'r', section:'total'}
+  ];
+  rows.forEach(row=>{
+    const tr=document.createElement('tr');
+    if(row.section==='sep') {
+      tr.innerHTML='<td colspan="2" style="border-bottom:1px solid #f0f0f0;padding:0;height:1px"></td>';
+    } else if(row.section==='total') {
+      tr.innerHTML=`<td><strong>${row.label}</strong></td><td class="td-b"><strong class="${row.cls}">${row.val>=0?'+':''}${fmtFull(Math.abs(row.val))}</strong></td>`;
+      if(row.val<0) tr.querySelector('strong:last-child').style.color='#ef4444';
+    } else {
+      const sign=row.val>=0?'+':'-';
+      const valStr=row.val!==0?(sign+fmtFull(Math.abs(row.val))):'—';
+      tr.innerHTML=`<td>${row.label}</td><td class="td-b ${row.cls}">${valStr}</td>`;
+      if(row.val<0 && !row.cls) tr.querySelector('.td-b').style.color='#64748b';
+    }
+    tb.appendChild(tr);
+  });
+
+  // Summary
+  document.getElementById('s-roi').textContent=r.roi.toFixed(2)+'%';
+  document.getElementById('s-cash').textContent=(r.monthlyProfit>=0?'+':'-')+fmtFull(Math.abs(r.monthlyProfit))+'/mo';
+  document.getElementById('s-gross').textContent=r.grossYield.toFixed(2)+'%';
+  document.getElementById('s-net').textContent=r.netYield.toFixed(2)+'%';
+  document.getElementById('s-coc').textContent=r.cashOnCash.toFixed(2)+'%';
+  document.getElementById('s-invested').textContent=fmtFull(r.totalCashIn);
+}
+
+document.querySelectorAll('input[type=number], select').forEach(el=>{
+  el.addEventListener('input', update);
+  el.addEventListener('change', update);
+});
+update();
+</script>
+<script src="js/ads.js"></script>
+</body>
+</html>

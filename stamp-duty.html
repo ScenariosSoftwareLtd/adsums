@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AdSums — Stamp Duty Calculator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/calculator.css">
+</head>
+<body>
+
+<!-- FULL SCREEN AD -->
+<div class="ad-canvas">
+  <div class="ad-bg"></div>
+  <div class="ad-content">
+    <!-- Slide 1: Scenarios.uk takeover -->
+    <div class="ad-slide scenarios active">
+      <div class="scenarios-logo">
+        <div class="scenarios-wordmark">scenarios.uk</div>
+      </div>
+      <div class="ad-headline">Retire with confidence, not guesswork.</div>
+      <div class="ad-body">Proper retirement modelling. No adviser fees, no spreadsheets.</div>
+      <a href="https://scenarios.uk" target="_blank" class="ad-cta-btn">Start planning — it's free</a>
+      <div class="scenarios-url">scenarios.uk</div>
+    </div>
+    <!-- Slide 2: Advertise -->
+    <div class="ad-slide">
+      <div class="ad-kicker">Advertisement</div>
+      <div class="ad-headline">Your brand<br><em>lives here.</em></div>
+      <div class="ad-body">Full-screen, high-impact placement. Reach engaged users as they plan their financial future.</div>
+      <a href="advertise.html" class="ad-cta-btn">Advertise with us →</a>
+    </div>
+    <div class="ad-pips">
+      <button class="ad-pip active"></button>
+      <button class="ad-pip"></button>
+    </div>
+  </div>
+  <div class="ad-top"></div>
+  <div class="ad-bottom"></div>
+  <div class="ad-badge">Powered by ads</div>
+  <a href="https://scenarios.uk" target="_blank" class="scenarios-badge">
+    <span class="sb-from">Also by us</span>
+    <span class="sb-sep">·</span>
+    <span class="sb-name">Scenarios.uk</span>
+    <span class="sb-desc">— UK retirement planner</span>
+  </a>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav-logo" href="index.html">
+    <svg width="148" height="28" viewBox="0 0 148 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Mark: two overlapping pills — ad unit + plus sign -->
+      <rect x="0" y="4" width="22" height="14" rx="4" fill="#2563eb" opacity="0.25"/>
+      <rect x="2" y="7" width="22" height="14" rx="4" fill="#2563eb"/>
+      <path d="M13 11v6M10 14h6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+      <text x="32" y="20" font-family="'Instrument Serif', Georgia, serif" font-size="17" letter-spacing="-0.2">
+        <tspan fill="rgba(255,255,255,0.42)" font-style="italic">Ad</tspan><tspan fill="rgba(255,255,255,0.92)">Sums</tspan>
+      </text>
+    </svg>
+  </a>
+
+  <!-- Centred nav links -->
+  <div class="nav-center">
+
+    <!-- Calculators dropdown -->
+    <div class="nav-dropdown" id="calc-dropdown">
+      <button class="nav-dropdown-toggle" id="dd-toggle">
+        Calculators
+        <svg class="dd-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M2 4l4 4 4-4"/>
+        </svg>
+      </button>
+      <div class="dd-menu">
+        <div class="dd-section">
+          <div class="dd-section-label">Income & Tax</div>
+          <a class="dd-item" href="salary.html">
+            <div class="dd-icon green">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M11 4.5A3 3 0 006 6v2H4.5m1.5 0v2c0 .8-.2 1.5-.5 2H12"/><path d="M4.5 8H10"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Salary calculator</span><span class="dd-desc">What is my take-home pay?</span></div>
+          </a>
+          <a class="dd-item" href="dividend-tax.html">
+            <div class="dd-icon amber">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2a6 6 0 100 12A6 6 0 008 2z"/><path d="M8 2v6l4.2 4.2"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Dividend tax</span><span class="dd-desc">What tax do I owe on dividends?</span></div>
+          </a>
+          <a class="dd-item" href="cgt.html">
+            <div class="dd-icon rose">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12l3.5-4 2.5 2 4-5"/><path d="M10 5h2.5v2.5"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">CGT calculator</span><span class="dd-desc">What tax on asset sales?</span></div>
+          </a>
+          <a class="dd-item" href="vat.html">
+            <div class="dd-icon amber">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2h8v10l-1.5-1.5L9 12l-1.5-1.5L6 12l-1.5-1.5L3 12V2z"/><path d="M6 6h4M6 8.5h2"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">VAT calculator</span><span class="dd-desc">What is VAT on this amount?</span></div>
+          </a>
+        </div>
+        <div class="dd-section">
+          <div class="dd-section-label">Property</div>
+          <a class="dd-item" href="mortgage.html">
+            <div class="dd-icon purple">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7l6-5 6 5v7H10V9H6v5H2V7z"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Mortgage calculator</span><span class="dd-desc">What will repayments be?</span></div>
+          </a>
+          <a class="dd-item" href="mortgage-overpayment.html">
+            <div class="dd-icon purple">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="12" height="10" rx="1.5"/><path d="M5 2v2M11 2v2M2 8h12"/><path d="M8 10.5v2M6.5 11.5l1.5 1.5 1.5-1.5"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Mortgage overpayment</span><span class="dd-desc">How much interest will I save?</span></div>
+          </a>
+          <a class="dd-item" href="btl-roi.html">
+            <div class="dd-icon green">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="2" width="10" height="12" rx="1"/><path d="M6 5h1M9 5h1M6 8h1M9 8h1M6 11h4"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">BTL ROI</span><span class="dd-desc">What is my property return?</span></div>
+          </a>
+          <a class="dd-item current" href="stamp-duty.html">
+            <div class="dd-icon rose">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="10" height="8" rx="1"/><path d="M5 5V3.5A1.5 1.5 0 016.5 2h3A1.5 1.5 0 0111 3.5V5"/><path d="M2 13h12"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Stamp duty</span><span class="dd-desc">What tax on buying property?</span></div>
+          </a>
+        </div>
+        <div class="dd-section">
+          <div class="dd-section-label">Savings & Growth</div>
+          <a class="dd-item" href="compound-interest.html">
+            <div class="dd-icon blue">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 13c1-4 2-7 4-7s3 6 4 6 2-4 4-6"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Compound interest</span><span class="dd-desc">Grow a lump sum over time</span></div>
+          </a>
+          <a class="dd-item" href="loan.html">
+            <div class="dd-icon blue">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="4" width="13" height="9" rx="1.5"/><path d="M1.5 7.5h13"/><path d="M4 10.5h2"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Loan calculator</span><span class="dd-desc">What will my loan cost?</span></div>
+          </a>
+          <a class="dd-item" href="percentage-change.html">
+            <div class="dd-icon amber">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11V4M3 6l2-2 2 2"/><path d="M11 5v7M9 10l2 2 2-2"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Percentage change</span><span class="dd-desc">What is the increase/decrease?</span></div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <a class="nav-link" href="how-it-works.html">How it works</a>
+    <a class="nav-link" href="advertise.html">Advertise</a>
+    <a class="nav-link" href="legal.html">Legal</a>
+  </div>
+
+  <div class="nav-right">
+    <a class="nav-upgrade" href="advertise.html">Advertise with us</a>
+  </div>
+</nav>
+
+<!-- FLOATING CALCULATOR -->
+<div class="float-card">
+<div class="fc-scroll">
+
+  <div class="hero-result">
+    <div class="hero-lbl">Stamp duty (SDLT)</div>
+    <div class="hero-val"><span class="sym">£</span><span id="h-val">0</span></div>
+    <div class="chips">
+      <div class="chip">
+        <span class="chip-val b" id="chip-rate">—</span>
+        <span class="chip-lbl">Effective rate</span>
+      </div>
+      <div class="chip">
+        <span class="chip-val" id="chip-price">—</span>
+        <span class="chip-lbl">Property price</span>
+      </div>
+      <div class="chip">
+        <span class="chip-val g" id="chip-net">—</span>
+        <span class="chip-lbl">Net cost</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb">
+    <div class="f-label">Property price</div>
+    <div class="input-box">
+      <span class="i-pre">£</span>
+      <input type="number" id="price" value="350000" min="0" step="1000">
+    </div>
+  </div>
+
+  <div class="mb">
+    <div class="f-label">Buyer type</div>
+    <div class="seg" id="buyer-type">
+      <button class="active" data-val="ftb">First-time</button>
+      <button data-val="mover">Home mover</button>
+      <button data-val="additional">Additional</button>
+      <button data-val="nonuk">Non-UK</button>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="insight">
+    <div class="insight-icon">↗</div>
+    <div class="insight-txt" id="insight-txt">Enter a property price to see your stamp duty breakdown.</div>
+  </div>
+
+  <div class="view-bar">
+    <div class="view-tabs" id="vtabs">
+      <button class="active" data-view="table">Breakdown</button>
+      <button data-view="summary">Summary</button>
+    </div>
+  </div>
+
+  <div class="vp show" id="vp-table">
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>Band</th>
+          <th>Taxable</th>
+          <th>Rate</th>
+          <th class="th-b">Tax</th>
+        </tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="vp" id="vp-summary">
+    <div class="sum-grid">
+      <div class="sum-card">
+        <div class="sum-card-lbl">Stamp duty</div>
+        <div class="sum-card-val g" id="s-duty">—</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-card-lbl">Effective rate</div>
+        <div class="sum-card-val b" id="s-rate">—</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-card-lbl">Property price</div>
+        <div class="sum-card-val" id="s-price">—</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-card-lbl">Net cost</div>
+        <div class="sum-card-val g" id="s-net">—</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-card-lbl">Buyer type</div>
+        <div class="sum-card-val" id="s-type">—</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-card-lbl">Tax year</div>
+        <div class="sum-card-val" id="s-year">2025/26</div>
+      </div>
+      <div class="sum-note">Applies to England and Northern Ireland. Scotland (LBTT) and Wales (LTT) have different rates. For guidance only — not financial advice.</div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<script src="js/nav.js"></script>
+<script>
+/* ---------- Formatting ---------- */
+function fmtH(n){if(n>=1e9)return(n/1e9).toFixed(2)+'b';if(n>=1e6)return(n/1e6).toFixed(2)+'m';if(n>=1e5)return(n/1e3).toFixed(1)+'k';return n.toLocaleString('en-GB',{maximumFractionDigits:0});}
+function fmtS(n){if(Math.abs(n)>=1e6)return'£'+(n/1e6).toFixed(1)+'m';if(Math.abs(n)>=1e5)return'£'+(n/1e3).toFixed(0)+'k';return'£'+n.toLocaleString('en-GB',{maximumFractionDigits:0});}
+function fmtFull(n){return'£'+n.toLocaleString('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2});}
+
+/* ---------- SDLT bands (from April 2025) ---------- */
+const STANDARD_BANDS = [
+  { from: 0,        to: 125000,   rate: 0    },
+  { from: 125000,   to: 250000,   rate: 0.02 },
+  { from: 250000,   to: 925000,   rate: 0.05 },
+  { from: 925000,   to: 1500000,  rate: 0.10 },
+  { from: 1500000,  to: Infinity, rate: 0.12 }
+];
+
+const FTB_BANDS = [
+  { from: 0,        to: 300000,   rate: 0    },
+  { from: 300000,   to: 500000,   rate: 0.05 }
+];
+
+let buyerType = 'ftb';
+let viewMode = 'table';
+
+/* ---------- Buyer type toggle ---------- */
+document.getElementById('buyer-type').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  document.querySelectorAll('#buyer-type button').forEach(x => x.classList.remove('active'));
+  b.classList.add('active');
+  buyerType = b.dataset.val;
+  update();
+});
+
+/* ---------- View tabs ---------- */
+document.getElementById('vtabs').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  document.querySelectorAll('#vtabs button').forEach(x => x.classList.remove('active'));
+  b.classList.add('active');
+  viewMode = b.dataset.view;
+  ['table','summary'].forEach(v => {
+    document.getElementById('vp-'+v).classList.toggle('show', viewMode===v);
+  });
+});
+
+/* ---------- Compute ---------- */
+function getBands(price) {
+  let surcharge = 0;
+  let bands;
+
+  if (buyerType === 'ftb' && price <= 500000) {
+    bands = FTB_BANDS.map(b => ({...b}));
+  } else {
+    bands = STANDARD_BANDS.map(b => ({...b}));
+  }
+
+  if (buyerType === 'additional') surcharge += 0.05;
+  if (buyerType === 'nonuk') surcharge += 0.02;
+
+  // Non-UK also pays additional surcharge
+  if (surcharge > 0) {
+    bands = bands.map(b => ({...b, rate: b.rate + surcharge}));
+  }
+
+  return bands;
+}
+
+function compute() {
+  const price = parseFloat(document.getElementById('price').value) || 0;
+  const bands = getBands(price);
+  let totalDuty = 0;
+  const breakdown = [];
+
+  for (const band of bands) {
+    if (price <= band.from) break;
+    const taxable = Math.min(price, band.to === Infinity ? price : band.to) - band.from;
+    const tax = taxable * band.rate;
+    totalDuty += tax;
+    breakdown.push({
+      label: band.to === Infinity ? '£' + fmtBand(band.from) + '+' : '£' + fmtBand(band.from) + ' – £' + fmtBand(band.to),
+      taxable,
+      rate: band.rate,
+      tax
+    });
+  }
+
+  const effectiveRate = price > 0 ? (totalDuty / price) * 100 : 0;
+  const netCost = price + totalDuty;
+
+  return { price, totalDuty, effectiveRate, netCost, breakdown };
+}
+
+function fmtBand(n) {
+  if (n >= 1e6) return (n/1e6).toFixed(1) + 'm';
+  return n.toLocaleString('en-GB');
+}
+
+function buyerLabel() {
+  const labels = { ftb: 'First-time buyer', mover: 'Home mover', additional: 'Additional property', nonuk: 'Non-UK resident' };
+  return labels[buyerType] || '';
+}
+
+function update() {
+  const r = compute();
+
+  document.getElementById('h-val').textContent = fmtH(r.totalDuty);
+  document.getElementById('chip-rate').textContent = r.effectiveRate.toFixed(2) + '%';
+  document.getElementById('chip-price').textContent = fmtS(r.price);
+  document.getElementById('chip-net').textContent = fmtS(r.netCost);
+
+  // Insight
+  let ins;
+  if (r.price === 0) {
+    ins = 'Enter a property price to see your stamp duty breakdown.';
+  } else if (r.totalDuty === 0) {
+    ins = 'No stamp duty to pay on a <strong>' + fmtS(r.price) + '</strong> property as a ' + buyerLabel().toLowerCase() + '.';
+  } else if (buyerType === 'ftb' && r.price <= 500000) {
+    ins = 'As a first-time buyer, you save <strong>' + fmtS(computeStandard(r.price) - r.totalDuty) + '</strong> compared to standard rates.';
+  } else if (buyerType === 'additional') {
+    ins = 'The 5% additional property surcharge adds <strong>' + fmtS(r.price * 0.05) + '</strong> to your stamp duty bill.';
+  } else if (buyerType === 'nonuk') {
+    ins = 'The 2% non-UK resident surcharge adds <strong>' + fmtS(r.price * 0.02) + '</strong> on top of standard rates.';
+  } else {
+    ins = 'Stamp duty of <strong>' + fmtS(r.totalDuty) + '</strong> is <strong>' + r.effectiveRate.toFixed(1) + '%</strong> of the property price.';
+  }
+  document.getElementById('insight-txt').innerHTML = ins;
+
+  // Breakdown table
+  const tb = document.getElementById('tbody');
+  tb.innerHTML = '';
+  r.breakdown.forEach(row => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = '<td>' + row.label + '</td><td>' + fmtFull(row.taxable) + '</td><td>' + (row.rate * 100).toFixed(0) + '%</td><td class="td-b">' + fmtFull(row.tax) + '</td>';
+    tb.appendChild(tr);
+  });
+  // Total row
+  const ttr = document.createElement('tr');
+  ttr.style.fontWeight = '600';
+  ttr.innerHTML = '<td>Total</td><td>' + fmtFull(r.price) + '</td><td></td><td class="td-b">' + fmtFull(r.totalDuty) + '</td>';
+  tb.appendChild(ttr);
+
+  // Summary
+  document.getElementById('s-duty').textContent = fmtFull(r.totalDuty);
+  document.getElementById('s-rate').textContent = r.effectiveRate.toFixed(2) + '%';
+  document.getElementById('s-price').textContent = fmtFull(r.price);
+  document.getElementById('s-net').textContent = fmtFull(r.netCost);
+  document.getElementById('s-type').textContent = buyerLabel();
+}
+
+/* Helper: compute standard duty for comparison */
+function computeStandard(price) {
+  let duty = 0;
+  for (const band of STANDARD_BANDS) {
+    if (price <= band.from) break;
+    const taxable = Math.min(price, band.to === Infinity ? price : band.to) - band.from;
+    duty += taxable * band.rate;
+  }
+  return duty;
+}
+
+document.querySelectorAll('input[type=number]').forEach(el => {
+  el.addEventListener('input', update);
+  el.addEventListener('change', update);
+});
+update();
+</script>
+<script src="js/ads.js"></script>
+</body>
+</html>

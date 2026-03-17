@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AdSums — VAT Calculator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/calculator.css">
+</head>
+<body>
+
+<!-- FULL SCREEN AD -->
+<div class="ad-canvas">
+  <div class="ad-bg"></div>
+  <div class="ad-content">
+    <!-- Slide 1: Scenarios.uk takeover -->
+    <div class="ad-slide scenarios active">
+      <div class="scenarios-logo">
+        <div class="scenarios-wordmark">scenarios.uk</div>
+      </div>
+      <div class="ad-headline">Retire with confidence, not guesswork.</div>
+      <div class="ad-body">Proper retirement modelling. No adviser fees, no spreadsheets.</div>
+      <a href="https://scenarios.uk" target="_blank" class="ad-cta-btn">Start planning — it's free</a>
+      <div class="scenarios-url">scenarios.uk</div>
+    </div>
+    <!-- Slide 2: Advertise -->
+    <div class="ad-slide">
+      <div class="ad-kicker">Advertisement</div>
+      <div class="ad-headline">Your brand<br><em>lives here.</em></div>
+      <div class="ad-body">Full-screen, high-impact placement. Reach engaged users as they plan their financial future.</div>
+      <a href="advertise.html" class="ad-cta-btn">Advertise with us →</a>
+    </div>
+    <div class="ad-pips">
+      <button class="ad-pip active"></button>
+      <button class="ad-pip"></button>
+    </div>
+  </div>
+  <div class="ad-top"></div>
+  <div class="ad-bottom"></div>
+  <div class="ad-badge">Powered by ads</div>
+  <a href="https://scenarios.uk" target="_blank" class="scenarios-badge">
+    <span class="sb-from">Also by us</span>
+    <span class="sb-sep">·</span>
+    <span class="sb-name">Scenarios.uk</span>
+    <span class="sb-desc">— UK retirement planner</span>
+  </a>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav-logo" href="index.html">
+    <svg width="148" height="28" viewBox="0 0 148 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Mark: two overlapping pills — ad unit + plus sign -->
+      <rect x="0" y="4" width="22" height="14" rx="4" fill="#2563eb" opacity="0.25"/>
+      <rect x="2" y="7" width="22" height="14" rx="4" fill="#2563eb"/>
+      <path d="M13 11v6M10 14h6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+      <text x="32" y="20" font-family="'Instrument Serif', Georgia, serif" font-size="17" letter-spacing="-0.2">
+        <tspan fill="rgba(255,255,255,0.42)" font-style="italic">Ad</tspan><tspan fill="rgba(255,255,255,0.92)">Sums</tspan>
+      </text>
+    </svg>
+  </a>
+
+  <!-- Centred nav links -->
+  <div class="nav-center">
+
+    <!-- Calculators dropdown -->
+    <div class="nav-dropdown" id="calc-dropdown">
+      <button class="nav-dropdown-toggle" id="dd-toggle">
+        Calculators
+        <svg class="dd-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M2 4l4 4 4-4"/>
+        </svg>
+      </button>
+      <div class="dd-menu">
+        <div class="dd-section">
+          <div class="dd-section-label">Income & Tax</div>
+          <a class="dd-item" href="salary.html">
+            <div class="dd-icon green">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M11 4.5A3 3 0 006 6v2H4.5m1.5 0v2c0 .8-.2 1.5-.5 2H12"/><path d="M4.5 8H10"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Salary calculator</span><span class="dd-desc">What is my take-home pay?</span></div>
+          </a>
+          <a class="dd-item" href="dividend-tax.html">
+            <div class="dd-icon amber">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2a6 6 0 100 12A6 6 0 008 2z"/><path d="M8 2v6l4.2 4.2"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Dividend tax</span><span class="dd-desc">What tax do I owe on dividends?</span></div>
+          </a>
+          <a class="dd-item" href="cgt.html">
+            <div class="dd-icon rose">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12l3.5-4 2.5 2 4-5"/><path d="M10 5h2.5v2.5"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">CGT calculator</span><span class="dd-desc">What tax on asset sales?</span></div>
+          </a>
+          <a class="dd-item current" href="vat.html">
+            <div class="dd-icon amber">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2h8v10l-1.5-1.5L9 12l-1.5-1.5L6 12l-1.5-1.5L3 12V2z"/><path d="M6 6h4M6 8.5h2"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">VAT calculator</span><span class="dd-desc">What is VAT on this amount?</span></div>
+          </a>
+        </div>
+        <div class="dd-section">
+          <div class="dd-section-label">Property</div>
+          <a class="dd-item" href="mortgage.html">
+            <div class="dd-icon purple">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7l6-5 6 5v7H10V9H6v5H2V7z"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Mortgage calculator</span><span class="dd-desc">What will repayments be?</span></div>
+          </a>
+          <a class="dd-item" href="mortgage-overpayment.html">
+            <div class="dd-icon purple">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="12" height="10" rx="1.5"/><path d="M5 2v2M11 2v2M2 8h12"/><path d="M8 10.5v2M6.5 11.5l1.5 1.5 1.5-1.5"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Mortgage overpayment</span><span class="dd-desc">How much interest will I save?</span></div>
+          </a>
+          <a class="dd-item" href="btl-roi.html">
+            <div class="dd-icon green">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="2" width="10" height="12" rx="1"/><path d="M6 5h1M9 5h1M6 8h1M9 8h1M6 11h4"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">BTL ROI</span><span class="dd-desc">What is my property return?</span></div>
+          </a>
+          <a class="dd-item" href="stamp-duty.html">
+            <div class="dd-icon rose">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="10" height="8" rx="1"/><path d="M5 5V3.5A1.5 1.5 0 016.5 2h3A1.5 1.5 0 0111 3.5V5"/><path d="M2 13h12"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Stamp duty</span><span class="dd-desc">What tax on buying property?</span></div>
+          </a>
+        </div>
+        <div class="dd-section">
+          <div class="dd-section-label">Savings & Growth</div>
+          <a class="dd-item" href="compound-interest.html">
+            <div class="dd-icon blue">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 13c1-4 2-7 4-7s3 6 4 6 2-4 4-6"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Compound interest</span><span class="dd-desc">Grow a lump sum over time</span></div>
+          </a>
+          <a class="dd-item" href="loan.html">
+            <div class="dd-icon blue">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="4" width="13" height="9" rx="1.5"/><path d="M1.5 7.5h13"/><path d="M4 10.5h2"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Loan calculator</span><span class="dd-desc">What will my loan cost?</span></div>
+          </a>
+          <a class="dd-item" href="percentage-change.html">
+            <div class="dd-icon amber">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11V4M3 6l2-2 2 2"/><path d="M11 5v7M9 10l2 2 2-2"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Percentage change</span><span class="dd-desc">What is the increase/decrease?</span></div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <a class="nav-link" href="how-it-works.html">How it works</a>
+    <a class="nav-link" href="advertise.html">Advertise</a>
+    <a class="nav-link" href="legal.html">Legal</a>
+  </div>
+
+  <div class="nav-right">
+    <a class="nav-upgrade" href="advertise.html">Advertise with us</a>
+  </div>
+</nav>
+
+<!-- FLOATING CALCULATOR -->
+<div class="float-card">
+<div class="fc-scroll">
+
+  <div class="hero-result">
+    <div class="hero-lbl">Result</div>
+    <div class="hero-val"><span class="sym">£</span><span id="h-val">0.00</span></div>
+    <div class="chips">
+      <div class="chip">
+        <span class="chip-val g" id="chip-vat">—</span>
+        <span class="chip-lbl">VAT amount</span>
+      </div>
+      <div class="chip">
+        <span class="chip-val" id="chip-net">—</span>
+        <span class="chip-lbl">Net amount</span>
+      </div>
+      <div class="chip">
+        <span class="chip-val b" id="chip-gross">—</span>
+        <span class="chip-lbl">Gross amount</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb">
+    <div class="f-label">Direction</div>
+    <div class="seg" id="direction">
+      <button class="active" data-val="add">Add VAT</button>
+      <button data-val="remove">Remove VAT</button>
+    </div>
+  </div>
+
+  <div class="mb">
+    <div class="f-label">Amount</div>
+    <div class="input-box">
+      <span class="i-pre">£</span>
+      <input type="number" id="amount" value="100" min="0" step="0.01">
+    </div>
+  </div>
+
+  <div class="mb">
+    <div class="f-label">VAT rate</div>
+    <div class="input-box">
+      <input type="number" id="vat-rate" value="20" min="0" max="100" step="0.1" style="padding-left:0.9rem">
+      <span class="i-suf">%</span>
+    </div>
+  </div>
+
+  <div class="mb">
+    <div class="f-label">Quick presets</div>
+    <div class="seg" id="presets">
+      <button class="active" data-val="20">20%</button>
+      <button data-val="5">5%</button>
+      <button data-val="0">0%</button>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="insight">
+    <div class="insight-icon">%</div>
+    <div class="insight-txt" id="insight-txt">Enter an amount above to calculate VAT.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="mb">
+    <div class="f-label" style="margin-bottom:0.75rem">Common UK VAT rates</div>
+    <div class="metric-row">
+      <div class="metric">
+        <div class="metric-lbl">Standard rate</div>
+        <div class="metric-val">20%</div>
+      </div>
+      <div class="metric">
+        <div class="metric-lbl">Reduced rate</div>
+        <div class="metric-val">5%</div>
+      </div>
+    </div>
+    <div class="metric-row" style="margin-top:0.5rem">
+      <div class="metric">
+        <div class="metric-lbl">Zero rate</div>
+        <div class="metric-val">0%</div>
+      </div>
+      <div class="metric">
+        <div class="metric-lbl">Flat rate (limited cost)</div>
+        <div class="metric-val">16.5%</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="sum-grid">
+    <div class="sum-note">The standard UK VAT rate is 20%. A reduced 5% rate applies to some goods and services such as home energy and children's car seats. Zero-rated items include most food and children's clothing. Businesses with taxable turnover above £90,000 must register for VAT.</div>
+  </div>
+
+</div>
+</div>
+
+<script src="js/nav.js"></script>
+<script>
+let direction = 'add';
+
+// Direction toggle
+document.getElementById('direction').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  document.querySelectorAll('#direction button').forEach(x => x.classList.remove('active'));
+  b.classList.add('active');
+  direction = b.dataset.val;
+  update();
+});
+
+// Presets
+document.getElementById('presets').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  document.querySelectorAll('#presets button').forEach(x => x.classList.remove('active'));
+  b.classList.add('active');
+  document.getElementById('vat-rate').value = b.dataset.val;
+  update();
+});
+
+// Sync preset highlight when rate changes manually
+document.getElementById('vat-rate').addEventListener('input', () => {
+  const v = document.getElementById('vat-rate').value;
+  document.querySelectorAll('#presets button').forEach(x => {
+    x.classList.toggle('active', x.dataset.val === v);
+  });
+  update();
+});
+
+function fmt(n) {
+  return n.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+function update() {
+  const amount = parseFloat(document.getElementById('amount').value) || 0;
+  const rate = parseFloat(document.getElementById('vat-rate').value) || 0;
+  const rateDec = rate / 100;
+
+  let net, vat, gross;
+
+  if (direction === 'add') {
+    net = amount;
+    vat = amount * rateDec;
+    gross = amount + vat;
+  } else {
+    gross = amount;
+    net = amount / (1 + rateDec);
+    vat = gross - net;
+  }
+
+  // Hero shows the result: gross when adding, net when removing
+  const heroVal = direction === 'add' ? gross : net;
+  document.getElementById('h-val').textContent = fmt(heroVal);
+
+  document.getElementById('chip-vat').textContent = '£' + fmt(vat);
+  document.getElementById('chip-net').textContent = '£' + fmt(net);
+  document.getElementById('chip-gross').textContent = '£' + fmt(gross);
+
+  // Insight
+  const ins = document.getElementById('insight-txt');
+  if (direction === 'add') {
+    ins.innerHTML = `Adding <strong>${rate}% VAT</strong> to £${fmt(amount)} gives a gross total of <strong>£${fmt(gross)}</strong>. The VAT portion is £${fmt(vat)}.`;
+  } else {
+    ins.innerHTML = `Removing <strong>${rate}% VAT</strong> from £${fmt(amount)} gives a net amount of <strong>£${fmt(net)}</strong>. The VAT portion is £${fmt(vat)}.`;
+  }
+}
+
+document.querySelectorAll('input[type=number]').forEach(el => {
+  el.addEventListener('input', update);
+  el.addEventListener('change', update);
+});
+update();
+</script>
+<script src="js/ads.js"></script>
+</body>
+</html>

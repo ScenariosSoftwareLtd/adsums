@@ -1,0 +1,226 @@
+/* ── STATIC PAGE LAYOUT ── */
+.page-scroll {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  overflow-y: auto;
+  pointer-events: none;
+}
+.page-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 7rem 2rem 4rem;
+  pointer-events: auto;
+}
+.page-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: 2.5rem 2.25rem;
+}
+
+/* Typography */
+.page-card h1 {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.4rem;
+}
+.page-card .subtitle {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+.page-card h2 {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin: 2rem 0 0.75rem;
+}
+.page-card h2:first-of-type { margin-top: 0; }
+.page-card h3 {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin: 1.5rem 0 0.4rem;
+}
+.page-card p {
+  font-size: 0.88rem;
+  color: var(--ink2);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+.page-card ul, .page-card ol {
+  font-size: 0.88rem;
+  color: var(--ink2);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  padding-left: 1.25rem;
+}
+.page-card li { margin-bottom: 0.4rem; }
+.page-card strong { font-weight: 600; color: var(--ink); }
+.page-card a { color: var(--blue); text-decoration: none; }
+.page-card a:hover { text-decoration: underline; }
+.page-card .divider { height: 1px; background: var(--border); margin: 2rem 0; }
+
+/* Steps */
+.steps { counter-reset: step; }
+.step {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: flex-start;
+}
+.step-num {
+  counter-increment: step;
+  width: 32px; height: 32px;
+  border-radius: 10px;
+  background: var(--blue);
+  color: white;
+  font-size: 0.82rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.step-body { flex: 1; }
+.step-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.2rem;
+}
+.step-desc {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* Pricing cards */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+.price-card {
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+  position: relative;
+}
+.price-card.featured {
+  border-color: var(--blue);
+  background: var(--blue-pale);
+}
+.price-badge {
+  position: absolute;
+  top: -9px;
+  right: 12px;
+  background: var(--blue);
+  color: white;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.55rem;
+  border-radius: 4px;
+}
+.price-name {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+.price-amt {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+.price-amt span {
+  font-family: var(--font);
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-weight: 400;
+}
+.price-desc {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+.price-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.price-features li {
+  font-size: 0.78rem;
+  color: var(--ink2);
+  padding: 0.3rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.price-features li::before {
+  content: '';
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--green);
+  flex-shrink: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 6.5l2 2 4-4' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.price-cta {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 1rem;
+  padding: 0.55rem;
+  border-radius: 10px;
+  font-family: var(--font);
+  font-size: 0.82rem;
+  font-weight: 600;
+  border: 1.5px solid var(--border);
+  background: var(--white);
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.15s;
+  text-decoration: none;
+}
+.price-cta:hover { border-color: var(--ink); text-decoration: none; }
+.price-card.featured .price-cta {
+  background: var(--blue);
+  color: white;
+  border-color: var(--blue);
+}
+.price-card.featured .price-cta:hover { background: var(--blue2); }
+
+/* Legal sections */
+.legal-updated {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 520px) {
+  .page-wrap { padding: 5rem 1rem 3rem; }
+  .page-card { padding: 1.75rem 1.25rem; }
+  .pricing-grid { grid-template-columns: 1fr; }
+}

@@ -1,10 +1,4 @@
-/* ============================================================
-   AdSums — calculator.css
-   Shared styles for the floating calculator card.
-   Every calculator page links to this.
-   ============================================================ */
-
-/* ── FLOATING CARD ── */
+/* ── FLOATING CALCULATOR ── */
 .float-card {
   position: fixed;
   top: 50%;
@@ -30,7 +24,7 @@
 .fc-scroll::-webkit-scrollbar { width: 3px; }
 .fc-scroll::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
 
-/* ── HERO RESULT ── */
+/* ── HERO ── */
 .hero-result { margin-bottom: 1.5rem; }
 .hero-lbl {
   font-size: 0.7rem;
@@ -55,8 +49,6 @@
   vertical-align: super;
   margin-top: 0.2em;
 }
-
-/* ── CHIPS (summary row) ── */
 .chips { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
 .chip {
   background: var(--off);
@@ -84,10 +76,8 @@
   letter-spacing: 0.06em;
 }
 
-/* ── DIVIDER ── */
 .divider { height: 1px; background: var(--border); margin: 1rem 0; }
 
-/* ── FIELD LABELS ── */
 .f-label {
   font-size: 0.73rem;
   font-weight: 600;
@@ -107,7 +97,6 @@
   letter-spacing: 0;
 }
 
-/* ── INPUT BOX ── */
 .input-box {
   display: flex;
   align-items: center;
@@ -140,16 +129,13 @@
   flex-shrink: 0;
 }
 input[type=number] {
-  border: none;
-  outline: none;
-  background: none;
+  border: none; outline: none; background: none;
   font-family: var(--font);
   font-size: 1rem;
   font-weight: 600;
   color: var(--ink);
   padding: 0 0.4rem;
-  width: 100%;
-  min-width: 0;
+  width: 100%; min-width: 0;
   -moz-appearance: textfield;
   letter-spacing: -0.02em;
 }
@@ -158,9 +144,7 @@ input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; }
 input[type=number]::placeholder { color: var(--border2); font-weight: 400; }
 .vsep { width: 1px; height: 20px; background: var(--border); flex-shrink: 0; }
 select {
-  border: none;
-  outline: none;
-  background: none;
+  border: none; outline: none; background: none;
   font-family: var(--font);
   font-size: 0.8rem;
   font-weight: 500;
@@ -173,7 +157,6 @@ select {
 .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .mb { margin-bottom: 0.75rem; }
 
-/* ── SEGMENT CONTROL ── */
 .seg {
   display: flex;
   background: var(--off);
@@ -182,8 +165,7 @@ select {
 }
 .seg button {
   flex: 1;
-  background: none;
-  border: none;
+  background: none; border: none;
   font-family: var(--font);
   font-size: 0.78rem;
   font-weight: 500;
@@ -202,34 +184,6 @@ select {
 }
 .seg button:hover:not(.active) { color: var(--ink2); }
 
-/* ── CURRENCY SEGMENT ── */
-.curr-seg {
-  display: flex;
-  background: var(--off);
-  border-radius: 10px;
-  padding: 3px;
-  margin-bottom: 1.25rem;
-}
-.curr-seg button {
-  flex: 1;
-  background: none;
-  border: none;
-  font-family: var(--font);
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--muted);
-  padding: 0.38rem 0;
-  border-radius: 7px;
-  cursor: pointer;
-  transition: all 0.15s;
-}
-.curr-seg button.active {
-  background: var(--white);
-  color: var(--ink);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-}
-
-/* ── TINY TOGGLE (% / £ inline) ── */
 .tt {
   display: flex;
   border: 1.5px solid var(--border);
@@ -239,8 +193,7 @@ select {
   height: 36px;
 }
 .tt button {
-  background: none;
-  border: none;
+  background: none; border: none;
   border-right: 1px solid var(--border);
   font-family: var(--font);
   font-size: 0.72rem;
@@ -253,7 +206,6 @@ select {
 .tt button:last-child { border-right: none; }
 .tt button.active { background: var(--blue); color: white; border-color: var(--blue); }
 
-/* ── INSIGHT STRIP ── */
 .insight {
   background: var(--blue-pale);
   border-radius: var(--radius-sm);
@@ -264,29 +216,32 @@ select {
   margin-bottom: 1.25rem;
 }
 .insight-icon {
-  width: 26px; height: 26px;
-  flex-shrink: 0;
+  width: 26px; height: 26px; flex-shrink: 0;
   background: var(--blue);
   border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 0.75rem;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 0.75rem;
   margin-top: 1px;
 }
-.insight-txt { font-size: 0.8rem; color: #1e40af; line-height: 1.55; }
+.insight-txt {
+  font-size: 0.8rem;
+  color: #1e40af;
+  line-height: 1.55;
+}
 .insight-txt strong { font-weight: 600; }
 
-/* ── METRIC CARDS ── */
 .metric-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 1.25rem; }
 .metric { background: var(--off); border-radius: var(--radius-sm); padding: 0.7rem 0.85rem; }
 .metric-lbl { font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); margin-bottom: 3px; }
 .metric-val { font-family: var(--font); font-size: 1rem; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
 
-/* ── VIEW SWITCHER ── */
 .view-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.9rem; gap: 0.5rem; }
-.view-tabs { display: flex; border: 1.5px solid var(--border); border-radius: 10px; overflow: hidden; }
+.view-tabs {
+  display: flex;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
 .view-tabs button {
   background: none; border: none;
   border-right: 1px solid var(--border);
@@ -303,10 +258,8 @@ select {
 .view-tabs button.active { background: var(--ink); color: white; font-weight: 600; }
 .view-tabs button:hover:not(.active) { background: var(--off); color: var(--ink2); }
 
-/* ── CHART ── */
 .chart-wrap { position: relative; height: 200px; }
 
-/* ── TABLE ── */
 .table-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--border); }
 table { width: 100%; border-collapse: collapse; }
 thead tr { background: var(--off); }
@@ -328,7 +281,6 @@ td {
 td:first-child { color: var(--muted); font-weight: 400; font-size: 0.75rem; }
 td.td-b { color: var(--blue); font-weight: 700; }
 
-/* ── SUMMARY GRID ── */
 .sum-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
 .sum-card { background: var(--off); border-radius: 10px; padding: 0.75rem 0.85rem; }
 .sum-card-lbl { font-size: 0.63rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); margin-bottom: 3px; }
@@ -337,11 +289,22 @@ td.td-b { color: var(--blue); font-weight: 700; }
 .sum-card-val.b { color: var(--blue); }
 .sum-note { grid-column: 1 / -1; font-size: 0.68rem; color: var(--muted); line-height: 1.6; padding-top: 0.6rem; border-top: 1px solid var(--border); font-style: italic; }
 
-/* ── PANEL SHOW/HIDE ── */
 .vp { display: none; }
 .vp.show { display: block; }
 
-/* ── RESPONSIVE ── */
+.curr-seg {
+  display: flex; background: var(--off); border-radius: 10px; padding: 3px; margin-bottom: 1.25rem;
+}
+.curr-seg button {
+  flex: 1; background: none; border: none;
+  font-family: var(--font); font-size: 0.78rem; font-weight: 600;
+  color: var(--muted); padding: 0.38rem 0; border-radius: 7px; cursor: pointer; transition: all 0.15s;
+}
+.curr-seg button.active {
+  background: var(--white); color: var(--ink);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
 @media (max-width: 520px) {
   .float-card { left: 1rem; right: 1rem; width: auto; }
 }

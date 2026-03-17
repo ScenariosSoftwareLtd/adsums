@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AdSums — Salary Calculator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/calculator.css">
+</head>
+<body>
+
+<!-- FULL SCREEN AD -->
+<div class="ad-canvas">
+  <div class="ad-bg"></div>
+  <div class="ad-content">
+    <!-- Slide 1: Scenarios.uk takeover -->
+    <div class="ad-slide scenarios active">
+      <div class="scenarios-logo">
+        <div class="scenarios-wordmark">scenarios.uk</div>
+      </div>
+      <div class="ad-headline">Retire with confidence, not guesswork.</div>
+      <div class="ad-body">Proper retirement modelling. No adviser fees, no spreadsheets.</div>
+      <a href="https://scenarios.uk" target="_blank" class="ad-cta-btn">Start planning — it's free</a>
+      <div class="scenarios-url">scenarios.uk</div>
+    </div>
+    <!-- Slide 2: Advertise -->
+    <div class="ad-slide">
+      <div class="ad-kicker">Advertisement</div>
+      <div class="ad-headline">Your brand<br><em>lives here.</em></div>
+      <div class="ad-body">Full-screen, high-impact placement. Reach engaged users as they plan their financial future.</div>
+      <a href="advertise.html" class="ad-cta-btn">Advertise with us →</a>
+    </div>
+    <div class="ad-pips">
+      <button class="ad-pip active"></button>
+      <button class="ad-pip"></button>
+    </div>
+  </div>
+  <div class="ad-top"></div>
+  <div class="ad-bottom"></div>
+  <div class="ad-badge">Powered by ads</div>
+  <a href="https://scenarios.uk" target="_blank" class="scenarios-badge">
+    <span class="sb-from">Also by us</span>
+    <span class="sb-sep">·</span>
+    <span class="sb-name">Scenarios.uk</span>
+    <span class="sb-desc">— UK retirement planner</span>
+  </a>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav-logo" href="index.html">
+    <svg width="148" height="28" viewBox="0 0 148 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Mark: two overlapping pills — ad unit + plus sign -->
+      <rect x="0" y="4" width="22" height="14" rx="4" fill="#2563eb" opacity="0.25"/>
+      <rect x="2" y="7" width="22" height="14" rx="4" fill="#2563eb"/>
+      <path d="M13 11v6M10 14h6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+      <text x="32" y="20" font-family="'Instrument Serif', Georgia, serif" font-size="17" letter-spacing="-0.2">
+        <tspan fill="rgba(255,255,255,0.42)" font-style="italic">Ad</tspan><tspan fill="rgba(255,255,255,0.92)">Sums</tspan>
+      </text>
+    </svg>
+  </a>
+
+  <!-- Centred nav links -->
+  <div class="nav-center">
+
+    <!-- Calculators dropdown -->
+    <div class="nav-dropdown" id="calc-dropdown">
+      <button class="nav-dropdown-toggle" id="dd-toggle">
+        Calculators
+        <svg class="dd-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M2 4l4 4 4-4"/>
+        </svg>
+      </button>
+      <div class="dd-menu">
+        <div class="dd-section">
+          <div class="dd-section-label">Income & Tax</div>
+          <a class="dd-item current" href="salary.html">
+            <div class="dd-icon green">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M11 4.5A3 3 0 006 6v2H4.5m1.5 0v2c0 .8-.2 1.5-.5 2H12"/><path d="M4.5 8H10"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Salary calculator</span><span class="dd-desc">What is my take-home pay?</span></div>
+          </a>
+          <a class="dd-item" href="dividend-tax.html">
+            <div class="dd-icon amber">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2a6 6 0 100 12A6 6 0 008 2z"/><path d="M8 2v6l4.2 4.2"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Dividend tax</span><span class="dd-desc">What tax do I owe on dividends?</span></div>
+          </a>
+          <a class="dd-item" href="cgt.html">
+            <div class="dd-icon rose">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12l3.5-4 2.5 2 4-5"/><path d="M10 5h2.5v2.5"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">CGT calculator</span><span class="dd-desc">What tax on asset sales?</span></div>
+          </a>
+          <a class="dd-item" href="vat.html">
+            <div class="dd-icon amber">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2h8v10l-1.5-1.5L9 12l-1.5-1.5L6 12l-1.5-1.5L3 12V2z"/><path d="M6 6h4M6 8.5h2"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">VAT calculator</span><span class="dd-desc">What is VAT on this amount?</span></div>
+          </a>
+        </div>
+        <div class="dd-section">
+          <div class="dd-section-label">Property</div>
+          <a class="dd-item" href="mortgage.html">
+            <div class="dd-icon purple">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7l6-5 6 5v7H10V9H6v5H2V7z"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Mortgage calculator</span><span class="dd-desc">What will repayments be?</span></div>
+          </a>
+          <a class="dd-item" href="mortgage-overpayment.html">
+            <div class="dd-icon purple">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="12" height="10" rx="1.5"/><path d="M5 2v2M11 2v2M2 8h12"/><path d="M8 10.5v2M6.5 11.5l1.5 1.5 1.5-1.5"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Mortgage overpayment</span><span class="dd-desc">How much interest will I save?</span></div>
+          </a>
+          <a class="dd-item" href="btl-roi.html">
+            <div class="dd-icon green">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="2" width="10" height="12" rx="1"/><path d="M6 5h1M9 5h1M6 8h1M9 8h1M6 11h4"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">BTL ROI</span><span class="dd-desc">What is my property return?</span></div>
+          </a>
+          <a class="dd-item" href="stamp-duty.html">
+            <div class="dd-icon rose">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="10" height="8" rx="1"/><path d="M5 5V3.5A1.5 1.5 0 016.5 2h3A1.5 1.5 0 0111 3.5V5"/><path d="M2 13h12"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Stamp duty</span><span class="dd-desc">What tax on buying property?</span></div>
+          </a>
+        </div>
+        <div class="dd-section">
+          <div class="dd-section-label">Savings & Growth</div>
+          <a class="dd-item" href="compound-interest.html">
+            <div class="dd-icon blue">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 13c1-4 2-7 4-7s3 6 4 6 2-4 4-6"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Compound interest</span><span class="dd-desc">Grow a lump sum over time</span></div>
+          </a>
+          <a class="dd-item" href="loan.html">
+            <div class="dd-icon blue">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="4" width="13" height="9" rx="1.5"/><path d="M1.5 7.5h13"/><path d="M4 10.5h2"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Loan calculator</span><span class="dd-desc">What will my loan cost?</span></div>
+          </a>
+          <a class="dd-item" href="percentage-change.html">
+            <div class="dd-icon amber">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11V4M3 6l2-2 2 2"/><path d="M11 5v7M9 10l2 2 2-2"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Percentage change</span><span class="dd-desc">What is the increase/decrease?</span></div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <a class="nav-link" href="how-it-works.html">How it works</a>
+    <a class="nav-link" href="advertise.html">Advertise</a>
+    <a class="nav-link" href="legal.html">Legal</a>
+  </div>
+
+  <div class="nav-right">
+    <a class="nav-upgrade" href="advertise.html">Advertise with us</a>
+  </div>
+</nav>
+
+<!-- FLOATING CALCULATOR -->
+<div class="float-card">
+<div class="fc-scroll">
+
+  <div class="hero-result">
+    <div class="hero-lbl">Monthly take-home pay</div>
+    <div class="hero-val"><span class="sym">£</span><span id="h-val">0</span></div>
+    <div class="chips">
+      <div class="chip">
+        <span class="chip-val g" id="chip-annual">—</span>
+        <span class="chip-lbl">Annual take-home</span>
+      </div>
+      <div class="chip">
+        <span class="chip-val" id="chip-tax">—</span>
+        <span class="chip-lbl">Tax paid</span>
+      </div>
+      <div class="chip">
+        <span class="chip-val" id="chip-ni">—</span>
+        <span class="chip-lbl">NI paid</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb">
+    <div class="f-label">Annual gross salary</div>
+    <div class="input-box">
+      <span class="i-pre">£</span>
+      <input type="number" id="salary" value="35000" min="0" step="500">
+    </div>
+  </div>
+
+  <div class="mb">
+    <div class="f-label">Tax year</div>
+    <div class="input-box" style="padding:0 0.9rem">
+      <select id="tax-year" style="flex:1;padding:0">
+        <option value="2025" selected>2025/26</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="mb">
+    <div class="f-label">Student loan</div>
+    <div class="input-box" style="padding:0 0.9rem">
+      <select id="student-loan" style="flex:1;padding:0">
+        <option value="none">None</option>
+        <option value="plan1">Plan 1</option>
+        <option value="plan2">Plan 2</option>
+        <option value="plan4">Plan 4</option>
+        <option value="postgrad">Postgraduate loan</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="mb">
+    <div class="f-label">Pension contribution</div>
+    <div class="input-box">
+      <input type="number" id="pension" value="0" min="0" max="100" step="0.5" style="padding-left:0.9rem">
+      <span class="i-suf">%</span>
+    </div>
+  </div>
+
+  <div class="mb">
+    <div class="f-label">Pension type</div>
+    <div class="seg" id="pension-type">
+      <button class="active" data-val="sacrifice">Salary sacrifice</button>
+      <button data-val="relief">Relief at source</button>
+    </div>
+  </div>
+
+  <div class="mb">
+    <div class="f-label">Pension base</div>
+    <div class="seg" id="pension-base">
+      <button class="active" data-val="qualifying">Qualifying earnings</button>
+      <button data-val="full">Full salary</button>
+    </div>
+  </div>
+
+  <div class="mb">
+    <div class="f-label">Blind person's allowance</div>
+    <div class="seg" id="blind-toggle">
+      <button class="active" data-val="no">No</button>
+      <button data-val="yes">Yes</button>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="insight">
+    <div class="insight-icon">↗</div>
+    <div class="insight-txt" id="insight-txt">Enter your salary above to see your take-home pay breakdown.</div>
+  </div>
+
+  <div class="metric-row">
+    <div class="metric">
+      <div class="metric-lbl">Effective tax rate</div>
+      <div class="metric-val" id="m-effective">—</div>
+    </div>
+    <div class="metric">
+      <div class="metric-lbl">Marginal rate</div>
+      <div class="metric-val" id="m-marginal">—</div>
+    </div>
+  </div>
+
+  <div class="view-bar">
+    <div class="view-tabs" id="vtabs">
+      <button class="active" data-view="breakdown">Breakdown</button>
+      <button data-view="summary">Summary</button>
+    </div>
+  </div>
+
+  <div class="vp show" id="vp-breakdown">
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>Deduction</th>
+          <th class="th-b">Annual</th>
+          <th class="th-b">Monthly</th>
+        </tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <p style="font-size:0.68rem;color:var(--muted);line-height:1.6;margin-top:0.75rem;font-style:italic;">Based on 2025/26 England, Wales & NI tax rates. Does not account for Scottish income tax, benefits in kind, or employer pension contributions. Not financial advice.</p>
+  </div>
+
+  <div class="vp" id="vp-summary">
+    <div class="sum-grid">
+      <div class="sum-card">
+        <div class="sum-card-lbl">Annual</div>
+        <div class="sum-card-val g" id="s-annual">—</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-card-lbl">Monthly</div>
+        <div class="sum-card-val g" id="s-monthly">—</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-card-lbl">Weekly</div>
+        <div class="sum-card-val" id="s-weekly">—</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-card-lbl">Daily</div>
+        <div class="sum-card-val" id="s-daily">—</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-card-lbl">Effective tax rate</div>
+        <div class="sum-card-val b" id="s-effective">—</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-card-lbl">Marginal rate</div>
+        <div class="sum-card-val" id="s-marginal">—</div>
+      </div>
+      <div class="sum-note">Based on 2025/26 UK tax rates. Does not account for Scottish income tax rates, benefits in kind, or employer pension contributions. For illustrative purposes only — not financial advice.</div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<script src="js/nav.js"></script>
+<script>
+/* ── Formatting helpers ── */
+function fmtH(v){
+  if(v>=1e6) return (v/1e6).toFixed(2)+'m';
+  if(v>=1e4) return (v/1e3).toFixed(1)+'k';
+  return v.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,',');
+}
+function fmtS(v){
+  var a=Math.abs(v);
+  if(a>=1e6) return '£'+(v/1e6).toFixed(1)+'m';
+  if(a>=1e4) return '£'+(v/1e3).toFixed(1)+'k';
+  return '£'+v.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,',');
+}
+function fmtFull(v){
+  return '£'+v.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');
+}
+
+/* ── State ── */
+let blindAllowance = false;
+let pensionType = 'sacrifice';
+let pensionBase = 'qualifying';
+let viewMode = 'breakdown';
+
+/* ── Toggle helpers ── */
+function setupToggle(id, cb) {
+  document.getElementById(id).addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    document.querySelectorAll('#'+id+' button').forEach(function(x){x.classList.remove('active');});
+    b.classList.add('active');
+    cb(b.dataset.val);
+    update();
+  });
+}
+
+setupToggle('blind-toggle', function(v){ blindAllowance = v === 'yes'; });
+setupToggle('pension-type', function(v){ pensionType = v; });
+setupToggle('pension-base', function(v){ pensionBase = v; });
+
+/* ── View tabs ── */
+document.getElementById('vtabs').addEventListener('click', function(e){
+  var b = e.target.closest('button'); if(!b) return;
+  document.querySelectorAll('#vtabs button').forEach(function(x){x.classList.remove('active');});
+  b.classList.add('active');
+  viewMode = b.dataset.view;
+  document.getElementById('vp-breakdown').classList.toggle('show', viewMode==='breakdown');
+  document.getElementById('vp-summary').classList.toggle('show', viewMode==='summary');
+});
+
+/* ── Calculation ── */
+function compute(){
+  var gross = parseFloat(document.getElementById('salary').value) || 0;
+  var pensionPct = parseFloat(document.getElementById('pension').value) || 0;
+  var studentLoan = document.getElementById('student-loan').value;
+
+  // Qualifying earnings thresholds (2025/26)
+  var qeLower = 6240;
+  var qeUpper = 50270;
+
+  // Pension contribution
+  var pensionableEarnings;
+  if(pensionBase === 'qualifying'){
+    pensionableEarnings = Math.max(0, Math.min(gross, qeUpper) - qeLower);
+  } else {
+    pensionableEarnings = gross;
+  }
+  var pensionAmt = pensionableEarnings * pensionPct / 100;
+
+  // Salary sacrifice: reduces gross before tax AND NI
+  // Relief at source: paid from net pay, tax relief given at basic rate (pension provider claims)
+  var isSacrifice = pensionType === 'sacrifice';
+  var taxableIncome = isSacrifice ? gross - pensionAmt : gross - pensionAmt;
+  // Both types reduce taxable income, but NI differs
+  var niableIncome = isSacrifice ? gross - pensionAmt : gross;
+
+  // Personal allowance (tapers above £100k)
+  var personalAllowance = 12570;
+  if(blindAllowance) personalAllowance += 3070;
+  if(taxableIncome > 100000){
+    personalAllowance = Math.max(0, personalAllowance - (taxableIncome - 100000) / 2);
+  }
+
+  // Income tax
+  var tax = 0;
+  var remaining = Math.max(0, taxableIncome - personalAllowance);
+
+  // Basic rate: 20% on first £37,700 above PA
+  var basicBand = 37700;
+  var basicTax = Math.min(remaining, basicBand) * 0.20;
+  tax += basicTax;
+  remaining = Math.max(0, remaining - basicBand);
+
+  // Higher rate: 40% on £50,271–£125,140
+  var higherBand = 125140 - 50270;
+  var higherTax = Math.min(remaining, higherBand) * 0.40;
+  tax += higherTax;
+  remaining = Math.max(0, remaining - higherBand);
+
+  // Additional rate: 45% above £125,140
+  var additionalTax = remaining * 0.45;
+  tax += additionalTax;
+
+  // For relief at source, pension provider claims 20% basic rate relief
+  // Employee pays pension from net pay, so no further adjustment to tax needed
+  // (the gross-up is handled by the provider, not the payslip)
+
+  // National Insurance — on niableIncome (reduced for sacrifice, full for relief at source)
+  var ni = 0;
+  var niLower = 12570;
+  var niUpper = 50270;
+  if(niableIncome > niLower){
+    ni += (Math.min(niableIncome, niUpper) - niLower) * 0.08;
+    if(niableIncome > niUpper){
+      ni += (niableIncome - niUpper) * 0.02;
+    }
+  }
+
+  // Student loan — always on gross salary (not affected by pension type)
+  var studentLoanAmt = 0;
+  if(studentLoan === 'plan1' && gross > 24990){
+    studentLoanAmt = (gross - 24990) * 0.09;
+  } else if(studentLoan === 'plan2' && gross > 27295){
+    studentLoanAmt = (gross - 27295) * 0.09;
+  } else if(studentLoan === 'plan4' && gross > 31395){
+    studentLoanAmt = (gross - 31395) * 0.09;
+  } else if(studentLoan === 'postgrad' && gross > 21000){
+    studentLoanAmt = (gross - 21000) * 0.06;
+  }
+
+  var totalDeductions = tax + ni + studentLoanAmt + pensionAmt;
+  var takeHome = gross - totalDeductions;
+
+  // NI saving from salary sacrifice vs relief at source
+  var niSaving = 0;
+  if(isSacrifice && pensionAmt > 0){
+    // Calculate what NI would be on full gross
+    var niOnGross = 0;
+    if(gross > niLower){
+      niOnGross += (Math.min(gross, niUpper) - niLower) * 0.08;
+      if(gross > niUpper) niOnGross += (gross - niUpper) * 0.02;
+    }
+    niSaving = niOnGross - ni;
+  }
+
+  // Marginal rate
+  var marginal = 0;
+  if(taxableIncome > 125140) marginal = 45;
+  else if(taxableIncome > 100000) marginal = 60;
+  else if(taxableIncome > 50270) marginal = 40;
+  else if(taxableIncome > personalAllowance) marginal = 20;
+
+  // Effective tax rate (tax + NI as % of gross)
+  var effectiveRate = gross > 0 ? ((tax + ni) / gross * 100) : 0;
+
+  return {
+    gross: gross,
+    tax: tax,
+    ni: ni,
+    studentLoan: studentLoanAmt,
+    pension: pensionAmt,
+    pensionType: pensionType,
+    niSaving: niSaving,
+    takeHome: takeHome,
+    effectiveRate: effectiveRate,
+    marginalRate: marginal,
+    personalAllowance: personalAllowance
+  };
+}
+
+function update(){
+  var r = compute();
+  document.getElementById('h-val').textContent = fmtH(r.takeHome / 12);
+  document.getElementById('chip-annual').textContent = fmtS(r.takeHome);
+  document.getElementById('chip-tax').textContent = fmtS(r.tax);
+  document.getElementById('chip-ni').textContent = fmtS(r.ni);
+
+  // Metrics
+  document.getElementById('m-effective').textContent = r.effectiveRate.toFixed(1) + '%';
+  document.getElementById('m-marginal').textContent = r.marginalRate + '%';
+
+  // Insight
+  var ins;
+  if(r.marginalRate === 60){
+    ins = 'You are in the <strong>60% effective marginal band</strong> due to personal allowance tapering between £100k and £125,140.';
+  } else if(r.pension > 0 && r.pensionType === 'sacrifice' && r.niSaving > 0){
+    ins = 'Salary sacrifice saves you <strong>' + fmtS(r.niSaving) + '/yr in NI</strong> compared to relief at source. Your pension contribution is <strong>' + fmtS(r.pension) + '</strong>/yr.';
+  } else if(r.effectiveRate > 30){
+    ins = 'Your effective tax rate is <strong>' + r.effectiveRate.toFixed(1) + '%</strong> — nearly a third of your salary goes to tax and NI.';
+  } else if(r.pension > 0){
+    ins = 'Your pension contribution of <strong>' + fmtS(r.pension) + '</strong>/yr reduces your taxable income and saves you tax.';
+  } else {
+    ins = 'On a salary of <strong>' + fmtS(r.gross) + '</strong>, you take home <strong>' + fmtS(r.takeHome) + '</strong> per year after tax and NI.';
+  }
+  document.getElementById('insight-txt').innerHTML = ins;
+
+  // Breakdown table
+  var tb = document.getElementById('tbody');
+  tb.innerHTML = '';
+  var rows = [
+    ['Gross salary', r.gross, r.gross/12],
+    ['Income tax', -r.tax, -r.tax/12],
+    ['National Insurance', -r.ni, -r.ni/12]
+  ];
+  if(r.studentLoan > 0) rows.push(['Student loan', -r.studentLoan, -r.studentLoan/12]);
+  if(r.pension > 0) rows.push(['Pension (' + (r.pensionType === 'sacrifice' ? 'sacrifice' : 'relief') + ')', -r.pension, -r.pension/12]);
+  rows.push(['Take-home pay', r.takeHome, r.takeHome/12]);
+  if(r.niSaving > 0) rows.push(['NI saving vs relief at source', r.niSaving, r.niSaving/12]);
+
+  rows.forEach(function(row, i){
+    var tr = document.createElement('tr');
+    if(i === rows.length - 1) tr.style.fontWeight = '600';
+    var sign = row[1] < 0 ? '' : '';
+    tr.innerHTML = '<td>' + row[0] + '</td><td class="td-b">' + fmtFull(Math.abs(row[1])) + (row[1] < 0 ? '' : '') + '</td><td class="td-b">' + fmtFull(Math.abs(row[2])) + '</td>';
+    if(row[1] < 0){
+      tr.innerHTML = '<td>' + row[0] + '</td><td class="td-b" style="color:#e11d48">−' + fmtFull(Math.abs(row[1])) + '</td><td class="td-b" style="color:#e11d48">−' + fmtFull(Math.abs(row[2])) + '</td>';
+    }
+    tb.appendChild(tr);
+  });
+
+  // Summary
+  document.getElementById('s-annual').textContent = fmtFull(r.takeHome);
+  document.getElementById('s-monthly').textContent = fmtFull(r.takeHome / 12);
+  document.getElementById('s-weekly').textContent = fmtFull(r.takeHome / 52);
+  document.getElementById('s-daily').textContent = fmtFull(r.takeHome / 365);
+  document.getElementById('s-effective').textContent = r.effectiveRate.toFixed(1) + '%';
+  document.getElementById('s-marginal').textContent = r.marginalRate + '%';
+}
+
+document.querySelectorAll('input[type=number], select').forEach(function(el){
+  el.addEventListener('input', update);
+  el.addEventListener('change', update);
+});
+update();
+</script>
+<script src="js/ads.js"></script>
+</body>
+</html>
