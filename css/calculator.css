@@ -37,7 +37,7 @@
 .hero-val {
   font-family: var(--serif);
   font-size: 2.4rem;
-  font-weight: 400;
+  font-weight: 900;
   color: var(--ink);
   line-height: 1;
   letter-spacing: -0.03em;
@@ -128,7 +128,8 @@
   padding: 0 0.9rem 0 0.25rem;
   flex-shrink: 0;
 }
-input[type=number] {
+input[type=number],
+input[type=text][inputmode=decimal] {
   border: none; outline: none; background: none;
   font-family: var(--font);
   font-size: 1rem;
@@ -138,6 +139,12 @@ input[type=number] {
   width: 100%; min-width: 0;
   -moz-appearance: textfield;
   letter-spacing: -0.02em;
+}
+input[type=number][hidden] {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  position: absolute !important;
 }
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; }
@@ -305,6 +312,49 @@ td.td-b { color: var(--blue); font-weight: 700; }
   box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 }
 
+/* ── SEO content below calculator ── */
+.seo-content {
+  position: fixed;
+  top: 54px;
+  left: 390px;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  z-index: 50;
+  pointer-events: none;
+}
+.seo-wrap {
+  max-width: 600px;
+  padding: 2rem 3rem 4rem;
+  margin-top: calc(100vh - 54px);
+  pointer-events: auto;
+}
+.seo-wrap h1 {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.seo-wrap h2 {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.7);
+  margin: 1.5rem 0 0.5rem;
+  letter-spacing: -0.02em;
+}
+.seo-wrap p {
+  font-family: var(--font);
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.7;
+  margin-bottom: 0.75rem;
+}
+
 @media (max-width: 520px) {
   .float-card { left: 1rem; right: 1rem; width: auto; }
+  .seo-content { display: none; }
 }

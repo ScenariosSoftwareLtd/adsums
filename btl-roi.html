@@ -3,29 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AdSums — BTL ROI Calculator</title>
+<title>Buy-to-Let ROI Calculator — Free UK Rental Yield Calculator | AdSums</title>
+<meta name="description" content="Free buy-to-let ROI calculator. Calculate rental yield, cash-on-cash return and annual profit on investment property.">
+<link rel="canonical" href="https://adsums.co.uk/btl-roi.html">
+<meta property="og:title" content="Buy-to-Let ROI Calculator — Free UK Rental Yield Calculator | AdSums">
+<meta property="og:description" content="Free buy-to-let ROI calculator. Calculate rental yield, cash-on-cash return and annual profit on investment property.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://adsums.co.uk/btl-roi.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Buy-to-Let ROI Calculator — Free UK Rental Yield Calculator | AdSums">
+<meta name="twitter:description" content="Free buy-to-let ROI calculator. Calculate rental yield, cash-on-cash return and annual profit on investment property.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&display=swap" rel="stylesheet">
+
+
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/calculator.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Buy-to-Let ROI Calculator",
+  "description": "Free buy-to-let ROI calculator. Calculate rental yield, cash-on-cash return, and monthly profit for UK investment properties.",
+  "url": "https://adsums.co.uk/btl-roi.html",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "GBP"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AdSums",
+    "url": "https://adsums.co.uk"
+  }
+}
+</script>
 </head>
 <body>
 
 <!-- FULL SCREEN AD -->
 <div class="ad-canvas">
-  <div class="ad-bg"></div>
+  <div class="ad-bg"><img class="scenarios-img" src="img/scenarios-ad.jpg" alt=""></div>
   <div class="ad-content">
     <!-- Slide 1: Scenarios.uk takeover -->
-    <div class="ad-slide scenarios active">
-      <div class="scenarios-logo">
-        <div class="scenarios-wordmark">scenarios.uk</div>
-      </div>
-      <div class="ad-headline">Retire with confidence, not guesswork.</div>
-      <div class="ad-body">Proper retirement modelling. No adviser fees, no spreadsheets.</div>
-      <a href="https://scenarios.uk" target="_blank" class="ad-cta-btn">Start planning — it's free</a>
-      <div class="scenarios-url">scenarios.uk</div>
-    </div>
+    <a href="https://scenarios.uk" target="_blank" class="ad-slide scenarios active" style="text-decoration:none;color:inherit;cursor:pointer">
+      <div class="scenarios-logo-ad">Scenarios<span>.uk</span></div>
+      <div class="ad-headline">Go beyond<br>basic calculators.</div>
+      <div class="ad-body">See how your future could actually play out. Build a free financial plan today.</div>
+      <span class="ad-cta-btn">Explore your future →</span>
+      <div class="scenarios-powered">Ad · scenarios.uk</div>
+    </a>
     <!-- Slide 2: Advertise -->
     <div class="ad-slide">
       <div class="ad-kicker">Advertisement</div>
@@ -52,16 +82,14 @@
 <!-- NAV -->
 <nav class="nav">
   <a class="nav-logo" href="index.html">
-    <svg width="148" height="28" viewBox="0 0 148 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="4" width="22" height="14" rx="4" fill="#2563eb" opacity="0.25"/>
-      <rect x="2" y="7" width="22" height="14" rx="4" fill="#2563eb"/>
-      <path d="M13 11v6M10 14h6" stroke="white" stroke-width="2" stroke-linecap="round"/>
-      <text x="32" y="20" font-family="'Instrument Serif', Georgia, serif" font-size="17" letter-spacing="-0.2">
-        <tspan fill="rgba(255,255,255,0.42)" font-style="italic">Ad</tspan><tspan fill="rgba(255,255,255,0.92)">Sums</tspan>
+    <svg class="nav-logo-svg" width="100" height="28" viewBox="0 0 100 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="21" font-family="'Fraunces', Georgia, serif" font-size="19" letter-spacing="-0.5">
+        <tspan class="logo-ad">Ad</tspan><tspan class="logo-calc">Sums</tspan>
       </text>
     </svg>
   </a>
 
+  <div class="nav-pill">
   <div class="nav-center">
     <div class="nav-dropdown" id="calc-dropdown">
       <button class="nav-dropdown-toggle" id="dd-toggle">
@@ -77,7 +105,12 @@
             <div class="dd-icon green">
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M11 4.5A3 3 0 006 6v2H4.5m1.5 0v2c0 .8-.2 1.5-.5 2H12"/><path d="M4.5 8H10"/></svg>
             </div>
-            <div class="dd-text"><span class="dd-name">Salary calculator</span><span class="dd-desc">What is my take-home pay?</span></div>
+            <div class="dd-text"><span class="dd-name">Salary calculator</span><span class="dd-desc">What is my take-home pay?</span></div>          </a>
+          <a class="dd-item" href="self-employed.html">
+            <div class="dd-icon green">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4l2 2"/><circle cx="8" cy="8" r="6"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Self-employed tax</span><span class="dd-desc">Sole trader take-home pay</span></div>
           </a>
           <a class="dd-item" href="dividend-tax.html">
             <div class="dd-icon amber">
@@ -104,7 +137,12 @@
             <div class="dd-icon purple">
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7l6-5 6 5v7H10V9H6v5H2V7z"/></svg>
             </div>
-            <div class="dd-text"><span class="dd-name">Mortgage calculator</span><span class="dd-desc">What will repayments be?</span></div>
+            <div class="dd-text"><span class="dd-name">Mortgage calculator</span><span class="dd-desc">What will repayments be?</span></div>          </a>
+          <a class="dd-item" href="mortgage-affordability.html">
+            <div class="dd-icon purple">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7l6-5 6 5"/><path d="M4 8v5h8V8"/><path d="M7 10h2"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Mortgage affordability</span><span class="dd-desc">How much can I borrow?</span></div>
           </a>
           <a class="dd-item" href="mortgage-overpayment.html">
             <div class="dd-icon purple">
@@ -150,12 +188,12 @@
     </div>
 
     <a class="nav-link" href="how-it-works.html">How it works</a>
-    <a class="nav-link" href="advertise.html">Advertise</a>
     <a class="nav-link" href="legal.html">Legal</a>
   </div>
 
   <div class="nav-right">
     <a class="nav-upgrade" href="advertise.html">Advertise with us</a>
+  </div>
   </div>
 </nav>
 
@@ -371,6 +409,19 @@
 </div>
 </div>
 
+<div class="seo-content">
+  <div class="seo-wrap">
+    <h1>Buy-to-Let ROI Calculator</h1>
+    <p>Evaluate your buy-to-let investment with our free ROI calculator. Enter the property value, rental income, and all costs to see your gross yield, net yield, and cash-on-cash return. The detailed breakdown shows exactly where your money goes — from mortgage payments and management fees to maintenance and insurance — so you can make informed investment decisions.</p>
+    <h2>Understanding rental yields</h2>
+    <p>Gross yield is the annual rent divided by the property value, giving a quick comparison metric. Net yield subtracts running costs like maintenance, management fees, and insurance but excludes mortgage payments. Cash-on-cash return measures your annual profit against the actual cash you invested — deposit plus purchase costs — and is the most useful metric for leveraged property investors.</p>
+    <h2>Key costs to include</h2>
+    <p>A realistic BTL assessment must account for void periods when the property sits empty, management fees if you use a letting agent (typically 8-12% of rent), annual maintenance budgets, landlord insurance, ground rent or service charges for leasehold properties, and of course mortgage interest payments. Underestimating these costs is the most common mistake new landlords make.</p>
+    <h2>How to use this calculator</h2>
+    <p>Enter the property value, purchase costs, and deposit. Set your mortgage rate and monthly rent, then add running costs including void periods, maintenance, management fees, and insurance. The calculator shows your annual ROI, monthly cash flow, and multiple yield metrics. Use the breakdown tab to see every income and cost line itemised.</p>
+  </div>
+</div>
+
 <script src="js/nav.js"></script>
 <script src="js/format.js"></script>
 <script>
@@ -415,12 +466,10 @@ document.getElementById('vtabs').addEventListener('click', e => {
   });
 });
 
-function calcMortgagePayment(loan, annRate, years) {
-  if(loan<=0) return 0;
-  if(annRate<=0) return loan/(years*12);
-  const mr=annRate/12;
-  const n=years*12;
-  return loan*mr*Math.pow(1+mr,n)/(Math.pow(1+mr,n)-1);
+// BTL mortgages are typically interest-only
+function calcMortgagePayment(loan, annRate) {
+  if(loan<=0 || annRate<=0) return 0;
+  return loan*annRate/12;
 }
 
 function compute() {
@@ -439,7 +488,7 @@ function compute() {
   const groundRent=parseFloat(document.getElementById('ground-rent').value)||0;
 
   const loanAmt=Math.max(0, propVal-deposit);
-  const monthlyMortgage=calcMortgagePayment(loanAmt, mortRate, mortTerm);
+  const monthlyMortgage=calcMortgagePayment(loanAmt, mortRate);
   const annualMortgage=monthlyMortgage*12;
 
   // Rental income adjusted for voids
@@ -543,5 +592,6 @@ document.querySelectorAll('input[type=number], select').forEach(el=>{
 update();
 </script>
 <script src="js/ads.js"></script>
+<script src="js/input-format.js"></script>
 </body>
 </html>

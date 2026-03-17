@@ -3,20 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Capital Gains Tax Calculator — Free UK CGT Calculator 2025/26 | AdSums</title>
-<meta name="description" content="Free UK capital gains tax calculator 2025/26. Calculate CGT on property and assets with annual exempt amount.">
-<link rel="canonical" href="https://adsums.co.uk/cgt.html">
-<meta property="og:title" content="Capital Gains Tax Calculator — Free UK CGT Calculator 2025/26 | AdSums">
-<meta property="og:description" content="Free UK capital gains tax calculator 2025/26. Calculate CGT on property and assets with annual exempt amount.">
+<title>Mortgage Affordability Calculator — How Much Can I Borrow? | AdSums</title>
+<meta name="description" content="Free mortgage affordability calculator. Find out how much you can borrow based on salary, deposit and debts.">
+<link rel="canonical" href="https://adsums.co.uk/mortgage-affordability.html">
+<meta property="og:title" content="Mortgage Affordability Calculator — How Much Can I Borrow? | AdSums">
+<meta property="og:description" content="Free mortgage affordability calculator. Find out how much you can borrow based on salary, deposit and debts.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://adsums.co.uk/cgt.html">
+<meta property="og:url" content="https://adsums.co.uk/mortgage-affordability.html">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Capital Gains Tax Calculator — Free UK CGT Calculator 2025/26 | AdSums">
-<meta name="twitter:description" content="Free UK capital gains tax calculator 2025/26. Calculate CGT on property and assets with annual exempt amount.">
+<meta name="twitter:title" content="Mortgage Affordability Calculator — How Much Can I Borrow? | AdSums">
+<meta name="twitter:description" content="Free mortgage affordability calculator. Find out how much you can borrow based on salary, deposit and debts.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&display=swap" rel="stylesheet">
-
-
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/calculator.css">
@@ -24,9 +22,9 @@
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Capital Gains Tax Calculator",
-  "description": "Free UK CGT calculator for 2025/26. Calculate capital gains tax on property and other assets with annual allowance and loss relief.",
-  "url": "https://adsums.co.uk/cgt.html",
+  "name": "Mortgage Affordability Calculator",
+  "description": "Free UK mortgage affordability calculator. Find out how much you can borrow based on your income, deposit, and debt commitments.",
+  "url": "https://adsums.co.uk/mortgage-affordability.html",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "All",
   "offers": {
@@ -90,10 +88,7 @@
   </a>
 
   <div class="nav-pill">
-  <!-- Centred nav links -->
   <div class="nav-center">
-
-    <!-- Calculators dropdown -->
     <div class="nav-dropdown" id="calc-dropdown">
       <button class="nav-dropdown-toggle" id="dd-toggle">
         Calculators
@@ -121,7 +116,7 @@
             </div>
             <div class="dd-text"><span class="dd-name">Dividend tax</span><span class="dd-desc">What tax do I owe on dividends?</span></div>
           </a>
-          <a class="dd-item current" href="cgt.html">
+          <a class="dd-item" href="cgt.html">
             <div class="dd-icon rose">
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12l3.5-4 2.5 2 4-5"/><path d="M10 5h2.5v2.5"/></svg>
             </div>
@@ -205,62 +200,87 @@
 <div class="fc-scroll">
 
   <div class="hero-result">
-    <div class="hero-lbl">Capital Gains Tax owed</div>
-    <div class="hero-val"><span class="sym">£</span><span id="h-val">0</span></div>
+    <div class="hero-lbl">Max borrowing</div>
+    <div class="hero-val"><span class="sym" id="h-sym">£</span><span id="h-val">0</span></div>
     <div class="chips">
       <div class="chip">
-        <span class="chip-val g" id="chip-net">—</span>
-        <span class="chip-lbl">Net gain</span>
+        <span class="chip-val" id="chip-property">—</span>
+        <span class="chip-lbl">Max property price</span>
       </div>
       <div class="chip">
-        <span class="chip-val b" id="chip-rate">—</span>
-        <span class="chip-lbl">Effective rate</span>
+        <span class="chip-val g" id="chip-monthly">—</span>
+        <span class="chip-lbl">Monthly payment (est.)</span>
       </div>
       <div class="chip">
-        <span class="chip-val" id="chip-allow">—</span>
-        <span class="chip-lbl">Allowance used</span>
+        <span class="chip-val b" id="chip-ltv">—</span>
+        <span class="chip-lbl">LTV</span>
       </div>
     </div>
   </div>
 
+  <div class="curr-seg" id="curr">
+    <button data-sym="$">$</button>
+    <button data-sym="€">€</button>
+    <button class="active" data-sym="£">£</button>
+    <button data-sym="₹">₹</button>
+    <button data-sym="¥">¥</button>
+    <button data-sym="Fr">Fr</button>
+  </div>
+
   <div class="mb">
-    <div class="f-label">Total gain</div>
+    <div class="f-label">Annual income — applicant 1</div>
     <div class="input-box">
-      <span class="i-pre">£</span>
-      <input type="number" id="gain" value="50000" min="0" step="1000">
+      <span class="i-pre" id="pfx1">£</span>
+      <input type="number" id="income1" value="45000" min="0" step="1000">
     </div>
   </div>
 
   <div class="mb">
-    <div class="f-label">Asset type</div>
-    <div class="seg" id="asset-type">
-      <button class="active" data-val="residential">Residential property</button>
-      <button data-val="other">Other assets</button>
-    </div>
-  </div>
-
-  <div class="mb">
-    <div class="f-label">Annual income (before gains)</div>
+    <div class="f-label">Annual income — applicant 2 (optional)</div>
     <div class="input-box">
-      <span class="i-pre">£</span>
-      <input type="number" id="income" value="45000" min="0" step="1000">
+      <span class="i-pre" id="pfx2">£</span>
+      <input type="number" id="income2" value="0" min="0" step="1000">
     </div>
   </div>
 
   <div class="mb">
-    <div class="f-label">Losses to offset <span class="opt">optional</span></div>
+    <div class="f-label">Monthly debt commitments</div>
     <div class="input-box">
-      <span class="i-pre">£</span>
-      <input type="number" id="losses" value="0" min="0" step="100">
+      <span class="i-pre" id="pfx3">£</span>
+      <input type="number" id="debts" value="0" min="0" step="50" placeholder="Credit cards, loans, car finance…">
     </div>
   </div>
 
   <div class="mb">
-    <div class="f-label">Tax year</div>
-    <div class="input-box" style="padding:0 0.9rem">
-      <select id="tax-year" style="flex:1;padding:0">
-        <option value="2025" selected>2025/26</option>
-      </select>
+    <div class="f-label">Deposit amount</div>
+    <div class="input-box">
+      <span class="i-pre" id="pfx4">£</span>
+      <input type="number" id="deposit" value="25000" min="0" step="1000">
+    </div>
+  </div>
+
+  <div class="mb">
+    <div class="f-label">Interest rate (for estimated payments)</div>
+    <div class="input-box">
+      <input type="number" id="rate" value="5.25" min="0" max="100" step="0.05" style="padding-left:0.9rem">
+      <span class="i-suf">% annual</span>
+    </div>
+  </div>
+
+  <div class="mb">
+    <div class="f-label">Mortgage term</div>
+    <div class="input-box">
+      <input type="number" id="years" value="25" min="1" max="50" step="1" style="padding-left:0.9rem">
+      <span class="i-suf">years</span>
+    </div>
+  </div>
+
+  <div class="mb">
+    <div class="f-label">Income multiple</div>
+    <div class="seg" id="multiple-toggle">
+      <button data-val="3.5">Conservative (3.5x)</button>
+      <button class="active" data-val="4">Standard (4x)</button>
+      <button data-val="4.5">Maximum (4.5x)</button>
     </div>
   </div>
 
@@ -268,55 +288,61 @@
 
   <div class="insight">
     <div class="insight-icon">↗</div>
-    <div class="insight-txt" id="insight-txt">Enter your details above to calculate your Capital Gains Tax liability.</div>
+    <div class="insight-txt" id="insight-txt">Enter your income and deposit to see how much you could borrow.</div>
+  </div>
+
+  <div class="metric-row">
+    <div class="metric">
+      <div class="metric-lbl">Income multiple used</div>
+      <div class="metric-val" id="m-multiple">—</div>
+    </div>
+    <div class="metric">
+      <div class="metric-lbl">Stress test payment</div>
+      <div class="metric-val" id="m-stress">—</div>
+    </div>
   </div>
 
   <div class="view-bar">
     <div class="view-tabs" id="vtabs">
-      <button class="active" data-view="table">Breakdown</button>
-      <button data-view="summary">Summary</button>
+      <button class="active" data-view="summary">Summary</button>
     </div>
   </div>
 
-  <div class="vp show" id="vp-table">
-    <div class="table-wrap">
-      <table>
-        <thead><tr>
-          <th>Item</th>
-          <th class="th-b">Amount</th>
-        </tr></thead>
-        <tbody id="tbody"></tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="vp" id="vp-summary">
+  <div class="vp show" id="vp-summary">
     <div class="sum-grid">
       <div class="sum-card">
-        <div class="sum-card-lbl">CGT owed</div>
-        <div class="sum-card-val g" id="s-cgt">—</div>
+        <div class="sum-card-lbl">Max borrowing</div>
+        <div class="sum-card-val g" id="s-borrow">—</div>
       </div>
       <div class="sum-card">
-        <div class="sum-card-lbl">Effective rate</div>
-        <div class="sum-card-val b" id="s-rate">—</div>
+        <div class="sum-card-lbl">Max property price</div>
+        <div class="sum-card-val" id="s-property">—</div>
       </div>
       <div class="sum-card">
-        <div class="sum-card-lbl">Taxable gain</div>
-        <div class="sum-card-val" id="s-taxable">—</div>
+        <div class="sum-card-lbl">Deposit</div>
+        <div class="sum-card-val" id="s-deposit">—</div>
       </div>
       <div class="sum-card">
-        <div class="sum-card-lbl">Annual allowance</div>
-        <div class="sum-card-val" id="s-allowance">—</div>
+        <div class="sum-card-lbl">Loan-to-value</div>
+        <div class="sum-card-val b" id="s-ltv">—</div>
       </div>
       <div class="sum-card">
-        <div class="sum-card-lbl">Asset type</div>
-        <div class="sum-card-val" id="s-asset">—</div>
+        <div class="sum-card-lbl">Monthly payment (est.)</div>
+        <div class="sum-card-val g" id="s-monthly">—</div>
       </div>
       <div class="sum-card">
-        <div class="sum-card-lbl">Tax year</div>
-        <div class="sum-card-val" id="s-year">2025/26</div>
+        <div class="sum-card-lbl">Stressed monthly payment</div>
+        <div class="sum-card-val" id="s-stressed">—</div>
       </div>
-      <div class="sum-note">Based on 2025/26 HMRC rates. For guidance only — not financial or tax advice. Your actual liability may differ.</div>
+      <div class="sum-card">
+        <div class="sum-card-lbl">Total repaid</div>
+        <div class="sum-card-val" id="s-total">—</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-card-lbl">Total interest</div>
+        <div class="sum-card-val g" id="s-interest">—</div>
+      </div>
+      <div class="sum-note">Indicative only. Actual affordability depends on your credit history, lender criteria, and individual circumstances.</div>
     </div>
   </div>
 
@@ -325,165 +351,131 @@
 
 <div class="seo-content">
   <div class="seo-wrap">
-    <h1>Capital Gains Tax Calculator</h1>
-    <p>Calculate your UK Capital Gains Tax liability with our free CGT calculator. Updated for the 2025/26 tax year, it handles both residential property and other assets at the correct rates. Enter your gain, income, and any losses to offset, and see exactly how much CGT you owe with a clear band-by-band breakdown.</p>
-    <h2>How Capital Gains Tax works</h2>
-    <p>CGT is charged on the profit when you sell or dispose of an asset that has increased in value. For 2025/26, the annual exempt amount is £3,000. Residential property gains are taxed at 18% (basic rate) or 24% (higher rate), while other assets are taxed at 10% and 20% respectively. Your income determines how much of the basic rate band is available for gains.</p>
-    <h2>Reducing your CGT bill</h2>
-    <p>You can offset capital losses against gains in the same tax year, or carry forward unused losses from previous years. Using your annual exempt amount each year, transferring assets between spouses, and investing through ISAs are all legitimate ways to reduce your CGT liability. Timing disposals across tax years can also help keep gains within lower rate bands.</p>
+    <h1>Mortgage Affordability Calculator</h1>
+    <p>Find out how much you could borrow for a mortgage with our free affordability calculator. Based on your income, deposit, and existing debt commitments, it estimates your maximum borrowing using standard UK lender income multiples. See the property price you could afford and what your estimated monthly payments would be.</p>
+    <h2>How lenders assess affordability</h2>
+    <p>Most UK mortgage lenders use income multiples of 3.5x to 4.5x your gross annual salary to determine maximum borrowing. Joint applicants can combine their incomes. Existing debts such as credit cards, car finance, and personal loans reduce your borrowing power because lenders factor in your total monthly commitments. Lenders also apply a stress test at a higher interest rate to ensure you can still afford payments if rates rise.</p>
+    <h2>Improving your borrowing power</h2>
+    <p>Reducing or clearing existing debts before applying can significantly increase how much you can borrow. A larger deposit lowers your loan-to-value ratio, giving access to better interest rates. Some lenders offer higher income multiples for professionals in certain careers or for applicants with clean credit histories and strong deposit levels.</p>
     <h2>How to use this calculator</h2>
-    <p>Enter your total gain from the disposal, select whether it is residential property or another asset type, and input your annual income. Optionally add any capital losses to offset. The calculator applies the annual exempt amount, splits the taxable gain across the correct tax bands, and shows your total CGT liability and effective tax rate.</p>
+    <p>Enter your annual income and optionally a second applicant's income. Add any monthly debt commitments and your deposit amount. Choose between conservative, standard, or maximum income multiples. The calculator shows your estimated maximum borrowing, the property price you could afford, estimated monthly payments, and a stress-tested payment figure.</p>
   </div>
 </div>
 
 <script src="js/nav.js"></script>
+<script src="js/format.js"></script>
 <script>
-/* ---------- Formatting ---------- */
-function fmtH(n){if(n>=1e9)return(n/1e9).toFixed(2)+'b';if(n>=1e6)return(n/1e6).toFixed(2)+'m';return Math.round(n).toLocaleString('en-GB');}
-function fmtS(n){if(Math.abs(n)>=1e6)return'£'+(n/1e6).toFixed(1)+'m';return'£'+Math.round(Math.abs(n)).toLocaleString('en-GB');}
-function fmtFull(n){return'£'+n.toLocaleString('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2});}
+let sym = '£', multiplier = 4;
 
-/* ---------- 2025/26 CGT constants ---------- */
-const ANNUAL_EXEMPT = 3000;
-const PERSONAL_ALLOWANCE = 12570;
-const BASIC_RATE_LIMIT = 37700; // basic rate band width
-
-/* Rates: [basic, higher] */
-const RATES = {
-  residential: [0.18, 0.24],
-  other:       [0.10, 0.20]
-};
-
-let assetType = 'residential';
-let viewMode = 'table';
-
-/* ---------- Asset type toggle ---------- */
-document.getElementById('asset-type').addEventListener('click', e => {
+// Currency
+document.getElementById('curr').addEventListener('click', e => {
   const b = e.target.closest('button'); if (!b) return;
-  document.querySelectorAll('#asset-type button').forEach(x => x.classList.remove('active'));
-  b.classList.add('active');
-  assetType = b.dataset.val;
+  document.querySelectorAll('#curr button').forEach(x => x.classList.remove('active'));
+  b.classList.add('active'); sym = b.dataset.sym;
+  document.getElementById('h-sym').textContent = sym;
+  document.getElementById('pfx1').textContent = sym;
+  document.getElementById('pfx2').textContent = sym;
+  document.getElementById('pfx3').textContent = sym;
+  document.getElementById('pfx4').textContent = sym;
   update();
 });
 
-/* ---------- View tabs ---------- */
+// Income multiple toggle
+document.getElementById('multiple-toggle').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  document.querySelectorAll('#multiple-toggle button').forEach(x => x.classList.remove('active'));
+  b.classList.add('active'); multiplier = parseFloat(b.dataset.val);
+  update();
+});
+
+// View tabs (single tab but keeping pattern)
 document.getElementById('vtabs').addEventListener('click', e => {
   const b = e.target.closest('button'); if (!b) return;
   document.querySelectorAll('#vtabs button').forEach(x => x.classList.remove('active'));
   b.classList.add('active');
-  viewMode = b.dataset.view;
-  ['table','summary'].forEach(v => {
-    document.getElementById('vp-'+v).classList.toggle('show', viewMode===v);
-  });
 });
 
-/* ---------- Compute ---------- */
-function compute() {
-  const grossGain = parseFloat(document.getElementById('gain').value) || 0;
-  const income = parseFloat(document.getElementById('income').value) || 0;
-  const losses = parseFloat(document.getElementById('losses').value) || 0;
-
-  const rates = RATES[assetType];
-  const basicRate = rates[0];
-  const higherRate = rates[1];
-
-  // Net gain after losses
-  const afterLosses = Math.max(0, grossGain - losses);
-
-  // Apply annual exempt amount
-  const allowanceUsed = Math.min(ANNUAL_EXEMPT, afterLosses);
-  const taxableGain = Math.max(0, afterLosses - allowanceUsed);
-
-  // Work out how much basic rate band remains
-  const taxableIncome = Math.max(0, income - PERSONAL_ALLOWANCE);
-  const basicBandRemaining = Math.max(0, BASIC_RATE_LIMIT - taxableIncome);
-
-  // Split taxable gain between basic and higher rate
-  const basicPortion = Math.min(taxableGain, basicBandRemaining);
-  const higherPortion = Math.max(0, taxableGain - basicPortion);
-
-  const basicTax = basicPortion * basicRate;
-  const higherTax = higherPortion * higherRate;
-  const totalCGT = basicTax + higherTax;
-
-  const effectiveRate = grossGain > 0 ? (totalCGT / grossGain) * 100 : 0;
-
-  return {
-    grossGain, losses, afterLosses, allowanceUsed, taxableGain,
-    income, taxableIncome, basicBandRemaining,
-    basicPortion, higherPortion, basicRate, higherRate,
-    basicTax, higherTax, totalCGT, effectiveRate
-  };
+function monthlyRepayment(principal, annualRate, totalMonths) {
+  if (principal <= 0 || totalMonths <= 0) return 0;
+  const mr = annualRate / 12;
+  if (mr === 0) return totalMonths > 0 ? principal / totalMonths : 0;
+  return principal * (mr * Math.pow(1 + mr, totalMonths)) / (Math.pow(1 + mr, totalMonths) - 1);
 }
 
-function assetLabel() {
-  return assetType === 'residential' ? 'Residential property' : 'Other assets';
+function compute() {
+  const income1 = parseFloat(document.getElementById('income1').value) || 0;
+  const income2 = parseFloat(document.getElementById('income2').value) || 0;
+  const monthlyDebts = parseFloat(document.getElementById('debts').value) || 0;
+  const deposit = parseFloat(document.getElementById('deposit').value) || 0;
+  const rate = (parseFloat(document.getElementById('rate').value) || 0) / 100;
+  const yrs = parseInt(document.getElementById('years').value) || 0;
+  const totalMonths = yrs * 12;
+
+  const combinedIncome = income1 + income2;
+  let maxBorrowing = combinedIncome * multiplier;
+
+  // Adjust for debts: reduce by (monthly debts x 12 x 4)
+  const debtImpact = monthlyDebts * 12 * 4;
+  maxBorrowing = Math.max(0, maxBorrowing - debtImpact);
+
+  const maxProperty = maxBorrowing + deposit;
+  const ltv = maxProperty > 0 ? (maxBorrowing / maxProperty * 100) : 0;
+
+  // Stress test rate = entered rate + 2%
+  const stressRate = rate + 0.02;
+
+  const monthly = monthlyRepayment(maxBorrowing, rate, totalMonths);
+  const stressedMonthly = monthlyRepayment(maxBorrowing, stressRate, totalMonths);
+
+  const totalRepaid = monthly * totalMonths;
+  const totalInterest = totalRepaid - maxBorrowing;
+
+  return {
+    combinedIncome, maxBorrowing, maxProperty, deposit,
+    ltv, rate: rate * 100, stressRate: stressRate * 100,
+    monthly, stressedMonthly, totalRepaid, totalInterest,
+    yrs, totalMonths, multiplier, debtImpact
+  };
 }
 
 function update() {
   const r = compute();
 
-  document.getElementById('h-val').textContent = fmtH(r.totalCGT);
-  document.getElementById('chip-net').textContent = fmtS(r.taxableGain);
-  document.getElementById('chip-rate').textContent = r.effectiveRate.toFixed(2) + '%';
-  document.getElementById('chip-allow').textContent = fmtS(r.allowanceUsed);
+  document.getElementById('h-val').textContent = fmtH(r.maxBorrowing);
+  document.getElementById('chip-property').textContent = fmtS(r.maxProperty);
+  document.getElementById('chip-monthly').textContent = fmtS(r.monthly);
+  document.getElementById('chip-ltv').textContent = r.ltv.toFixed(1) + '%';
+
+  document.getElementById('m-multiple').textContent = r.multiplier + 'x income';
+  document.getElementById('m-stress').textContent = fmtFull(r.stressedMonthly);
 
   // Insight
   let ins;
-  if (r.grossGain === 0) {
-    ins = 'Enter your details above to calculate your Capital Gains Tax liability.';
-  } else if (r.totalCGT === 0) {
-    ins = 'No CGT to pay — your gain of <strong>' + fmtS(r.grossGain) + '</strong> is fully covered by losses and your annual allowance.';
-  } else if (r.higherPortion > 0 && r.basicPortion > 0) {
-    ins = 'Your gain spans both tax bands: <strong>' + fmtS(r.basicPortion) + '</strong> at ' + (r.basicRate*100) + '% and <strong>' + fmtS(r.higherPortion) + '</strong> at ' + (r.higherRate*100) + '%.';
-  } else if (r.higherPortion > 0) {
-    ins = 'Your entire taxable gain falls in the higher rate band at <strong>' + (r.higherRate*100) + '%</strong>.';
+  if (r.combinedIncome === 0) {
+    ins = 'Enter your income and deposit to see how much you could borrow.';
+  } else if (r.maxBorrowing === 0) {
+    ins = 'Your debt commitments currently offset your borrowing capacity entirely. Consider reducing monthly debts.';
+  } else if (r.ltv > 90) {
+    ins = 'Based on <strong>' + r.multiplier + 'x</strong> income, you could borrow up to <strong>' + fmtS(r.maxBorrowing) + '</strong>. Warning: LTV is <strong>' + r.ltv.toFixed(0) + '%</strong> — most lenders cap at 90-95% LTV and may charge higher rates.';
+  } else if (r.debtImpact > 0) {
+    ins = 'Based on <strong>' + r.multiplier + 'x</strong> income, you could borrow up to <strong>' + fmtS(r.maxBorrowing) + '</strong>. Your debts reduce borrowing power by <strong>' + fmtS(r.debtImpact) + '</strong>.';
   } else {
-    ins = 'Your entire taxable gain is within the basic rate band at <strong>' + (r.basicRate*100) + '%</strong>.';
+    ins = 'Based on <strong>' + r.multiplier + 'x</strong> income, you could borrow up to <strong>' + fmtS(r.maxBorrowing) + '</strong>.';
   }
   document.getElementById('insight-txt').innerHTML = ins;
 
-  // Breakdown table
-  const tb = document.getElementById('tbody');
-  tb.innerHTML = '';
-  const rows = [
-    ['Gross gain', fmtFull(r.grossGain)],
-    ['Losses offset', r.losses > 0 ? '−' + fmtFull(r.losses) : fmtFull(0)],
-    ['Gain after losses', fmtFull(r.afterLosses)],
-    ['Annual exempt amount (' + fmtS(ANNUAL_EXEMPT) + ')', '−' + fmtFull(r.allowanceUsed)],
-    ['Taxable gain', fmtFull(r.taxableGain)],
-  ];
-
-  if (r.basicPortion > 0) {
-    rows.push(['Basic rate portion (' + (r.basicRate*100) + '%)', fmtFull(r.basicPortion) + ' → ' + fmtFull(r.basicTax)]);
-  }
-  if (r.higherPortion > 0) {
-    rows.push(['Higher rate portion (' + (r.higherRate*100) + '%)', fmtFull(r.higherPortion) + ' → ' + fmtFull(r.higherTax)]);
-  }
-
-  rows.forEach(([label, val], i) => {
-    const tr = document.createElement('tr');
-    const isBold = (i === rows.length - 1) || label === 'Taxable gain';
-    tr.innerHTML = '<td>' + label + '</td><td class="td-b"' + (isBold ? ' style="font-weight:600"' : '') + '>' + val + '</td>';
-    tb.appendChild(tr);
-  });
-
-  // Total row
-  const ttr = document.createElement('tr');
-  ttr.style.fontWeight = '600';
-  ttr.style.borderTop = '2px solid #e5e7eb';
-  ttr.innerHTML = '<td>Total CGT owed</td><td class="td-b">' + fmtFull(r.totalCGT) + '</td>';
-  tb.appendChild(ttr);
-
   // Summary
-  document.getElementById('s-cgt').textContent = fmtFull(r.totalCGT);
-  document.getElementById('s-rate').textContent = r.effectiveRate.toFixed(2) + '%';
-  document.getElementById('s-taxable').textContent = fmtFull(r.taxableGain);
-  document.getElementById('s-allowance').textContent = fmtFull(r.allowanceUsed);
-  document.getElementById('s-asset').textContent = assetLabel();
+  document.getElementById('s-borrow').textContent = fmtFull(r.maxBorrowing);
+  document.getElementById('s-property').textContent = fmtFull(r.maxProperty);
+  document.getElementById('s-deposit').textContent = fmtFull(r.deposit);
+  document.getElementById('s-ltv').textContent = r.ltv.toFixed(1) + '%';
+  document.getElementById('s-monthly').textContent = fmtFull(r.monthly);
+  document.getElementById('s-stressed').textContent = fmtFull(r.stressedMonthly);
+  document.getElementById('s-total').textContent = fmtFull(r.totalRepaid);
+  document.getElementById('s-interest').textContent = fmtFull(r.totalInterest);
 }
 
-document.querySelectorAll('input[type=number], select').forEach(el => {
+document.querySelectorAll('input[type=number]').forEach(el => {
   el.addEventListener('input', update);
   el.addEventListener('change', update);
 });

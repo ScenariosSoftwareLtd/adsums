@@ -3,30 +3,60 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AdSums — Mortgage Calculator</title>
+<title>Mortgage Calculator — Free UK Repayment Calculator | AdSums</title>
+<meta name="description" content="Free UK mortgage calculator. Calculate monthly repayments, total interest and see amortisation charts for repayment or interest-only.">
+<link rel="canonical" href="https://adsums.co.uk/mortgage.html">
+<meta property="og:title" content="Mortgage Calculator — Free UK Repayment Calculator | AdSums">
+<meta property="og:description" content="Free UK mortgage calculator. Calculate monthly repayments, total interest and see amortisation charts for repayment or interest-only.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://adsums.co.uk/mortgage.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mortgage Calculator — Free UK Repayment Calculator | AdSums">
+<meta name="twitter:description" content="Free UK mortgage calculator. Calculate monthly repayments, total interest and see amortisation charts for repayment or interest-only.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&display=swap" rel="stylesheet">
+
+
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/calculator.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Mortgage Calculator",
+  "description": "Free UK mortgage calculator. Calculate monthly repayments, total interest, and see a full amortisation schedule with charts.",
+  "url": "https://adsums.co.uk/mortgage.html",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "GBP"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AdSums",
+    "url": "https://adsums.co.uk"
+  }
+}
+</script>
 </head>
 <body>
 
 <!-- FULL SCREEN AD -->
 <div class="ad-canvas">
-  <div class="ad-bg"></div>
+  <div class="ad-bg"><img class="scenarios-img" src="img/scenarios-ad.jpg" alt=""></div>
   <div class="ad-content">
     <!-- Slide 1: Scenarios.uk takeover -->
-    <div class="ad-slide scenarios active">
-      <div class="scenarios-logo">
-        <div class="scenarios-wordmark">scenarios.uk</div>
-      </div>
-      <div class="ad-headline">Retire with confidence, not guesswork.</div>
-      <div class="ad-body">Proper retirement modelling. No adviser fees, no spreadsheets.</div>
-      <a href="https://scenarios.uk" target="_blank" class="ad-cta-btn">Start planning — it's free</a>
-      <div class="scenarios-url">scenarios.uk</div>
-    </div>
+    <a href="https://scenarios.uk" target="_blank" class="ad-slide scenarios active" style="text-decoration:none;color:inherit;cursor:pointer">
+      <div class="scenarios-logo-ad">Scenarios<span>.uk</span></div>
+      <div class="ad-headline">Go beyond<br>basic calculators.</div>
+      <div class="ad-body">See how your future could actually play out. Build a free financial plan today.</div>
+      <span class="ad-cta-btn">Explore your future →</span>
+      <div class="scenarios-powered">Ad · scenarios.uk</div>
+    </a>
     <!-- Slide 2: Advertise -->
     <div class="ad-slide">
       <div class="ad-kicker">Advertisement</div>
@@ -53,16 +83,14 @@
 <!-- NAV -->
 <nav class="nav">
   <a class="nav-logo" href="index.html">
-    <svg width="148" height="28" viewBox="0 0 148 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="4" width="22" height="14" rx="4" fill="#2563eb" opacity="0.25"/>
-      <rect x="2" y="7" width="22" height="14" rx="4" fill="#2563eb"/>
-      <path d="M13 11v6M10 14h6" stroke="white" stroke-width="2" stroke-linecap="round"/>
-      <text x="32" y="20" font-family="'Instrument Serif', Georgia, serif" font-size="17" letter-spacing="-0.2">
-        <tspan fill="rgba(255,255,255,0.42)" font-style="italic">Ad</tspan><tspan fill="rgba(255,255,255,0.92)">Sums</tspan>
+    <svg class="nav-logo-svg" width="100" height="28" viewBox="0 0 100 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="21" font-family="'Fraunces', Georgia, serif" font-size="19" letter-spacing="-0.5">
+        <tspan class="logo-ad">Ad</tspan><tspan class="logo-calc">Sums</tspan>
       </text>
     </svg>
   </a>
 
+  <div class="nav-pill">
   <div class="nav-center">
     <div class="nav-dropdown" id="calc-dropdown">
       <button class="nav-dropdown-toggle" id="dd-toggle">
@@ -78,7 +106,12 @@
             <div class="dd-icon green">
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M11 4.5A3 3 0 006 6v2H4.5m1.5 0v2c0 .8-.2 1.5-.5 2H12"/><path d="M4.5 8H10"/></svg>
             </div>
-            <div class="dd-text"><span class="dd-name">Salary calculator</span><span class="dd-desc">What is my take-home pay?</span></div>
+            <div class="dd-text"><span class="dd-name">Salary calculator</span><span class="dd-desc">What is my take-home pay?</span></div>          </a>
+          <a class="dd-item" href="self-employed.html">
+            <div class="dd-icon green">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4l2 2"/><circle cx="8" cy="8" r="6"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Self-employed tax</span><span class="dd-desc">Sole trader take-home pay</span></div>
           </a>
           <a class="dd-item" href="dividend-tax.html">
             <div class="dd-icon amber">
@@ -105,7 +138,12 @@
             <div class="dd-icon purple">
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7l6-5 6 5v7H10V9H6v5H2V7z"/></svg>
             </div>
-            <div class="dd-text"><span class="dd-name">Mortgage calculator</span><span class="dd-desc">What will repayments be?</span></div>
+            <div class="dd-text"><span class="dd-name">Mortgage calculator</span><span class="dd-desc">What will repayments be?</span></div>          </a>
+          <a class="dd-item" href="mortgage-affordability.html">
+            <div class="dd-icon purple">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7l6-5 6 5"/><path d="M4 8v5h8V8"/><path d="M7 10h2"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Mortgage affordability</span><span class="dd-desc">How much can I borrow?</span></div>
           </a>
           <a class="dd-item" href="mortgage-overpayment.html">
             <div class="dd-icon purple">
@@ -151,12 +189,12 @@
     </div>
 
     <a class="nav-link" href="how-it-works.html">How it works</a>
-    <a class="nav-link" href="advertise.html">Advertise</a>
     <a class="nav-link" href="legal.html">Legal</a>
   </div>
 
   <div class="nav-right">
     <a class="nav-upgrade" href="advertise.html">Advertise with us</a>
+  </div>
   </div>
 </nav>
 
@@ -214,10 +252,26 @@
   </div>
 
   <div class="mb">
+    <div class="f-label">I know my...</div>
+    <div class="seg" id="rate-mode">
+      <button class="active" data-val="rate">Interest rate</button>
+      <button data-val="payment">Monthly payment</button>
+    </div>
+  </div>
+
+  <div class="mb" id="rate-wrap">
     <div class="f-label">Interest rate</div>
     <div class="input-box">
       <input type="number" id="rate" value="4.5" min="0" max="100" step="0.1" style="padding-left:0.9rem">
       <span class="i-suf">% annual</span>
+    </div>
+  </div>
+
+  <div class="mb" id="payment-wrap" style="display:none">
+    <div class="f-label">Monthly payment</div>
+    <div class="input-box">
+      <span class="i-pre" id="pfx-pay">£</span>
+      <input type="number" id="known-payment" value="" min="0" step="10" placeholder="0">
     </div>
   </div>
 
@@ -315,10 +369,23 @@
 </div>
 </div>
 
+<div class="seo-content">
+  <div class="seo-wrap">
+    <h1>Mortgage Calculator</h1>
+    <p>Calculate your monthly mortgage repayments with our free UK mortgage calculator. Enter your property price, deposit, interest rate, and term to see exactly what you will pay each month. The calculator provides a full amortisation schedule, total interest cost, and visual charts showing how your balance reduces over time.</p>
+    <h2>How mortgage repayments are calculated</h2>
+    <p>Repayment mortgages use an amortisation formula that splits each monthly payment between interest and principal. In the early years, most of your payment goes towards interest. Over time, the balance reduces and more of each payment goes to paying off the loan itself. Interest-only mortgages charge only the interest each month, with the full loan amount due at the end of the term.</p>
+    <h2>Choosing the right mortgage term</h2>
+    <p>Shorter mortgage terms mean higher monthly payments but significantly less total interest paid. A 20-year mortgage costs far less in interest than a 30-year term on the same amount. Use this calculator to compare different terms and rates side by side to find the balance between affordable monthly payments and minimising your total cost of borrowing.</p>
+    <h2>How to use this calculator</h2>
+    <p>Enter the property price and your deposit amount or percentage. Set the interest rate and mortgage term in years, then choose between repayment or interest-only. You can also reverse-calculate the interest rate by entering a known monthly payment. Switch between chart, table, and summary views to explore your repayment schedule in detail.</p>
+  </div>
+</div>
+
 <script src="js/nav.js"></script>
 <script src="js/format.js"></script>
 <script>
-let sym='£', repayType='repayment', depMode='amount', viewMode='chart';
+let sym='£', repayType='repayment', depMode='amount', rateMode='rate', viewMode='chart';
 let chartInst=null, lastR=null;
 
 // Currency
@@ -329,8 +396,19 @@ document.getElementById('curr').addEventListener('click', e => {
   document.getElementById('h-sym').textContent = sym;
   document.getElementById('pfx1').textContent = sym;
   if (depMode === 'amount') document.getElementById('pfx-dep').textContent = sym;
+  document.getElementById('pfx-pay').textContent = sym;
   // Update the £ button label in deposit toggle
   document.querySelector('#dep-mode button[data-val="amount"]').textContent = sym;
+  update();
+});
+
+// Rate mode toggle (rate vs payment)
+document.getElementById('rate-mode').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  document.querySelectorAll('#rate-mode button').forEach(x => x.classList.remove('active'));
+  b.classList.add('active'); rateMode = b.dataset.val;
+  document.getElementById('rate-wrap').style.display = rateMode === 'rate' ? '' : 'none';
+  document.getElementById('payment-wrap').style.display = rateMode === 'payment' ? '' : 'none';
   update();
 });
 
@@ -387,14 +465,56 @@ function getDeposit() {
   return val;
 }
 
+// Newton's method to find monthly rate from loan, payment, and months
+function solveRate(L, pmt, n) {
+  if (pmt <= 0 || L <= 0 || n <= 0) return 0;
+  if (pmt * n <= L) return 0; // payment too low to cover principal
+  let r = 0.005; // initial guess: 0.5% monthly = 6% annual
+  for (let i = 0; i < 100; i++) {
+    const rn = Math.pow(1 + r, n);
+    const f = L * r * rn / (rn - 1) - pmt;
+    const df = L * (rn * (rn - 1) - r * n * Math.pow(1 + r, n - 1) * (rn - 1) + r * rn * n * Math.pow(1 + r, n - 1)) / ((rn - 1) * (rn - 1));
+    // Simpler derivative approximation
+    const r2 = r + 0.0001;
+    const rn2 = Math.pow(1 + r2, n);
+    const f2 = L * r2 * rn2 / (rn2 - 1) - pmt;
+    const deriv = (f2 - f) / 0.0001;
+    if (Math.abs(deriv) < 1e-12) break;
+    const rNew = r - f / deriv;
+    if (rNew <= 0) { r = r / 2; continue; }
+    r = rNew;
+    if (Math.abs(f) < 0.01) break;
+  }
+  return r;
+}
+
 function compute() {
   const price = parseFloat(document.getElementById('property-price').value) || 0;
   const deposit = getDeposit();
   const L = Math.max(0, price - deposit);
-  const annRate = (parseFloat(document.getElementById('rate').value) || 0) / 100;
   const yrs = parseInt(document.getElementById('years').value) || 0;
   const totalMonths = yrs * 12;
-  const monthlyRate = annRate / 12;
+
+  let annRate, monthlyRate;
+
+  if (rateMode === 'payment' && L > 0 && totalMonths > 0) {
+    // Reverse-calculate rate from known monthly payment
+    const knownPmt = parseFloat(document.getElementById('known-payment').value) || 0;
+    if (knownPmt > 0) {
+      if (repayType === 'interest-only') {
+        // payment = L * r/12, so r = payment * 12 / L
+        annRate = (knownPmt * 12) / L;
+      } else {
+        // Use Newton's method to find monthly rate from PMT = L * r(1+r)^n / ((1+r)^n - 1)
+        annRate = solveRate(L, knownPmt, totalMonths) * 12;
+      }
+    } else {
+      annRate = 0;
+    }
+  } else {
+    annRate = (parseFloat(document.getElementById('rate').value) || 0) / 100;
+  }
+  monthlyRate = annRate / 12;
   const ltv = price > 0 ? (L / price * 100) : 0;
 
   let monthlyPayment = 0;
@@ -520,7 +640,7 @@ function renderChart(r) {
     options: {
       responsive: true, maintainAspectRatio: false,
       plugins: {
-        legend: { display: true, position: 'bottom', labels: { color: '#8a8a8a', font: { size: 10, family: "'Instrument Sans',sans-serif" }, boxWidth: 8, padding: 12, usePointStyle: true }},
+        legend: { display: true, position: 'bottom', labels: { color: '#8a8a8a', font: { size: 10, family: "'DM Sans',sans-serif" }, boxWidth: 8, padding: 12, usePointStyle: true }},
         tooltip: { callbacks: { label: c => c.dataset.label + ': ' + fmtFull(c.raw) }}
       },
       scales: {
@@ -538,5 +658,6 @@ document.querySelectorAll('input[type=number], select').forEach(el => {
 update();
 </script>
 <script src="js/ads.js"></script>
+<script src="js/input-format.js"></script>
 </body>
 </html>

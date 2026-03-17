@@ -1,31 +1,27 @@
 /* ── STATIC PAGE LAYOUT ── */
 .page-scroll {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
+  position: relative;
+  z-index: 1;
   overflow-y: auto;
-  pointer-events: none;
 }
 .page-wrap {
   max-width: 640px;
   margin: 0 auto;
-  padding: 7rem 2rem 4rem;
-  pointer-events: auto;
+  padding: 5rem 2rem 4rem;
 }
 .page-card {
   background: var(--white);
   border-radius: var(--radius);
-  box-shadow: var(--shadow-card);
   padding: 2.5rem 2.25rem;
 }
 
 /* Typography */
 .page-card h1 {
   font-family: var(--serif);
-  font-size: 2rem;
-  font-weight: 400;
+  font-size: 2.5rem;
+  font-weight: 900;
   color: var(--ink);
-  line-height: 1.1;
+  line-height: 1.05;
   letter-spacing: -0.03em;
   margin-bottom: 0.4rem;
 }
@@ -37,8 +33,8 @@
 }
 .page-card h2 {
   font-family: var(--serif);
-  font-size: 1.3rem;
-  font-weight: 400;
+  font-size: 1.4rem;
+  font-weight: 700;
   color: var(--ink);
   letter-spacing: -0.02em;
   margin: 2rem 0 0.75rem;
@@ -146,7 +142,7 @@
 .price-amt {
   font-family: var(--serif);
   font-size: 2rem;
-  font-weight: 400;
+  font-weight: 900;
   color: var(--ink);
   letter-spacing: -0.03em;
   line-height: 1;

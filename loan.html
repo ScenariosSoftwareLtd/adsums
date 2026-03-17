@@ -3,30 +3,60 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AdSums — Loan Calculator</title>
+<title>Loan Calculator — Free UK Loan Repayment Calculator | AdSums</title>
+<meta name="description" content="Free loan calculator. Calculate monthly repayments, total interest and cost of borrowing for personal loans.">
+<link rel="canonical" href="https://adsums.co.uk/loan.html">
+<meta property="og:title" content="Loan Calculator — Free UK Loan Repayment Calculator | AdSums">
+<meta property="og:description" content="Free loan calculator. Calculate monthly repayments, total interest and cost of borrowing for personal loans.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://adsums.co.uk/loan.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Loan Calculator — Free UK Loan Repayment Calculator | AdSums">
+<meta name="twitter:description" content="Free loan calculator. Calculate monthly repayments, total interest and cost of borrowing for personal loans.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&display=swap" rel="stylesheet">
+
+
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/calculator.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Loan Calculator",
+  "description": "Free loan calculator with amortisation schedule. Calculate monthly payments, total interest, and see how your loan balance reduces over time.",
+  "url": "https://adsums.co.uk/loan.html",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "GBP"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AdSums",
+    "url": "https://adsums.co.uk"
+  }
+}
+</script>
 </head>
 <body>
 
 <!-- FULL SCREEN AD -->
 <div class="ad-canvas">
-  <div class="ad-bg"></div>
+  <div class="ad-bg"><img class="scenarios-img" src="img/scenarios-ad.jpg" alt=""></div>
   <div class="ad-content">
     <!-- Slide 1: Scenarios.uk takeover -->
-    <div class="ad-slide scenarios active">
-      <div class="scenarios-logo">
-        <div class="scenarios-wordmark">scenarios.uk</div>
-      </div>
-      <div class="ad-headline">Retire with confidence, not guesswork.</div>
-      <div class="ad-body">Proper retirement modelling. No adviser fees, no spreadsheets.</div>
-      <a href="https://scenarios.uk" target="_blank" class="ad-cta-btn">Start planning — it's free</a>
-      <div class="scenarios-url">scenarios.uk</div>
-    </div>
+    <a href="https://scenarios.uk" target="_blank" class="ad-slide scenarios active" style="text-decoration:none;color:inherit;cursor:pointer">
+      <div class="scenarios-logo-ad">Scenarios<span>.uk</span></div>
+      <div class="ad-headline">Go beyond<br>basic calculators.</div>
+      <div class="ad-body">See how your future could actually play out. Build a free financial plan today.</div>
+      <span class="ad-cta-btn">Explore your future →</span>
+      <div class="scenarios-powered">Ad · scenarios.uk</div>
+    </a>
     <!-- Slide 2: Advertise -->
     <div class="ad-slide">
       <div class="ad-kicker">Advertisement</div>
@@ -53,16 +83,14 @@
 <!-- NAV -->
 <nav class="nav">
   <a class="nav-logo" href="index.html">
-    <svg width="148" height="28" viewBox="0 0 148 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="4" width="22" height="14" rx="4" fill="#2563eb" opacity="0.25"/>
-      <rect x="2" y="7" width="22" height="14" rx="4" fill="#2563eb"/>
-      <path d="M13 11v6M10 14h6" stroke="white" stroke-width="2" stroke-linecap="round"/>
-      <text x="32" y="20" font-family="'Instrument Serif', Georgia, serif" font-size="17" letter-spacing="-0.2">
-        <tspan fill="rgba(255,255,255,0.42)" font-style="italic">Ad</tspan><tspan fill="rgba(255,255,255,0.92)">Sums</tspan>
+    <svg class="nav-logo-svg" width="100" height="28" viewBox="0 0 100 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="21" font-family="'Fraunces', Georgia, serif" font-size="19" letter-spacing="-0.5">
+        <tspan class="logo-ad">Ad</tspan><tspan class="logo-calc">Sums</tspan>
       </text>
     </svg>
   </a>
 
+  <div class="nav-pill">
   <div class="nav-center">
     <div class="nav-dropdown" id="calc-dropdown">
       <button class="nav-dropdown-toggle" id="dd-toggle">
@@ -78,7 +106,12 @@
             <div class="dd-icon green">
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M11 4.5A3 3 0 006 6v2H4.5m1.5 0v2c0 .8-.2 1.5-.5 2H12"/><path d="M4.5 8H10"/></svg>
             </div>
-            <div class="dd-text"><span class="dd-name">Salary calculator</span><span class="dd-desc">What is my take-home pay?</span></div>
+            <div class="dd-text"><span class="dd-name">Salary calculator</span><span class="dd-desc">What is my take-home pay?</span></div>          </a>
+          <a class="dd-item" href="self-employed.html">
+            <div class="dd-icon green">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4l2 2"/><circle cx="8" cy="8" r="6"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Self-employed tax</span><span class="dd-desc">Sole trader take-home pay</span></div>
           </a>
           <a class="dd-item" href="dividend-tax.html">
             <div class="dd-icon amber">
@@ -105,7 +138,12 @@
             <div class="dd-icon purple">
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7l6-5 6 5v7H10V9H6v5H2V7z"/></svg>
             </div>
-            <div class="dd-text"><span class="dd-name">Mortgage calculator</span><span class="dd-desc">What will repayments be?</span></div>
+            <div class="dd-text"><span class="dd-name">Mortgage calculator</span><span class="dd-desc">What will repayments be?</span></div>          </a>
+          <a class="dd-item" href="mortgage-affordability.html">
+            <div class="dd-icon purple">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7l6-5 6 5"/><path d="M4 8v5h8V8"/><path d="M7 10h2"/></svg>
+            </div>
+            <div class="dd-text"><span class="dd-name">Mortgage affordability</span><span class="dd-desc">How much can I borrow?</span></div>
           </a>
           <a class="dd-item" href="mortgage-overpayment.html">
             <div class="dd-icon purple">
@@ -151,12 +189,12 @@
     </div>
 
     <a class="nav-link" href="how-it-works.html">How it works</a>
-    <a class="nav-link" href="advertise.html">Advertise</a>
     <a class="nav-link" href="legal.html">Legal</a>
   </div>
 
   <div class="nav-right">
     <a class="nav-upgrade" href="advertise.html">Advertise with us</a>
+  </div>
   </div>
 </nav>
 
@@ -306,6 +344,19 @@
   </div>
 
 </div>
+</div>
+
+<div class="seo-content">
+  <div class="seo-wrap">
+    <h1>Loan Calculator</h1>
+    <p>Work out your loan repayments with our free loan calculator. Enter the amount you want to borrow, the interest rate, and the repayment period to see your monthly payment, total interest cost, and full amortisation schedule. Whether you are comparing personal loans, car finance, or any other borrowing, this tool helps you understand the true cost before you commit.</p>
+    <h2>How loan repayments work</h2>
+    <p>Most personal loans use a fixed repayment structure where you pay the same amount each month. Each payment covers both interest and a portion of the principal. Early in the loan, more of your payment goes to interest. As the balance decreases, more goes towards repaying the principal. Interest-only loans charge just the interest monthly, with the full amount due at the end.</p>
+    <h2>Comparing loan offers</h2>
+    <p>When comparing loans, look at the total cost of borrowing rather than just the monthly payment. A lower rate or shorter term can save you hundreds or thousands in interest. Use this calculator to model different scenarios — try adjusting the rate by a few percentage points or shortening the term to see the impact on your total cost.</p>
+    <h2>How to use this calculator</h2>
+    <p>Enter the loan amount, annual interest rate, and term in years and months. Choose between repayment or interest-only. The calculator shows your monthly payment, total repaid, and total interest with a visual chart and year-by-year amortisation table. Switch between chart, table, and summary views to explore the numbers in the format you prefer.</p>
+  </div>
 </div>
 
 <script src="js/nav.js"></script>
@@ -479,7 +530,7 @@ function renderChart(r) {
     options: {
       responsive: true, maintainAspectRatio: false,
       plugins: {
-        legend: { display: true, position: 'bottom', labels: { color: '#8a8a8a', font: { size: 10, family: "'Instrument Sans',sans-serif" }, boxWidth: 8, padding: 12, usePointStyle: true }},
+        legend: { display: true, position: 'bottom', labels: { color: '#8a8a8a', font: { size: 10, family: "'DM Sans',sans-serif" }, boxWidth: 8, padding: 12, usePointStyle: true }},
         tooltip: { callbacks: { label: c => c.dataset.label + ': ' + fmtFull(c.raw) }}
       },
       scales: {
@@ -497,5 +548,6 @@ document.querySelectorAll('input[type=number], select').forEach(el => {
 update();
 </script>
 <script src="js/ads.js"></script>
+<script src="js/input-format.js"></script>
 </body>
 </html>
