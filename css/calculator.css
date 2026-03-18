@@ -373,16 +373,6 @@ td.td-b { color: var(--blue); font-weight: 700; }
     overflow-y: visible;
   }
 
-  /* Sticky hero result — always visible while scrolling */
-  .hero-result {
-    position: sticky;
-    top: 60px;
-    z-index: 60;
-    background: var(--white);
-    margin: -1.5rem -1.25rem 1.5rem;
-    padding: 1rem 1.25rem;
-    border-bottom: 1px solid var(--border);
-  }
   .hero-val { font-size: 2rem; }
   .chips { gap: 6px; }
   .chip { padding: 0.5rem 0.55rem; }
