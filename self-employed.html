@@ -25,7 +25,7 @@
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Self-Employed Tax Calculator",
-  "description": "Free UK self-employed tax calculator for sole traders. Calculate income tax, Class 2 and Class 4 NI, and take-home pay for 2025/26.",
+  "description": "Free UK self-employed tax calculator for sole traders. Calculate income tax, Class 2 and Class 4 NI, student loans, and take-home pay for 2025/26.",
   "url": "https://adsums.co.uk/self-employed.html",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "All",
@@ -268,11 +268,12 @@
   </div>
 
   <div class="mb">
-    <div class="f-label">SIPP contribution <span style="font-weight:400;color:var(--muted);font-size:0.72rem;">— % of profit (relief at source)</span></div>
+    <div class="f-label">Other income <span class="opt">optional</span></div>
     <div class="input-box">
-      <input type="number" id="pension" value="0" min="0" max="100" step="0.5" style="padding-left:0.9rem">
-      <span class="i-suf">%</span>
+      <span class="i-pre">£</span>
+      <input type="number" id="other-income" value="0" min="0" step="500" placeholder="0">
     </div>
+    <div style="font-size:0.68rem;color:var(--muted);margin-top:0.3rem;line-height:1.4;">Gross salary or other taxed income — shifts your tax bands</div>
   </div>
 
   <div class="divider"></div>
@@ -350,13 +351,11 @@
 <div class="seo-content">
   <div class="seo-wrap">
     <h1>Self-Employed Tax Calculator</h1>
-    <p>Calculate your self-employed take-home pay with our free sole trader tax calculator. Updated for the 2025/26 tax year, it works out income tax, Class 2 and Class 4 National Insurance contributions, student loan repayments, and SIPP pension relief on your trading profit. Enter your annual turnover and allowable expenses to see what you actually keep.</p>
+    <p>Calculate your self-employed take-home pay with our free sole trader tax calculator. Updated for the 2025/26 tax year, it works out income tax, Class 2 and Class 4 National Insurance contributions, and student loan repayments on your trading profit. Enter your annual turnover and allowable expenses to see what you actually keep.</p>
     <h2>How self-employed tax works in the UK</h2>
     <p>As a sole trader, you pay income tax on your profit — turnover minus allowable business expenses. The tax bands are the same as employed workers: a £12,570 personal allowance, then 20%, 40%, and 45% rates. However, National Insurance works differently. Self-employed individuals pay Class 2 NI at a flat £179.40 per year and Class 4 NI at 6% on profits between £12,570 and £50,270, then 2% above that.</p>
-    <h2>SIPP pension contributions</h2>
-    <p>Self-employed workers can contribute to a SIPP (Self-Invested Personal Pension) and receive tax relief. Contributions are made net of basic rate tax — your pension provider claims 20% from HMRC automatically. Higher and additional rate taxpayers can claim further relief through their Self Assessment, which this calculator models by extending the basic rate band.</p>
     <h2>How to use this calculator</h2>
-    <p>Enter your annual turnover and total allowable expenses. The calculator works out your taxable profit and applies the correct tax and NI rates. Add a SIPP contribution percentage to see how pension saving reduces your overall tax bill. The breakdown tab shows every deduction from turnover to take-home pay.</p>
+    <p>Enter your annual turnover and total allowable expenses. The calculator works out your taxable profit and applies the correct tax and NI rates. The breakdown tab shows every deduction from turnover to take-home pay.</p>
   </div>
 </div>
 
@@ -393,43 +392,59 @@ document.getElementById('vtabs').addEventListener('click', function(e){
 function compute(){
   var turnover = parseFloat(document.getElementById('turnover').value) || 0;
   var expenses = parseFloat(document.getElementById('expenses').value) || 0;
-  var pensionPct = parseFloat(document.getElementById('pension').value) || 0;
+  var otherIncome = parseFloat(document.getElementById('other-income').value) || 0;
   var studentLoan = document.getElementById('student-loan').value;
 
-  // Profit
-  var profit = Math.max(0, turnover - expenses);
-
-  // SIPP contribution (relief at source — does NOT reduce taxable profit)
-  // The net contribution is what you pay in, provider adds 20% basic rate relief
-  // Higher/additional rate relief is given by extending the basic rate band
-  var pensionNet = profit * pensionPct / 100;      // what you actually pay in
-  var pensionGross = pensionNet / 0.8;              // grossed up (provider adds 20%)
-  var pensionAmt = pensionNet;                      // deducted from take-home
-
-  // Personal allowance (tapers £1 for every £2 above £100k)
-  // PA taper is based on "net income" which does NOT include pension for relief at source
-  var personalAllowance = 12570;
-  if(profit > 100000){
-    personalAllowance = Math.max(0, personalAllowance - (profit - 100000) / 2);
+  // Trading allowance: if turnover ≤ £1,000, profit is nil
+  // If turnover > £1,000, taxpayer can deduct £1,000 instead of actual expenses
+  var tradingAllowance = false;
+  var profit;
+  if(turnover <= 1000){
+    profit = 0;
+    tradingAllowance = true;
+  } else if(expenses < 1000){
+    profit = Math.max(0, turnover - 1000);
+    tradingAllowance = true;
+  } else {
+    profit = Math.max(0, turnover - expenses);
   }
 
-  // Income tax — pension extends the basic rate band
-  var tax = 0;
-  var remaining = Math.max(0, profit - personalAllowance);
+  // Combined income for allowance taper and band positioning
+  var totalIncome = profit + otherIncome;
 
-  // Basic rate band extended by gross pension contribution
-  var basicBand = 37700 + pensionGross;
-  var basicTax = Math.min(remaining, basicBand) * 0.20;
+  // Personal allowance (tapers £1 for every £2 above £100k on total income)
+  var fullPA = 12570;
+  var personalAllowance = fullPA;
+  if(totalIncome > 100000){
+    personalAllowance = Math.max(0, fullPA - (totalIncome - 100000) / 2);
+  }
+
+  // PA already used by other income
+  var paUsed = Math.min(otherIncome, personalAllowance);
+  var paRemaining = Math.max(0, personalAllowance - paUsed);
+
+  // Tax bands already consumed by other income (after its PA share)
+  var otherTaxable = Math.max(0, otherIncome - paUsed);
+  var basicBandLeft = Math.max(0, 37700 - otherTaxable);
+  var higherBandWidth = 125140 - 12570 - 37700; // 74,870
+  var higherBandUsed = Math.max(0, otherTaxable - 37700);
+  var higherBandLeft = Math.max(0, higherBandWidth - higherBandUsed);
+
+  // Income tax on self-employed profit only
+  var tax = 0;
+  var remaining = Math.max(0, profit - paRemaining);
+
+  // Basic rate: 20%
+  var basicTax = Math.min(remaining, basicBandLeft) * 0.20;
   tax += basicTax;
-  remaining = Math.max(0, remaining - basicBand);
+  remaining = Math.max(0, remaining - basicBandLeft);
 
   // Higher rate: 40%
-  var higherBandTop = 125140 - 12570 - 37700; // standard higher band width
-  var higherTax = Math.min(remaining, Math.max(0, higherBandTop - pensionGross)) * 0.40;
+  var higherTax = Math.min(remaining, higherBandLeft) * 0.40;
   tax += higherTax;
-  remaining = Math.max(0, remaining - Math.max(0, higherBandTop - pensionGross));
+  remaining = Math.max(0, remaining - higherBandLeft);
 
-  // Additional rate: 45% above £125,140
+  // Additional rate: 45%
   var additionalTax = remaining * 0.45;
   tax += additionalTax;
 
@@ -462,30 +477,26 @@ function compute(){
     studentLoanAmt = (profit - 21000) * 0.06;
   }
 
-  var totalDeductions = tax + totalNI + studentLoanAmt + pensionAmt;
-  var takeHome = profit - (tax + totalNI + studentLoanAmt + pensionAmt);
+  var totalDeductions = tax + totalNI + studentLoanAmt;
+  var takeHome = profit - totalDeductions;
 
-  // Marginal rate (based on profit, not reduced by pension)
+  // Marginal rate — based on where the next £1 of profit falls
   var marginal = 0;
-  if(profit > 125140) marginal = 45;
-  else if(profit > 100000) marginal = 60;
-  else if(profit > 50270) marginal = 40;
-  else if(profit > personalAllowance) marginal = 20;
+  var topSlice = totalIncome; // where the top of combined income sits
+  if(topSlice > 125140) marginal = 45;
+  else if(topSlice > 100000) marginal = 60;
+  else if(topSlice > 50270) marginal = 40;
+  else if(topSlice > personalAllowance) marginal = 20;
 
   // Effective tax rate (tax + NI as % of profit)
   var effectiveRate = profit > 0 ? ((tax + totalNI) / profit * 100) : 0;
-
-  // Tax relief from pension (difference vs no pension)
-  var pensionRelief = pensionGross - pensionNet; // 20% basic rate added by provider
-  // Plus any higher/additional rate relief from band extension (already reflected in lower tax)
 
   return {
     turnover: turnover,
     expenses: expenses,
     profit: profit,
-    pensionAmt: pensionAmt,
-    pensionGross: pensionGross,
-    pensionRelief: pensionRelief,
+    tradingAllowance: tradingAllowance,
+    otherIncome: otherIncome,
     personalAllowance: personalAllowance,
     tax: tax,
     class2NI: class2NI,
@@ -511,12 +522,16 @@ function update(){
 
   // Insight
   var ins;
-  if(r.marginalRate === 60){
+  if(r.tradingAllowance && r.turnover <= 1000){
+    ins = 'Your turnover is under £1,000 — the <strong>trading allowance</strong> means no tax is due on this income.';
+  } else if(r.tradingAllowance){
+    ins = 'The <strong>£1,000 trading allowance</strong> is more than your expenses, so it has been used instead.';
+  } else if(r.otherIncome > 0 && r.profit > 0){
+    ins = 'Your ' + fmtS(r.otherIncome) + ' other income uses up allowances and lower bands — your self-employed profit is taxed at <strong>higher effective rates</strong>.';
+  } else if(r.marginalRate === 60){
     ins = 'You are in the <strong>60% effective marginal band</strong> due to personal allowance tapering between £100k and £125,140.';
   } else if(r.profit === 0){
     ins = 'Your expenses equal or exceed your turnover — there is <strong>no taxable profit</strong> this year.';
-  } else if(r.pensionAmt > 0){
-    ins = 'You pay <strong>' + fmtS(r.pensionAmt) + '</strong>/yr into your SIPP. Your provider adds ' + fmtS(r.pensionRelief) + ' in basic rate relief, and any higher rate relief reduces your tax bill.';
   } else if(r.effectiveRate > 30){
     ins = 'Your effective tax rate is <strong>' + r.effectiveRate.toFixed(1) + '%</strong> — nearly a third of your profit goes to tax and NI.';
   } else {
@@ -527,16 +542,17 @@ function update(){
   // Breakdown table
   var tb = document.getElementById('tbody');
   tb.innerHTML = '';
+  var deductionLabel = r.tradingAllowance ? 'Trading allowance' : 'Expenses';
+  var deductionAmt = r.tradingAllowance ? Math.min(r.turnover, 1000) : r.expenses;
   var rows = [
     ['Turnover', r.turnover, r.turnover/12, false],
-    ['Expenses', -r.expenses, -r.expenses/12, false],
+    [deductionLabel, -deductionAmt, -deductionAmt/12, false],
     ['Profit', r.profit, r.profit/12, false],
     ['Income tax', -r.tax, -r.tax/12, false],
     ['Class 2 NI', -r.class2NI, -r.class2NI/12, false],
     ['Class 4 NI', -r.class4NI, -r.class4NI/12, false]
   ];
   if(r.studentLoan > 0) rows.push(['Student loan', -r.studentLoan, -r.studentLoan/12, false]);
-  if(r.pensionAmt > 0) rows.push(['SIPP (you pay in)', -r.pensionAmt, -r.pensionAmt/12, false]);
   rows.push(['Take-home', r.takeHome, r.takeHome/12, true]);
 
   rows.forEach(function(row){
