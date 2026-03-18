@@ -354,7 +354,85 @@ td.td-b { color: var(--blue); font-weight: 700; }
   margin-bottom: 0.75rem;
 }
 
-@media (max-width: 520px) {
-  .float-card { left: 1rem; right: 1rem; width: auto; }
-  .seo-content { display: none; }
+@media (max-width: 768px) {
+  .float-card {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 100%;
+    max-height: none;
+    border-radius: 0;
+    box-shadow: none;
+    z-index: 50;
+    margin-top: 60px;
+  }
+  .fc-scroll {
+    padding: 1.5rem 1.25rem 2rem;
+    padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+    overflow-y: visible;
+  }
+
+  /* Sticky hero result — always visible while scrolling */
+  .hero-result {
+    position: sticky;
+    top: 60px;
+    z-index: 60;
+    background: var(--white);
+    margin: -1.5rem -1.25rem 1.5rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-val { font-size: 2rem; }
+  .chips { gap: 6px; }
+  .chip { padding: 0.5rem 0.55rem; }
+  .chip-val { font-size: 0.82rem; }
+
+  /* Prevent iOS Safari zoom on focus — must be >= 16px */
+  input[type=number],
+  input[type=text][inputmode=decimal],
+  select {
+    font-size: 16px;
+  }
+
+  /* Better touch targets */
+  .input-box { height: 48px; }
+  .seg button { padding: 0.5rem 0.2rem; min-height: 44px; }
+  .curr-seg button { padding: 0.5rem 0; min-height: 40px; }
+  .view-tabs button { padding: 0.5rem 0.75rem; min-height: 40px; }
+
+  /* Contributions 2×2 grid on mobile */
+  #ctype {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+  }
+
+  /* Chart taller on mobile for readability */
+  .chart-wrap { height: 220px; }
+
+  /* Table horizontal scroll hint */
+  .table-wrap { -webkit-overflow-scrolling: touch; }
+
+  /* SEO content flows below calculator */
+  .seo-content {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    overflow-y: visible;
+    pointer-events: auto;
+    z-index: 50;
+    background: #0f0f0f;
+  }
+  .seo-wrap {
+    max-width: 100%;
+    padding: 2rem 1.25rem 3rem;
+    padding-bottom: calc(3rem + env(safe-area-inset-bottom, 0px));
+    margin-top: 0;
+  }
+  .seo-wrap h1 { font-size: 1.4rem; }
+  .seo-wrap h2 { font-size: 1rem; }
+  .seo-wrap p { font-size: 0.84rem; }
 }
